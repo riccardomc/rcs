@@ -1,0 +1,19 @@
+syntax: glob
+*.o
+*.a
+*.so
+*.lo
+*.la
+.*.d
+*.pyc
+*.swp
+*.orig
+.DS_Store
+*.aux
+*.bbl
+*.blg
+*.lof
+*.log
+*.lot
+*.toc
+tags
