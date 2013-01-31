@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+for link in *; do
+    ln -s `pwd`/$link ~/.${link##*/}
+done
+
+rm ~/.make-links

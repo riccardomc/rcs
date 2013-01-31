@@ -1,0 +1,47 @@
+[ui]
+username = Riccardo M. Cefala <riccardo.cefala@gmail.com>
+# Use ssh with compression
+ssh = ssh -C
+# Ignore file with list of file wildcard expressions to ignore
+ignore = ~/.hgignore
+# Use MacVim as merge tool
+merge = vimdiff
+
+[alias]
+qstatus = status --rev -2:.
+
+[extensions]   
+# Enable purge extension which nukes any non-tracked file.
+purge =
+# Enable hg-git extension which allows interaction with git
+bookmarks =
+hggit = /opt/local/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/hggit
+# Enable colorized diffs
+color =
+# Enable paging
+pager =
+# Commandline revision graph log
+graphlog =
+# Commandline progressbar for push/pull
+progress =
+# Mercurial Queues
+mq =
+# Relink extension for recreating hardlinks in cloned local repositories
+relink =
+# Interactive change recording for commits and patches
+record =
+
+[mq]
+secret = True
+
+[pager]
+pager = LESS='FSRX' less
+attend = status, diff, cat, help, log, glog, incoming, outgoing, grep, qdiff,
+         annotate
+
+[progress]
+delay = 1.5
+
+[paths]
+default = git+ssh://git@github.com/rcefala/snet-rts.git
+snet = git+ssh://git@github.com/rcefala/snet-rts.git
