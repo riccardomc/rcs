@@ -106,22 +106,17 @@ fi
 # my fancy stuff
 ##################
 
-
-#
-# binds
-#
-
-#history search on partial commands with arrow up and down 
-bind '"\e[a": history-search-backward'
-bind '"\e[b": history-search-forward'
-
 #
 # exports
 #
 
 #snet related
 
-case $(hostname) in
+case $(hostname -A | cut -d " " -f 1) in
+  fs*.das4.*)
+    stty erase ^? #fix backspace
+    export SNET_DIR=/var/scratch/$USER/snet
+    ;;
   *.sara.nl)
     export SNET_DIR=$HOME/snet
     ;;
