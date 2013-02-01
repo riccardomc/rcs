@@ -169,7 +169,7 @@ keyadd() {
 
 
 #tmux
-if which tmux 2>&1 >/dev/null; then
+if which tmux >/dev/null 2>&1; then
   # if no session is started, start a new session
   test -z ${TMUX} && (tmux attach || tmux new-session)
 
