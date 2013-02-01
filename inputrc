@@ -1,2 +1,10 @@
 "\e[5~": history-search-backward
 "\e[6~": history-search-forward
+
+$if Bash
+    # append a '/' to show a dir is a dir
+    set mark-directories on
+    set mark-symlinked-directories on
+    # use ls -F style highlights for completion
+    set visible-stats on
+$endif
