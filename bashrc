@@ -120,14 +120,23 @@ bind '"\e[b": history-search-forward'
 #
 
 #snet related
-SNET_DIR=/opt/snet
-LPEL_DIR=$SNET_DIR
+
+case $(hostname) in
+  *.sara.nl)
+    export SNET_DIR=$HOME/snet
+    ;;
+  *)
+    export SNET_DIR=/opt/snet
+    ;;
+esac
+
+export LPEL_DIR=$SNET_DIR
 export SNET_INCLUDES=$SNET_DIR/include/snet
 export SNET_LIBS=$SNET_DIR/lib/snet
 export SNET_MISC=$SNET_DIR/share/snet
-export PATH=$PATH:/opt/snet/bin
-#export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$SNET_LIBS:$LPEL_DIR
-export DYLD_LIBRARY_PATH=$SNET_LIBS:$LPEL_DIR
+export PATH=$PATH:$SNET_DIR/bin
+export DYLD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
+export LD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 
 #only on mac
 if [ "$(uname)" = "Darwin" ]; then
