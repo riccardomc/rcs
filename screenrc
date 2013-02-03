@@ -1,0 +1,14 @@
+term screen-256color         #colors!
+encoding UTF-8              #unicode!
+defscrollback   5000        #scrollback buffer
+altscreen on                #kill editors' artifacts 
+attrcolor b ".I"            #fix bold text?
+startup_message off         #turn off startup message
+
+bindkey ^[[1;2D prev        #shift left for prev window
+bindkey ^[[1;2C next        #shift right for next window
+
+#Set the bottom line caption and hardstatus bars (Merijn)
+caption always "%{= wk}[%n %t][%f][ %L=%h%90L>%-02= ]"
+backtick 1 0 0 echo "$ESCAPE"
+hardstatus alwayslastline "%{=b kk}[%{.w}%0c%{-}][%{.b}%H%{-}][%{= .m}%1`%{-}][ %L=%-w%40L>%{= .w}%n %t%{-}%+w%-018= ][%{= .y}%l%{-}]"
