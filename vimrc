@@ -16,6 +16,12 @@ set filetype=on
 set clipboard+=unnamed
 
 """""""""""""""
+" Plugins
+"""""""""""""""
+"pathogen! (https://github.com/tpope/vim-pathogen)
+execute pathogen#infect()
+
+"""""""""""""""
 " View
 """""""""""""""
 set term=xterm-256color     "this should be checked
