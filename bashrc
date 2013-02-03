@@ -29,12 +29,30 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+#Try to set 256color TERM if supported
+case "$TERM" in
+*-256color)
+    alias ssh='TERM=${TERM%-256color} ssh'
+    ;;
+*)
+    POTENTIAL_TERM=${TERM}-256color
+    POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
+
+    # better to check $(toe -a | awk '{print $1}') maybe?
+    BOX_TERMINFO_DIR=/usr/share/terminfo
+    [[ -f $BOX_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
+        export TERM=$POTENTIAL_TERM
+
+    HOME_TERMINFO_DIR=$HOME/.terminfo
+    [[ -f $HOME_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
+        export TERM=$POTENTIAL_TERM
+    ;;
+esac
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-  xterm) color_prompt=yes;;
-  xterm-color) color_prompt=yes;;
-  screen) color_prompt=yes;;
-  screen-256color) color_prompt=yes;;
+  xterm*) color_prompt=yes;;
+  screen*) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -116,6 +134,8 @@ case $(hostname -A | cut -d " " -f 1) in
   fs*.das4.*)
     stty erase ^? #fix backspace
     export SNET_DIR=/var/scratch/$USER/snet
+    module load gcc
+    module load sge 
     ;;
   *.sara.nl)
     export SNET_DIR=$HOME/snet
@@ -129,7 +149,7 @@ export LPEL_DIR=$SNET_DIR
 export SNET_INCLUDES=$SNET_DIR/include/snet
 export SNET_LIBS=$SNET_DIR/lib/snet
 export SNET_MISC=$SNET_DIR/share/snet
-export PATH=$PATH:$SNET_DIR/bin
+export PATH=$SNET_DIR/bin:$PATH
 export DYLD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 export LD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 
