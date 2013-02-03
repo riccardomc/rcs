@@ -7,6 +7,8 @@ set nocompatible            "disable vi compatibility mode
 set nobackup                "disable backups
 set history=1000            "history lines to remember
 set confirm                 "ask confirm with unsaved/ro files
+set term=xterm-256color     "term (this should be checked)
+set ttymouse=xterm2         "terminal mouse handling
 set mouse=a                 "use mouse
 filetype plugin on          "load filetype plugins
 
@@ -24,7 +26,6 @@ execute pathogen#infect()
 """""""""""""""
 " View
 """""""""""""""
-set term=xterm-256color     "this should be checked
 "colorscheme wombat256        "nice dark colors
 colorscheme desert          "nice dark colors
 "colorscheme zenburn         "nice dark colors
