@@ -1,4 +1,4 @@
-term screen-256color         #colors!
+term screen-256color        #colors!
 encoding UTF-8              #unicode!
 defscrollback   5000        #scrollback buffer
 altscreen on                #kill editors' artifacts 

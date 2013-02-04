@@ -178,6 +178,9 @@ else
   alias tgvim="mvim -p --remote-tab-silent"
 fi
 
+#force tmux in 256 colors
+alias tmux="tmux -2"
+
 #
 # funcs and misc
 #
