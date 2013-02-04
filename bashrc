@@ -29,13 +29,17 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+#cope with gnome-terminal $TERM settings
+if [[ $TERM == xterm && $COLORTERM == gnome* ]]; then
+  export TERM=xterm-256color
+fi
+
 #Try to set 256color TERM if supported
 case "$TERM" in
-*)
+  *)
     POTENTIAL_TERM=${TERM}-256color
     POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
 
-    # better to check $(toe -a | awk '{print $1}') maybe?
     BOX_TERMINFO_DIR=/usr/share/terminfo
     [[ -f $BOX_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
         export TERM=$POTENTIAL_TERM
