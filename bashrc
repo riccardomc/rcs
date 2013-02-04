@@ -22,7 +22,7 @@ shopt -s histappend
 shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -56,9 +56,7 @@ case "$TERM" in
   screen*) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
+# uncomment for a colored prompt, if the terminal has the capability;
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
@@ -80,7 +78,7 @@ fi
 unset color_prompt force_color_prompt
 
 # if this is an xterm set the title to user@host:dir
-case "$term" in
+case "$TERM" in
 xterm*|rxvt*)
   PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
   ;;
@@ -88,7 +86,7 @@ xterm*|rxvt*)
   ;;
 esac
 
-# enable color support of ls and also add handy aliases
+# enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
   alias ls='ls --color=auto'
@@ -100,23 +98,8 @@ if [ -x /usr/bin/dircolors ]; then
   alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-#alias ll='ls -l'
-#alias la='ls -a'
-#alias l='ls -cf'
 
-# alias definitions.
-# you may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# see /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+# enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
@@ -134,6 +117,16 @@ if [ "$(uname)" = "Darwin" ]; then
 else
   alias tgvim="gvim -p --remote-tab-silent"
   alias hname="hostname -A"
+fi
+
+# ls aliases
+alias ll='ls -l'
+alias la='ls -a'
+alias l='ls -cf'
+
+# additional alias definitions
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
 fi
 
 #
