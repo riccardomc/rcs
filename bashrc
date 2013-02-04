@@ -125,12 +125,37 @@ fi
 ##################
 
 #
+# aliases
+#
+if [ "$(uname)" = "Darwin" ]; then
+  alias tgvim="mvim -p --remote-tab-silent"
+  alias hname="hostname -f"
+else
+  alias tgvim="gvim -p --remote-tab-silent"
+  alias hname="hostname -A"
+fi
+
+#
 # exports
 #
 
-#snet related
+#only on mac
+if [ "$(uname)" = "Darwin" ]; then
+  #colorize cli
+  export CLICOLOR=1
 
-case $(hostname -A | cut -d " " -f 1) in
+  export PYTHON_PATH="/opt/local//library/frameworks/python.framework/versions/2.7:$PYTHON_PATH"
+  export XDG_DATA_DIRS="$PYTHON_PATH/share"
+
+  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+  export MANPATH=/opt/local/share/man:$MANPATH
+
+  #this is for vim installed by brew to have ruby support
+  export PATH=/usr/local/cellar/vim/7.3.762/bin:$PATH
+fi
+
+#per host configs
+case $(hname | cut -d " " -f 1) in
   fs*.das4.*)
     stty erase ^? #fix backspace
     export SNET_DIR=/var/scratch/$USER/snet
@@ -145,6 +170,7 @@ case $(hostname -A | cut -d " " -f 1) in
     ;;
 esac
 
+#snet related
 export LPEL_DIR=$SNET_DIR
 export SNET_INCLUDES=$SNET_DIR/include/snet
 export SNET_LIBS=$SNET_DIR/lib/snet
@@ -153,46 +179,21 @@ export PATH=$SNET_DIR/bin:$PATH
 export DYLD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 export LD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 
-#only on mac
-if [ "$(uname)" = "Darwin" ]; then
-
-  #colorize cli
-  export CLICOLOR=1
-
-  export PYTHON_PATH="/opt/local//library/frameworks/python.framework/versions/2.7:$PYTHON_PATH"
-  export XDG_DATA_DIRS="$PYTHON_PATH/share"
-
-  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-  export MANPATH=/opt/local/share/man:$MANPATH
-
-  #this is for vim installed by brew to have ruby support
-  export PATH=/usr/local/cellar/vim/7.3.762/bin:$PATH
-fi
-
-#
-# aliases
-#
-if [ "$(uname)" = "Darwin" ]; then
-  alias tgvim="gvim -p --remote-tab-silent"
-else
-  alias tgvim="mvim -p --remote-tab-silent"
-fi
-
-#force tmux in 256 colors
-alias tmux="tmux -2"
 
 #
 # funcs and misc
 #
-
-
 keyadd() {
   ssh-add ~/.ssh/${1}/id_rsa || (echo using default key ; ssh-add ~/.ssh/id_rsa)
 }
 
-
-#tmux
+#
+# tmux
+#
 if which tmux >/dev/null 2>&1; then
+  #force tmux in 256 colors
+  alias tmux="tmux -2"
+
   # if no session is started, start a new session
   test -z ${TMUX} && (tmux attach || tmux new-session)
 
