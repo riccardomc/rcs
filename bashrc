@@ -31,9 +31,6 @@ fi
 
 #Try to set 256color TERM if supported
 case "$TERM" in
-*-256color)
-    alias ssh='TERM=${TERM%-256color} ssh'
-    ;;
 *)
     POTENTIAL_TERM=${TERM}-256color
     POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
