@@ -1,0 +1,10 @@
+[user]
+        name = Riccardo Cefala
+        email = riccardo.cefala@gmail.com
+[github]
+        user = rcefala
+[core]
+        editor = vim
+        excludesfile = /home/rcefala/.gitignore
+[color]
+        ui = true
