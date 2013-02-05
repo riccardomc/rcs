@@ -17,3 +17,5 @@ syntax: glob
 *.lot
 *.toc
 tags
+.deps
+.dirstamp
