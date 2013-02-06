@@ -89,7 +89,7 @@ if [ $CLICOLOR -eq 1 ] ; then
     U=$R
   fi
 
-  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\H$X:$C\j$X:$B\w$X\$ "
+  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\h$X:$C\j$X:$B\W$X\$ "
 fi
 
 # enable programmable completion features
