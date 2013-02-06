@@ -1,7 +1,7 @@
 term screen-256color        #colors!
 encoding UTF-8              #unicode!
 defscrollback   5000        #scrollback buffer
-altscreen on                #kill editors' artifacts 
+altscreen on                #kill editors' artifacts
 attrcolor b ".I"            #fix bold text?
 startup_message off         #turn off startup message
 
