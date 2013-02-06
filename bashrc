@@ -61,15 +61,15 @@ case "$TERM" in
 esac
 
 if [ $CLICOLOR -eq 1 ] ; then
-  X='\e[0m'    # Text Reset
-  K='\e[0;90m' # Black
-  R='\e[0;91m' # Red
-  G='\e[0;92m' # Green
-  Y='\e[0;93m' # Yellow
-  B='\e[0;94m' # Blue
-  M='\e[0;95m' # Magenta
-  C='\e[0;96m' # Cyan
-  W='\e[0;97m' # White
+  X='\[\e[0m\]'    # Text Reset
+  K='\[\e[0;90m\]' # Black
+  R='\[\e[0;91m\]' # Red
+  G='\[\e[0;92m\]' # Green
+  Y='\[\e[0;93m\]' # Yellow
+  B='\[\e[0;94m\]' # Blue
+  M='\[\e[0;95m\]' # Magenta
+  C='\[\e[0;96m\]' # Cyan
+  W='\[\e[0;97m\]' # White
   U=$G         # User color
 
   if [ -x /usr/bin/dircolors ]; then
