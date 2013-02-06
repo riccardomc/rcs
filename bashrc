@@ -176,7 +176,7 @@ settitle() {
 #}
 
 # set terminal tab
-PROMPT_COMMAND='stt $HOSTNAME:$PWD'
+#PROMPT_COMMAND='stt $HOSTNAME:$PWD'
 
 #
 # tmux/screen
