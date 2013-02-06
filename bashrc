@@ -1,128 +1,91 @@
-# RMC
+# apply only to interactive shells
+[ -z "$PS1" ] && return 
+
 #
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# Bash options
 #
+HISTCONTROL=ignoreboth              # ignoredups and ignorespace
+HISTFILESIZE=50000                  # n lines of history
+shopt -s histappend                 # append to history file
+shopt -s checkwinsize               # check window size at each cmd
 
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
-# don't put duplicate lines in the history. See bash(1) for more options
-# don't overwrite GNU Midnight Commander's setting of `ignorespace'.
-HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
-shopt -s checkwinsize
-
-# make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
-#cope with gnome-terminal $TERM settings
+#
+# TERM
+#
+# cope with gnome-terminal $TERM settings
 if [[ $TERM == xterm && $COLORTERM == gnome* ]]; then
   export TERM=xterm-256color
 fi
 
-#Try to set 256color TERM if supported
+# try to upgrade TERM to a 256color one, if supported 
+POTENTIAL_TERM=${TERM}-256color
+POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
+
+BOX_TERMINFO_DIR=/usr/share/terminfo
+[[ -f $BOX_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
+export TERM=$POTENTIAL_TERM
+
+HOME_TERMINFO_DIR=$HOME/.terminfo
+[[ -f $HOME_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
+export TERM=$POTENTIAL_TERM
+
+#
+# PS1 and Colors
+#
+# debian chroot
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# default prompt
+PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+
+# use colors and colorize output in Darwin
 case "$TERM" in
-  *)
-    POTENTIAL_TERM=${TERM}-256color
-    POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
-
-    BOX_TERMINFO_DIR=/usr/share/terminfo
-    [[ -f $BOX_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
-        export TERM=$POTENTIAL_TERM
-
-    HOME_TERMINFO_DIR=$HOME/.terminfo
-    [[ -f $HOME_TERMINFO_DIR/$POTENTIAL_TERMINFO ]] && \
-        export TERM=$POTENTIAL_TERM
-    ;;
+  xterm* | screen*)
+    export CLICOLOR=1
 esac
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-  xterm*) color_prompt=yes;;
-  screen*) color_prompt=yes;;
-esac
+if [ $CLICOLOR -eq 1 ] ; then
+  X='\e[0m'    # Text Reset
+  K='\e[0;90m' # Black
+  R='\e[0;91m' # Red
+  G='\e[0;92m' # Green
+  Y='\e[0;93m' # Yellow
+  B='\e[0;94m' # Blue
+  M='\e[0;95m' # Magenta
+  C='\e[0;96m' # Cyan
+  W='\e[0;97m' # White
+  U=$G         # User color
 
-# uncomment for a colored prompt, if the terminal has the capability;
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-    # we have color support; assume it's compliant with ecma-48
-    # (iso/iec-6429). (lack of such support is extremely rare, and such
-    # a case would tend to support setf rather than setaf.)
-    color_prompt=yes
-  else
-    color_prompt=
+  if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
   fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-  PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-  PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# if this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-  PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-  ;;
-*)
-  ;;
-esac
-
-# enable color support of ls
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  #alias dir='dir --color=auto'
-  #alias vdir='vdir --color=auto'
 
   alias grep='grep --color=auto'
   alias fgrep='fgrep --color=auto'
   alias egrep='egrep --color=auto'
-fi
 
+  if [ $UID -eq 0 ] ; then
+    U=$R
+  fi
+
+  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\H$X:$C\j$X:$B\w$X\$ "
+fi
 
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-##################
-# my fancy stuff
-##################
-
 #
-# aliases
+# Aliases
 #
-if [ "$(uname)" = "Darwin" ]; then
-  alias tgvim="mvim -p --remote-tab-silent"
-  alias hname="hostname -f"
-else
-  alias tgvim="gvim -p --remote-tab-silent"
-  alias hname="hostname -A"
-fi
-
-# ls aliases
-alias ll='ls -l'
-alias la='ls -a'
-alias l='ls -cf'
+alias grep='grep -I'                # dont't mactch binary files
+alias ls='ls -F'                    # classify
+alias ll='ls -l'                    # list
+alias la='ls -a'                    # all
 
 # additional alias definitions
 if [ -f ~/.bash_aliases ]; then
@@ -130,13 +93,11 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 #
-# exports
+# OS specific configs
 #
-
-#only on mac
 if [ "$(uname)" = "Darwin" ]; then
-  #colorize cli
-  export CLICOLOR=1
+  alias tgvim="mvim -p --remote-tab-silent"
+  alias hname="hostname -f"
 
   export PYTHON_PATH="/opt/local//library/frameworks/python.framework/versions/2.7:$PYTHON_PATH"
   export XDG_DATA_DIRS="$PYTHON_PATH/share"
@@ -146,9 +107,15 @@ if [ "$(uname)" = "Darwin" ]; then
 
   #this is for vim installed by brew to have ruby support
   export PATH=/usr/local/cellar/vim/7.3.762/bin:$PATH
+else
+  alias tgvim="gvim -p --remote-tab-silent"
+  alias hname="hostname -A"
 fi
 
-#per host configs
+
+#
+# Host specific configs 
+#
 case $(hname | cut -d " " -f 1) in
   fs*.das4.*)
     stty erase ^? #fix backspace
@@ -173,26 +140,46 @@ export PATH=$SNET_DIR/bin:$PATH
 export DYLD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 export LD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 
-
 #
-# funcs and misc
+# Funcs
 #
 keyadd() {
-  ssh-add ~/.ssh/${1}/id_rsa || (echo using default key ; ssh-add ~/.ssh/id_rsa)
+  ssh-add ~/.ssh/${1}/id_rsa || ssh-add -L
 }
 
+# set screen/tmux title
+st() {
+  printf "\033k$1\033\\"
+}
+
+# set terminal title
+stt() {
+  echo -en "\e]0;$1\a"
+}
+
+settitle() {
+  st "$*"
+  stt "$*"
+}
+
+# set title upon ssh connections
+ssh() {
+    settitle "$*"
+    command ssh "$@"
+    settitle "bash"
+}
+
+# set terminal tab
+PROMPT_COMMAND='stt $HOSTNAME:$PWD'
+
 #
-# tmux
+# tmux/screen
 #
 if which tmux >/dev/null 2>&1; then
-  #force tmux in 256 colors
+  # force tmux in 256 colors
   alias tmux="tmux -2"
 
   # if no session is started, start a new session
   test -z ${TMUX} && (tmux attach || tmux new-session)
-
-  # when quitting tmux, try to attach
-  #while test -z ${tmux}; do
-  #    tmux attach || break
-  #done
 fi
+
