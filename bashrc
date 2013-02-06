@@ -10,6 +10,20 @@ shopt -s histappend                 # append to history file
 shopt -s checkwinsize               # check window size at each cmd
 
 #
+# Aliases
+#
+alias grep='grep -I'                # dont't mactch binary files
+alias ls='ls -F'                    # classify
+alias ll='ls -Fl'                   # list
+alias la='ls -Fa'                   # all
+alias lal='ls -Fal'                 # list all
+
+# additional alias definitions
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
+
+#
 # TERM
 #
 # cope with gnome-terminal $TERM settings
@@ -60,12 +74,16 @@ if [ $CLICOLOR -eq 1 ] ; then
 
   if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls -F --color=auto'
+    alias ll='ls -Fl --color=auto'
+    alias la='ls -Fa --color=auto'
+    alias lal='ls -Fal --color=auto'
+
   fi
 
-  alias grep='grep --color=auto'
-  alias fgrep='fgrep --color=auto'
-  alias egrep='egrep --color=auto'
+  alias grep='grep -I --color=auto'
+  alias fgrep='fgrep -I --color=auto'
+  alias egrep='egrep -I --color=auto'
 
   if [ $UID -eq 0 ] ; then
     U=$R
@@ -79,18 +97,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
-#
-# Aliases
-#
-alias grep='grep -I'                # dont't mactch binary files
-alias ls='ls -F'                    # classify
-alias ll='ls -l'                    # list
-alias la='ls -a'                    # all
-
-# additional alias definitions
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
-fi
 
 #
 # OS specific configs
@@ -163,11 +169,11 @@ settitle() {
 }
 
 # set title upon ssh connections
-ssh() {
-    settitle "$*"
-    command ssh "$@"
-    settitle "bash"
-}
+#ssh() {
+#    settitle "$*"
+#    command ssh "$@"
+#    settitle "bash"
+#}
 
 # set terminal tab
 PROMPT_COMMAND='stt $HOSTNAME:$PWD'
