@@ -103,7 +103,6 @@ fi
 #
 if [ "$(uname)" = "Darwin" ]; then
   alias tgvim="mvim -p --remote-tab-silent"
-  alias hname="hostname -f"
 
   export PYTHON_PATH="/opt/local//library/frameworks/python.framework/versions/2.7:$PYTHON_PATH"
   export XDG_DATA_DIRS="$PYTHON_PATH/share"
@@ -115,15 +114,14 @@ if [ "$(uname)" = "Darwin" ]; then
   export PATH=/usr/local/cellar/vim/7.3.762/bin:$PATH
 else
   alias tgvim="gvim -p --remote-tab-silent"
-  alias hname="hostname -A"
 fi
 
 
 #
 # Host specific configs 
 #
-case $(hname | cut -d " " -f 1) in
-  fs*.das4.*)
+case $HOSTNAME in
+  fs2)
     stty erase ^? #fix backspace
     export SNET_DIR=/var/scratch/$USER/snet
     module load gcc
@@ -131,6 +129,9 @@ case $(hname | cut -d " " -f 1) in
     ;;
   *.sara.nl)
     export SNET_DIR=$HOME/snet
+    ;;
+  woot2)
+    export SNET_DIR=$HOME/Projects/snet
     ;;
   *)
     export SNET_DIR=/opt/snet
