@@ -15,6 +15,7 @@ set filetype=on
 
 "use windows clipboard outside tmux
 set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 """""""""""""""
 " Plugins
