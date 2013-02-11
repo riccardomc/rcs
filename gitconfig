@@ -5,6 +5,6 @@
         user = rcefala
 [core]
         editor = vim
-        excludesfile = /home/rcefala/.gitignore
+        excludesfile = ~/.gitignore
 [color]
         ui = true
