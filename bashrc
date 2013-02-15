@@ -130,7 +130,7 @@ case $HOSTNAME in
   *.sara.nl)
     export SNET_DIR=$HOME/snet
     ;;
-  woot2)
+  woot2*)
     export SNET_DIR=$HOME/Projects/snet
     ;;
   *)
