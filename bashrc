@@ -169,6 +169,10 @@ settitle() {
   stt "$*"
 }
 
+crep() {
+  grep -rn "${1}" *
+}
+
 # set title upon ssh connections
 #ssh() {
 #    settitle "$*"
