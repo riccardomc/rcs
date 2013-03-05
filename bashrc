@@ -173,6 +173,12 @@ crep() {
   grep -rn "${1}" *
 }
 
+snettestk() {
+  local TESTS=$HOME/Projects/snet-rts/examples/tests/distributed
+  cd $TESTS ; for i in $(ls -d */) ; do echo ${i%%//} ; killall -9 ${i%%//} ; done ;
+  cd $OLDPWD
+}
+
 # set title upon ssh connections
 #ssh() {
 #    settitle "$*"
