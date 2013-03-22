@@ -60,7 +60,7 @@ case "$TERM" in
     export CLICOLOR=1
 esac
 
-if [ $CLICOLOR -eq 1 ] ; then
+if [[ $CLICOLOR -eq 1 ]] ; then
   X='\[\e[0m\]'    # Text Reset
   K='\[\e[0;90m\]' # Black
   R='\[\e[0;91m\]' # Red
@@ -127,7 +127,7 @@ case $HOSTNAME in
     module load gcc
     module load sge 
     ;;
-  *.sara.nl)
+  *sara.nl)
     export SNET_DIR=$HOME/snet
     ;;
   woot2*)
