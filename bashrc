@@ -121,7 +121,7 @@ fi
 # Host specific configs 
 #
 case $HOSTNAME in
-  fs2)
+  fs0*|fs2*)
     stty erase ^? #fix backspace
     export SNET_DIR=/var/scratch/$USER/snet
     module load gcc
