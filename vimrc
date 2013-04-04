@@ -13,9 +13,12 @@ filetype plugin on          "load filetype plugins
 
 set filetype=on
 
-"use windows clipboard outside tmux
-set clipboard+=unnamed
-set clipboard+=unnamedplus
+let os = substitute(system('uname'), "\n", "", "")
+
+if os == "Linux"
+  "use X11 clipboard in linux
+  set clipboard=unnamedplus
+endif
 
 """""""""""""""
 " Plugins
