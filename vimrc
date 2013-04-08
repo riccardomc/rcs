@@ -29,9 +29,10 @@ execute pathogen#infect()
 """""""""""""""
 " View
 """""""""""""""
-colorscheme wombat256       "nice dark colors
-"colorscheme desert          "nice dark colors
+"colorscheme wombat256       "nice dark colors
+colorscheme desert          "nice dark colors
 "colorscheme zenburn         "nice dark colors
+"colorscheme slate            "nice dark colors
 set ruler
 set showcmd                 "show command in statusline
 set nolist
@@ -53,7 +54,7 @@ if &term == "screen" || &term == "xterm"
 endif
 
 ""gui related
-set guioptions-=m
+set guioptions+=m
 set guioptions+=a
 set guioptions+=A
 set guioptions-=T
