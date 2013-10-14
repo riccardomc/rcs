@@ -1,0 +1,2 @@
+Host *
+    SendEnv EDITOR LANG LC_* GIT_*

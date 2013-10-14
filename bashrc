@@ -31,7 +31,7 @@ if [[ $TERM == xterm && $COLORTERM == gnome* ]]; then
   export TERM=xterm-256color
 fi
 
-# try to upgrade TERM to a 256color one, if supported 
+# try to upgrade TERM to a 256color one, if supported
 POTENTIAL_TERM=${TERM}-256color
 POTENTIAL_TERMINFO=${TERM:0:1}/$POTENTIAL_TERM
 
@@ -51,8 +51,13 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
+parse_git_branch() {
+    ref=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD 2> /dev/null) || return
+    echo $ref
+}
+
 # default prompt
-PS1="${debian_chroot:+($debian_chroot)}\u@\h:\w\$ "
+PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 
 # use colors and colorize output in Darwin
 case "$TERM" in
@@ -89,8 +94,9 @@ if [[ $CLICOLOR -eq 1 ]] ; then
     U=$R
   fi
 
-  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\h$X:$C\j$X:$B\W$X\$ "
+  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\h$X:$C\j$X:$B\W:$Y\$(parse_git_branch '%s')$X\$ "
 fi
+
 
 # enable programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
@@ -132,6 +138,12 @@ case $HOSTNAME in
     ;;
   woot2*)
     export SNET_DIR=$HOME/Projects/snet
+    ;;
+  ohyeah4*)
+    export GIT_AUTHOR_NAME="Riccardo M. Cefala"
+    export GIT_AUTHOR_EMAIL="riccardo.cefala@mendix.com"
+    export GIT_COMMITTER_NAME="Riccardo"
+    export GIT_COMMITTER_EMAIL="riccardo.cefala@mendix.com"
     ;;
   *)
     export SNET_DIR=/opt/snet
@@ -199,4 +211,8 @@ if which tmux >/dev/null 2>&1; then
   # if no session is started, start a new session
   test -z ${TMUX} && (tmux attach || tmux new-session)
 fi
+
+#add home bin to path
+
+export PATH="$PATH:$HOME/bin"
 

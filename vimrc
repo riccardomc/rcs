@@ -17,7 +17,7 @@ let os = substitute(system('uname'), "\n", "", "")
 
 if os == "Linux"
   "use X11 clipboard in linux
-  set clipboard=unnamedplus
+  set clipboard=unnamed
 endif
 
 """""""""""""""
