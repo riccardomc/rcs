@@ -78,8 +78,8 @@ set whichwrap=<,>,h,l,[,]   "go up or down when reach end first or last char
 "tabbing
 set smarttab                "indent instead of tabbing
 set autoindent              "keep indentation level on new line
-set softtabstop=2           "tab width
-set shiftwidth=2            "indent width
+set softtabstop=4           "tab width
+set shiftwidth=4            "indent width
 set expandtab               "insert 'softtabstop' spaces
 
 
@@ -96,9 +96,6 @@ set foldopen=block,hor,insert,jump,mark,percent,undo
 set foldclose=              "don't fold when cursor leaves
 
 filetype indent on          "filetype indent plugin
-
-nnoremap <C-f> :CommandT<CR>
-
 
 """"""""""""""""""
 " Tabs and Windows
