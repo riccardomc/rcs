@@ -39,6 +39,7 @@ set nolist
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 set lazyredraw              "do not redraw running macros
 set hidden                  "hide buffer when leaving
+set colorcolumn=80          "highlight limit column
 
 "set title of the terminal window
 ""let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
