@@ -10,3 +10,5 @@
         ui = true
 [alias]
         lola = log --graph --pretty=format:'%C(yellow)%h%Creset%C(red)%d%Creset %s %Cgreen%an %Cblue(%cr)%Creset' --abbrev-commit --date=relative --all
+[push]
+	default = simple
