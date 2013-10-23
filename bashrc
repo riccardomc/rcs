@@ -203,14 +203,16 @@ PROMPT_COMMAND='stt $HOSTNAME:$PWD'
 
 #
 # tmux/screen
+# set ENABLE_TMUX in order to have tmux at startup
 #
-#if which tmux >/dev/null 2>&1; then
-  # force tmux in 256 colors
-#  alias tmux="tmux -2"
+ENABLE_TMUX=
+if which tmux >/dev/null 2>&1 && test $ENABLE_TMUX; then
+ # force tmux in 256 colors
+  alias tmux="tmux -2"
 
-  # if no session is started, start a new session
-#  test -z ${TMUX} && (tmux attach || tmux new-session)
-#fi
+ # if no session is started, start a new session
+  test -z ${TMUX} && (tmux attach || tmux new-session)
+fi
 
 #add home bin to path
 
