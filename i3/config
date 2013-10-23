@@ -164,5 +164,8 @@ assign [class="Google-chrome"] 2
 assign [class="Pidgin"] 3
 assign [class="Icedove"] 3
 
+# Lock screen
+bindsym Control+mod1+l exec i3lock -c 000000
+
 # Play nice with GNOME (DBus etc.)
 exec /usr/bin/gnome-settings-daemon
