@@ -161,6 +161,9 @@ workspace "3" output HDMI2
 workspace "4" output HDMI2
 workspace "5" output HDMI2
 
+# Move workspace to next output
+bindsym $mod+x move workspace to output right
+
 # Assign pidgin to WS3
 assign [class="Google-chrome"] 2
 assign [class="Pidgin"] 3
