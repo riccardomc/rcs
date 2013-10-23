@@ -192,25 +192,25 @@ snettestk() {
 }
 
 # set title upon ssh connections
-#ssh() {
-#    settitle "$*"
-#    command ssh "$@"
-#    settitle "bash"
-#}
+ssh() {
+    settitle "$*"
+    command ssh "$@"
+    settitle "bash"
+}
 
 # set terminal tab
-#PROMPT_COMMAND='stt $HOSTNAME:$PWD'
+PROMPT_COMMAND='stt $HOSTNAME:$PWD'
 
 #
 # tmux/screen
 #
-if which tmux >/dev/null 2>&1; then
+#if which tmux >/dev/null 2>&1; then
   # force tmux in 256 colors
-  alias tmux="tmux -2"
+#  alias tmux="tmux -2"
 
   # if no session is started, start a new session
-  test -z ${TMUX} && (tmux attach || tmux new-session)
-fi
+#  test -z ${TMUX} && (tmux attach || tmux new-session)
+#fi
 
 #add home bin to path
 
