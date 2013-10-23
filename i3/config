@@ -158,11 +158,14 @@ exec_always --no-startup-id xrandr --output HDMI2 --right-of HDMI2
 workspace "1" output HDMI1
 workspace "2" output HDMI2
 workspace "3" output HDMI2
+workspace "4" output HDMI2
+workspace "5" output HDMI2
 
 # Assign pidgin to WS3
 assign [class="Google-chrome"] 2
 assign [class="Pidgin"] 3
 assign [class="Icedove"] 3
+assign [class="VirtualBox"] 4
 
 # Lock screen
 bindsym Control+mod1+l exec i3lock -c 000000
