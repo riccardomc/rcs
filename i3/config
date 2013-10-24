@@ -175,3 +175,5 @@ bindsym Control+mod1+l exec shot-lock
 
 # Play nice with GNOME (DBus etc.)
 exec /usr/bin/gnome-settings-daemon
+# Use xautolock to lock screen automatically after timeout
+exec xautolock -time 5 -locker shot-lock
