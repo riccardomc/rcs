@@ -214,7 +214,6 @@ if which tmux >/dev/null 2>&1 && test $ENABLE_TMUX; then
   test -z ${TMUX} && (tmux attach || tmux new-session)
 fi
 
-#add home bin to path
-
-export PATH="$PATH:$HOME/bin"
+#add home .bin to path
+export PATH="$PATH:$HOME/.bin"
 
