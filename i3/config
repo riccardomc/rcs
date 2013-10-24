@@ -171,7 +171,7 @@ assign [class="Icedove"] 3
 assign [class="VirtualBox"] 4
 
 # Lock screen
-bindsym Control+mod1+l exec i3lock -c 000000
+bindsym Control+mod1+l exec shot-lock
 
 # Play nice with GNOME (DBus etc.)
 exec /usr/bin/gnome-settings-daemon

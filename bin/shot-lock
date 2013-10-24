@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+# Lock the screen while showing an unreadable version of your current screen
+#
+
+SCREEN1=`tempfile --prefix shot- --suffix .png`
+SCREEN2=`tempfile --prefix shot- --suffix .png`
+
+scrot $SCREEN1
+convert $SCREEN1 -scale 10% -scale 1000% $SCREEN2
+i3lock -i $SCREEN2
+
+rm -f $SCREEN1 $SCREEN2
