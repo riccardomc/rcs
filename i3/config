@@ -161,9 +161,18 @@ workspace "3" output HDMI2
 workspace "4" output HDMI2
 workspace "5" output HDMI2
 
-# Move workspace to next output
+# Jump to left/right desktop
+bindsym Control+mod1+Left workspace prev
+bindsym Control+mod1+Right workspace next
+
+# Move window to left/right desktop and follow
+bindsym Control+mod1+Shift+Left move to workspace prev ; workspace prev
+bindsym Control+mod1+Shift+Right move to workspace next ; workspace next
+
+# Move workspace to right output
 bindsym $mod+x move workspace to output right
 
+<<<<<<< HEAD
 # Assign apps to specific workspaces
 assign [class="^Google-chrome$"] 2
 assign [class="^Pidgin$"] 3
@@ -173,11 +182,22 @@ for_window [class="^Journal.py$"] ,  move container to workspace 5, workspace 5,
 #
 # Daemons
 #
+=======
+# Assign pidgin to WS3
+assign [class="Google-chrome"] 2
+assign [class="Pidgin"] 3
+assign [class="Icedove"] 3
+assign [class="VirtualBox"] 4
+
+# Lock screen
+bindsym Control+mod1+l exec ~/.bin/shot-lock
+>>>>>>> i3: add jump to ws, move client to ws
 
 # Play nice with GNOME (DBus etc.)
 exec /usr/bin/gnome-settings-daemon &
 # Use xautolock to lock screen automatically after timeout
 exec xautolock -time 5 -locker ~/.bin/shot-lock &
+<<<<<<< HEAD
 # Dropbox daemon
 exec dropbox start &
 
@@ -203,3 +223,5 @@ bindsym Control+mod1+l exec ~/.bin/shot-lock
 bindsym Control+mod1+j exec ~/.bin/rednotebook
 # Music player (banshee)
 bindsym Control+mod1+p exec banshee
+=======
+>>>>>>> i3: add jump to ws, move client to ws
