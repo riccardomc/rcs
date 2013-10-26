@@ -161,7 +161,6 @@ workspace "3" output HDMI2
 workspace "4" output HDMI2
 workspace "5" output HDMI2
 
-
 # Move workspace to next output
 bindsym $mod+x move workspace to output right
 
