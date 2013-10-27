@@ -132,9 +132,11 @@ case $HOSTNAME in
     export SNET_DIR=/var/scratch/$USER/snet
     module load gcc
     module load sge 
+    module load openmpi/gnu
     ;;
   *sara.nl)
     export SNET_DIR=$HOME/snet
+    module load openmpi/gnu
     ;;
   woot2*)
     export SNET_DIR=$HOME/Projects/snet
