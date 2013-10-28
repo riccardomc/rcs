@@ -161,19 +161,41 @@ workspace "3" output HDMI2
 workspace "4" output HDMI2
 workspace "5" output HDMI2
 
+
 # Move workspace to next output
 bindsym $mod+x move workspace to output right
 
-# Assign pidgin to WS3
-assign [class="Google-chrome"] 2
-assign [class="Pidgin"] 3
-assign [class="Icedove"] 3
-assign [class="VirtualBox"] 4
-
-# Lock screen
-bindsym Control+mod1+l exec shot-lock
+# Assign apps to specific workspaces
+assign [class="^Google-chrome$"] 2
+assign [class="^Pidgin$"] 3
+assign [class="^Icedove$"] 3
+assign [class="^VirtualBox$"] 4
+for_window [class="^Journal.py$"] ,  move container to workspace 5, workspace 5, focus
+#
+# Daemons
+#
 
 # Play nice with GNOME (DBus etc.)
-exec /usr/bin/gnome-settings-daemon
+exec /usr/bin/gnome-settings-daemon &
 # Use xautolock to lock screen automatically after timeout
-exec xautolock -time 5 -locker shot-lock
+exec xautolock -time 5 -locker ~/.bin/shot-lock &
+
+#
+# Startup apps
+#
+exec clipit
+exec google-chrome
+exec thunderbird
+exec pidgin
+exec --no-startup-id 'workspace 1'
+
+#
+# Key bindings
+#
+
+# Lock screen
+bindsym Control+mod1+l exec ~/.bin/shot-lock
+# Journal (rednotebook)
+bindsym Control+mod1+j exec ~/.bin/rednotebook
+# Music player (banshee)
+bindsym Control+mod1+p exec banshee
