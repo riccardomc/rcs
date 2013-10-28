@@ -170,7 +170,7 @@ keyadd() {
 
 # set screen/tmux title
 st() {
-  printf "\033k$1\033\\"
+  [ -n "$TMUX" ]  && printf "\033k$1\033\\"
 }
 
 # set terminal title
@@ -179,6 +179,7 @@ stt() {
 }
 
 settitle() {
+  export TITLE_STRING="$*"
   st "$*"
   stt "$*"
 }
@@ -201,7 +202,7 @@ ssh() {
 }
 
 # set terminal tab
-PROMPT_COMMAND='stt $HOSTNAME:$PWD'
+PROMPT_COMMAND='stt "$TITLE_STRING $HOSTNAME:$PWD"'
 
 #
 # tmux/screen
