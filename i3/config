@@ -188,6 +188,8 @@ exec clipit
 exec google-chrome
 exec thunderbird
 exec pidgin
+exec nm-applet &
+exec gnome-sound-applet
 exec --no-startup-id 'workspace 1'
 
 #
