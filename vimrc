@@ -30,7 +30,6 @@ execute pathogen#infect()
 " View
 """""""""""""""
 colorscheme desert256       "nice dark colors
- "set gutter background
 set ruler
 set showcmd                 "show command in statusline
 set nolist
@@ -38,15 +37,6 @@ set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lazyredraw              "do not redraw running macros
 set hidden                  "hide buffer when leaving
 set colorcolumn=80          "highlight limit column
-
-"set title of the terminal window
-""let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
-""let &titlestring = "". expand("%:t") .""
-"causes problems with tmux
-""if &term == "screen"
-""    set t_ts=^[k
-""    set t_fs=^[\
-""endif
 
 if &term == "screen" || &term == "xterm"
     set title
@@ -114,17 +104,6 @@ nmap <Esc>[A :tabprevious<CR>
 imap <Esc>[A <C-o>:tabprevious<CR>
 nmap <Esc>[B :tabnext<CR>
 imap <Esc>[B <C-o>:tabnext<CR>
-
-"windows navigation w/ C-Arrows (UNUSED)
-"nmap <Esc>[A <C-w>k<CR>
-"imap <Esc>[A <C-o><C-w>k<CR>
-"nmap <Esc>[B <C-w>j<CR>
-"imap <Esc>[B <C-o><C-w>j<CR>
-"nmap <Esc>[C <C-w>l<CR>
-"imap <Esc>[C <C-o><C-w>l<CR>
-"nmap <Esc>[D <C-w>h<CR>
-"imap <Esc>[D <C-o><C-w>h<CR>
-
 
 """"""""""""""""
 " File browsing
