@@ -180,9 +180,9 @@ exec dropbox start &
 #
 # Startup apps
 #
-exec clipit
+exec clipit &
 exec nm-applet &
-exec gnome-sound-applet
+exec gnome-sound-applet &
 
 #
 # Key bindings
