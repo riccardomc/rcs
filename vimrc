@@ -29,10 +29,8 @@ execute pathogen#infect()
 """""""""""""""
 " View
 """""""""""""""
-"colorscheme wombat256       "nice dark colors
-colorscheme desert          "nice dark colors
-"colorscheme zenburn         "nice dark colors
-"colorscheme slate            "nice dark colors
+colorscheme desert256       "nice dark colors
+ "set gutter background
 set ruler
 set showcmd                 "show command in statusline
 set nolist
