@@ -178,6 +178,8 @@ for_window [class="^Journal.py$"] ,  move container to workspace 5, workspace 5,
 exec /usr/bin/gnome-settings-daemon &
 # Use xautolock to lock screen automatically after timeout
 exec xautolock -time 5 -locker ~/.bin/shot-lock &
+# Dropbox daemon
+exec dropbox start &
 
 #
 # Startup apps
