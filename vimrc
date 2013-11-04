@@ -29,7 +29,7 @@ execute pathogen#infect()
 """""""""""""""
 " View
 """""""""""""""
-colorscheme desert256       "nice dark colors
+colorscheme desert-warm-256 "nice dark colors
 set ruler
 set showcmd                 "show command in statusline
 set nolist
