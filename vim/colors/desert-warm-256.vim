@@ -279,14 +279,7 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     call <SID>X('Question', 'springgreen')
     call <SID>X('Search', 'dfffdf', 'grey30')
     call <SID>X('SpecialKey', 'yellowgreen')
-<<<<<<< HEAD
-    call <SID>X('StatusLine', 'gray80', 'grey30', 'none')
-    call <SID>X('StatusLineNC', 'grey40', 'grey30', 'none')
-    call <SID>X('VertSplit', 'grey30', 'grey30', 'none')
-=======
-    call <SID>X('StatusLine', 'grey90', 'grey17', 'none')
     call <SID>X('StatusLineNC', 'grey40', 'grey17', 'none')
->>>>>>> d79d8a7... vim: remove 'gutter' background desert-warm-256
     call <SID>X('Title', 'indianred')
     call <SID>X('Visual', 'khaki', 'olivedrab', 'none')
     "VisualNOS
