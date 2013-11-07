@@ -94,7 +94,7 @@ if [[ $CLICOLOR -eq 1 ]] ; then
     U=$R
   fi
 
-  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\h$X:$C\j$X:$B\W:$Y\$(parse_git_branch '%s')$X\$ "
+  PS1="$X${debian_chroot:+($debian_chroot)}$U\u@\h$X:$C\j$X:$B\w:$Y\$(parse_git_branch '%s')$X\$ "
 fi
 
 
