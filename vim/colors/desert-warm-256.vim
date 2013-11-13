@@ -357,5 +357,6 @@ else
 endif
 
 hi SignColumn ctermbg=NONE
+hi ColorColumn ctermbg=black
 
 " vim: set fdl=0 fdm=marker sts=4 sw=4:
