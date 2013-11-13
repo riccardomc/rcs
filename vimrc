@@ -36,7 +36,9 @@ set nolist
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 set lazyredraw              "do not redraw running macros
 set hidden                  "hide buffer when leaving
-set colorcolumn=80          "highlight limit column
+if exists('+colorcolumn')   "highlight limit column (only in 7.3)
+  set colorcolumn=+1
+endif
 
 if &term == "screen" || &term == "xterm"
     set title
