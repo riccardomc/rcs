@@ -195,7 +195,8 @@ exec --no-startup-id 'workspace 1'
 #
 # Key bindings
 #
-
+# Dropbox
+bindsym Control+mod1+d exec dropbox start &
 # Lock screen
 bindsym Control+mod1+l exec ~/.bin/shot-lock
 # Journal (rednotebook)
