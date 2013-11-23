@@ -335,6 +335,7 @@ else
     hi Error         cterm=bold ctermfg=7 ctermbg=1
 endif
 
-hi SignColumn ctermbg=NONE
+hi SignColumn ctermbg=black
+hi ColorColumn ctermbg=black
 
 " vim: set fdl=0 fdm=marker:

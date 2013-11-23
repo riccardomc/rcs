@@ -279,8 +279,9 @@ if has('gui_running') || &t_Co == 88 || &t_Co == 256
     call <SID>X('Question', 'springgreen')
     call <SID>X('Search', 'dfffdf', 'grey30')
     call <SID>X('SpecialKey', 'yellowgreen')
-    call <SID>X('StatusLine', 'grey90', 'grey17', 'none')
-    call <SID>X('StatusLineNC', 'grey40', 'grey17', 'none')
+    call <SID>X('StatusLine', 'gray80', 'grey30', 'none')
+    call <SID>X('StatusLineNC', 'grey40', 'grey30', 'none')
+    call <SID>X('VertSplit', 'grey30', 'grey30', 'none')
     call <SID>X('Title', 'indianred')
     call <SID>X('Visual', 'khaki', 'olivedrab', 'none')
     "VisualNOS
@@ -356,7 +357,7 @@ else
     hi Error         cterm=bold ctermfg=7 ctermbg=1
 endif
 
-hi SignColumn ctermbg=NONE
+hi SignColumn ctermbg=black
 hi ColorColumn ctermbg=black
 
 " vim: set fdl=0 fdm=marker sts=4 sw=4:
