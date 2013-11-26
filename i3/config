@@ -147,11 +147,11 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        font pango:Monofur 11
+        font pango:Bitstream Vera Sans Mono 8
 }
 
 # Font
-font pango:Monofur 11
+font pango:Bitstream Vera Sans Mono 8
 
 # Multi-monitor configuration
 exec_always --no-startup-id xrandr --output HDMI2 --right-of HDMI2
