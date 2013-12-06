@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 
 for link in *; do
-    ln -s `pwd`/$link ~/.${link##*/}
+    if [[ -L ~/.${link##*/} ]]; then
+        echo OK: $link 
+    elif [[ -e ~/.${link##*/} ]]; then
+        echo NOK: $link
+    else
+        echo NEW: $link
+        ln -s `pwd`/$link ~/.${link##*/}
+    fi
 done
 
-rm ~/.make-links
+rm ~/.make-links ~/.README.md
