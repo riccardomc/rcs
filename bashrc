@@ -62,8 +62,10 @@ PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 # use colors and colorize output in Darwin
 case "$TERM" in
   xterm* | screen*)
-    export CLICOLOR=1
+  PROMPT_COMMAND='stt "$TITLE_STRING $HOSTNAME:$PWD"'
 esac
+
+export CLICOLOR=1
 
 if [[ $CLICOLOR -eq 1 ]] ; then
   X='\[\e[0m\]'    # Text Reset
@@ -141,6 +143,9 @@ case $HOSTNAME in
   woot2*)
     export SNET_DIR=$HOME/Projects/snet
     ;;
+  woot3*)
+    export SNET_DIR=$HOME/opt/snet
+    ;;
   ohyeah4*)
     export GIT_AUTHOR_NAME="Riccardo M. Cefala"
     export GIT_AUTHOR_EMAIL="riccardo.cefala@mendix.com"
@@ -200,9 +205,6 @@ ssh() {
     command ssh "$@"
     settitle "bash"
 }
-
-# set terminal tab
-PROMPT_COMMAND='stt "$TITLE_STRING $HOSTNAME:$PWD"'
 
 #
 # tmux/screen
