@@ -147,6 +147,12 @@ nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
+""""""""""""""""
+" Syntastic
+""""""""""""""""
+
+let g:syntastic_check_on_open=1
+let g:syntastic_python_checkers=['pyflakes', 'pep8']
 
 """""""""""""""""""
 "   LaTeX suite   
