@@ -189,6 +189,12 @@ settitle() {
   stt "$*"
 }
 
+mkbla() {
+  bladir=`date +%Y%m%d-%H%M`-$1
+  mkdir $bladir
+  cd $bladir
+}
+
 crep() {
   grep -rn "${1}" *
 }
