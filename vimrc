@@ -6,8 +6,6 @@ set encoding=utf-8          "encoding stuff
 set nocompatible            "disable vi compatibility mode
 set nobackup                "disable backups
 set history=1000            "history lines to remember
-set confirm                 "ask confirm with unsaved/ro files
-set ttymouse=xterm2         "terminal mouse handling
 set mouse=a                 "use mouse
 filetype plugin on          "load filetype plugins
 
@@ -15,9 +13,22 @@ set filetype=on
 
 let os = substitute(system('uname'), "\n", "", "")
 
+"""""""""""""""
+" Clipboard
+"""""""""""""""
 if os == "Linux"
   "use X11 clipboard in linux
   set clipboard=unnamed
+endif
+
+"""""""""""""""
+" Mouse
+"""""""""""""""
+if $SSH_CLIENT
+    "find a proper way to handle mouse selection via SSH
+else
+    set ttymouse=xterm2         "terminal mouse handling
+    set mouse=a                 "use mouse
 endif
 
 """""""""""""""
@@ -36,9 +47,6 @@ set nolist
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 set lazyredraw              "do not redraw running macros
 set hidden                  "hide buffer when leaving
-if exists('+colorcolumn')   "highlight limit column (only in 7.3)
-  set colorcolumn=+1
-endif
 
 if &term == "screen" || &term == "xterm"
     set title
@@ -77,7 +85,12 @@ set expandtab               "insert 'softtabstop' spaces
 """""""""""""""
 " Programming
 """""""""""""""
-set number                  "line numbers
+if &mouse == 'a'
+  set number                "line numbers (only with mouse selection)
+  if exists('+colorcolumn') "highlight limit column (only in 7.3)
+    set colorcolumn=+1
+  endif
+endif
 set syntax=on               "syntax highlighting
 syntax on                   "syntax highlighting
 "folding
