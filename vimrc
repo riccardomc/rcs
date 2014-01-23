@@ -6,7 +6,7 @@ set encoding=utf-8          "encoding stuff
 set nocompatible            "disable vi compatibility mode
 set nobackup                "disable backups
 set history=1000            "history lines to remember
-set mouse=a                 "use mouse
+set confirm                 "ask confirm with unsaved/ro files
 filetype plugin on          "load filetype plugins
 
 set filetype=on
