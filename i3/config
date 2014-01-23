@@ -191,7 +191,7 @@ exec gnome-sound-applet &
 bindsym Control+mod1+d exec dropbox start &
 # Lock screen
 bindsym Control+mod1+l exec ~/.bin/shot-lock
-# Journal (rednotebook)
-bindsym Control+mod1+j exec ~/.bin/rednotebook
+# Journal (zim)
+bindsym Control+mod1+j exec zim
 # Music player (banshee)
 bindsym Control+mod1+p exec banshee
