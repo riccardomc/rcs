@@ -1,4 +1,4 @@
 HashKnownHosts no
 
 Host *
-    SendEnv EDITOR LANG LC_* GIT_*
+    SendEnv EDITOR GIT_*
