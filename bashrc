@@ -170,7 +170,8 @@ export LD_LIBRARY_PATH=$SNET_LIBS:$SNET_DIR/lib:$LPEL_DIR
 # Funcs
 #
 keyadd() {
-  ssh-add ~/.ssh/${1}/id_rsa || ssh-add -L
+  KEY_PREFIX='_key-'
+  ssh-add ~/.ssh/${KEY_PREFIX}${1}/id_rsa || ssh-add -L
 }
 
 # set screen/tmux title
