@@ -213,6 +213,15 @@ ssh() {
     settitle "bash"
 }
 
+vactivate() {
+    VENV=~/virtualenv/${PWD##*/}/bin/activate
+    echo source $VENV
+    source $VENV
+}
+
+# set terminal tab
+PROMPT_COMMAND='stt "$TITLE_STRING $HOSTNAME:$PWD"'
+
 #
 # tmux/screen
 # set ENABLE_TMUX in order to have tmux at startup
