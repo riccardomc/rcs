@@ -73,6 +73,7 @@ set bs=indent,eol,start     "use backspace in insert mode
 set textwidth=79            "lines width
 set wildmenu                "Show all auto-completion options
 set whichwrap=<,>,h,l,[,]   "go up or down when reach end first or last char
+set formatoptions-=t        "do not auto-insert newline when wrapping
 
 "tabbing
 set smarttab                "indent instead of tabbing
@@ -154,6 +155,7 @@ set nospell
 autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal spell
 autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal nonumber
 autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal textwidth=75
+autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal formatoptions+=t
 
 "Use F2 to toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
