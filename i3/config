@@ -168,8 +168,6 @@ bindsym $mod+x move workspace to output right
 #
 # Daemons
 #
-# Lock screen
-bindsym Control+mod1+l exec ~/.bin/shot-lock
 # Play nice with GNOME (DBus etc.)
 exec /usr/bin/gnome-settings-daemon &
 # Use xautolock to lock screen automatically after timeout
