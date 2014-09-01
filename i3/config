@@ -218,3 +218,9 @@ bindsym Control+mod1+l exec ~/.bin/shot-lock
 bindsym Control+mod1+j exec zim
 # Music player (banshee)
 bindsym Control+mod1+p exec banshee
+# Make the currently focused window a scratchpad
+bindsym Shift+$mod+equal move scratchpad
+# Show the first scratchpad window
+bindsym $mod+equal scratchpad show
+# Remove from scratchpad (Floating toggle)
+bindsym $mod+minus floating toggle
