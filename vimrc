@@ -198,3 +198,5 @@ let g:Tex_ViewRule_dvi = 'evince'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
 let g:Tex_DefaultTargetFormat = 'pdf'
+
+autocmd! BufNewFile,BufRead *.ppr setlocal ft=puppetreport
