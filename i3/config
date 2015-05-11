@@ -204,8 +204,7 @@ exec dropbox start &
 # Startup apps
 #
 exec clipit &
-exec nm-applet &
-exec gnome-sound-applet &
+exec wicd-client -t &
 
 #
 # Key bindings
