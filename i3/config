@@ -158,11 +158,12 @@ bindsym $mod+r mode "resize"
 bar {
         position top
         status_command i3status
-            font pango:Monofur 12
+        font pango:Bitstream Vera Sans Mono Bold 9
+        tray_output eDP1
 }
 
 # Font
-font pango:Monofur 12
+font pango:Bitstream Vera Sans Mono Bold 9
 
 # Jump to left/right desktop
 bindsym Control+mod1+Left workspace prev
