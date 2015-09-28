@@ -222,7 +222,7 @@ exec dropbox start &
 # Startup apps
 #
 exec clipit &
-exec wicd-client -t &
+exec nm-applet &
 
 #
 # Key bindings
