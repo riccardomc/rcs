@@ -173,8 +173,9 @@ bindsym Control+mod1+Right workspace next
 bindsym Control+mod1+Shift+Left move to workspace prev ; workspace prev
 bindsym Control+mod1+Shift+Right move to workspace next ; workspace next
 
-# Move workspace to right output
+# Move workspace to output
 bindsym $mod+x move workspace to output right
+bindsym $mod+z move workspace to output left
 
 #
 # Media Keys
@@ -190,6 +191,12 @@ bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id banshee --next
 #XF86 Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
+
+#XF86 Shortcuts
+bindsym XF86Search exec ~/.bin/google-keep
+bindsym Control+XF86LaunchA exec --no-startup-id xrandr --auto
+bindsym XF86LaunchA exec --no-startup-id exec ~/.bin/displays-mendix
+bindsym $mod+XF86LaunchA exec --no-startup-id exec ~/.bin/displays-home
 
 #Fn Keys
 bindsym Control+$mod+F9 exec --no-startup-id banshee --toggle-playing
