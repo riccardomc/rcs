@@ -141,6 +141,16 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+#
+# Borders
+#
+
+# 1 Pixel borders! <normal|1pixel|none|pixel>
+new_window none
+new_float none
+# Hide useless borders at edge of the screen
+hide_edge_borders both
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
