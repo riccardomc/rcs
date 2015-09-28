@@ -19,3 +19,6 @@ syntax: glob
 tags
 .deps
 .dirstamp
+terraform-*
+bin/*
+ssh/*.pem
