@@ -221,17 +221,18 @@ bindsym Control+$mod+Prior exec --no-startup-id "pactl set-sink-volume @DEFAULT_
 # Daemons
 #
 # Play nice with GNOME (DBus etc.)
-exec /usr/bin/gnome-settings-daemon &
+exec --no-startup-id /usr/bin/gnome-settings-daemon &
 # Use xautolock to lock screen automatically after timeout
-exec xautolock -time 5 -locker ~/.bin/shot-lock &
+exec --no-startup-id xautolock -time 5 -locker ~/.bin/shot-lock &
 # Dropbox daemon
-exec dropbox start &
+exec --no-startup-id dropbox start &
 
 #
 # Startup apps
 #
-exec clipit &
-exec nm-applet &
+exec --no-startup-id clipit &
+exec --no-startup-id nm-applet &
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 
 #
 # Key bindings
