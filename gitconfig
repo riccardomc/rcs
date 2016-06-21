@@ -2,7 +2,7 @@
         name = Riccardo M. Cefala
         email = riccardo.cefala@mendix.com
 [github]
-        user = rcefala
+        user = riccardomc
 [core]
         editor = vim
         excludesfile = ~/.gitignore
