@@ -82,6 +82,9 @@ set softtabstop=4           "tab width
 set shiftwidth=4            "indent width
 set expandtab               "insert 'softtabstop' spaces
 
+"fileType specific indentation
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 """""""""""""""
 " Programming
@@ -135,7 +138,6 @@ set hlsearch                "highlight search
 set incsearch               "incremental search
 set ignorecase              "ignore case in searches
 set smartcase               "not sure
-set gdefault                "global substitution 
 "get rid of highlighting by pressing enter in command mode
 nnoremap <return> :noh<return> 
 
@@ -198,3 +200,5 @@ let g:Tex_ViewRule_dvi = 'evince'
 let g:Tex_MultipleCompileFormats = 'dvi,pdf'
 
 let g:Tex_DefaultTargetFormat = 'pdf'
+
+autocmd! BufNewFile,BufRead *.ppr setlocal ft=puppetreport

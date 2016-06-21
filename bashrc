@@ -146,7 +146,7 @@ case $HOSTNAME in
   woot3*)
     export SNET_DIR=$HOME/opt/snet
     ;;
-  ohyeah4*)
+  ohyeah4*|jim*)
     export GIT_AUTHOR_NAME="Riccardo M. Cefala"
     export GIT_AUTHOR_EMAIL="riccardo.cefala@mendix.com"
     export GIT_COMMITTER_NAME="Riccardo"

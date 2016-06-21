@@ -19,3 +19,10 @@ syntax: glob
 tags
 .deps
 .dirstamp
+terraform-*
+bin/*
+ssh/*.pem
+vim/autoload*
+vim/bundle*
+vim/doc*
+vim/plugin*
