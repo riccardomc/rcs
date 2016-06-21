@@ -203,9 +203,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 #XF86 Shortcuts
 bindsym XF86Search exec ~/.bin/google-keep
-bindsym Control+XF86LaunchA exec --no-startup-id xrandr --auto
-bindsym XF86LaunchA exec --no-startup-id exec ~/.bin/displays-mendix
-bindsym $mod+XF86LaunchA exec --no-startup-id exec ~/.bin/displays-home
+bindsym Control+XF86LaunchA exec --no-startup-id ~/.bin/displays-config
+bindsym XF86LaunchA exec --no-startup-id ~/.bin/displays-config mendix
+bindsym $mod+XF86LaunchA exec --no-startup-id ~/.bin/displays-config home
+bindsym XF86Explorer exec --no-startup-id exec ~/.bin/reflow-workspaces.py
 
 #Fn Keys
 bindsym Control+$mod+F9 exec --no-startup-id banshee --toggle-playing
@@ -223,7 +224,7 @@ bindsym Control+$mod+Prior exec --no-startup-id "pactl set-sink-volume @DEFAULT_
 # Play nice with GNOME (DBus etc.)
 exec --no-startup-id /usr/bin/gnome-settings-daemon &
 # Use xautolock to lock screen automatically after timeout
-exec --no-startup-id xautolock -time 5 -locker ~/.bin/shot-lock &
+exec --no-startup-id xautolock -time 5 -locker ~/.scripts/shot-lock &
 # Dropbox daemon
 exec --no-startup-id dropbox start &
 
@@ -240,7 +241,7 @@ exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 # Dropbox
 bindsym Control+mod1+d exec dropbox start &
 # Lock screen
-bindsym Control+mod1+l exec ~/.bin/shot-lock
+bindsym Control+mod1+l exec ~/.scripts/shot-lock
 # Journal (zim)
 bindsym Control+mod1+j exec zim
 # Music player (banshee)
