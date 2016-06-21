@@ -82,6 +82,9 @@ set softtabstop=4           "tab width
 set shiftwidth=4            "indent width
 set expandtab               "insert 'softtabstop' spaces
 
+"fileType specific indentation
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 """""""""""""""
 " Programming
