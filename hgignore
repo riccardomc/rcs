@@ -22,3 +22,7 @@ tags
 terraform-*
 bin/*
 ssh/*.pem
+vim/autoload*
+vim/bundle*
+vim/doc*
+vim/plugin*
