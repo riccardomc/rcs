@@ -138,7 +138,6 @@ set hlsearch                "highlight search
 set incsearch               "incremental search
 set ignorecase              "ignore case in searches
 set smartcase               "not sure
-set gdefault                "global substitution 
 "get rid of highlighting by pressing enter in command mode
 nnoremap <return> :noh<return> 
 
