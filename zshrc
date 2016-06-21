@@ -53,7 +53,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/home/rmc/.bin"
+export PATH="/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts"
 
 source $ZSH/oh-my-zsh.sh
 
