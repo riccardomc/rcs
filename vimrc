@@ -171,6 +171,11 @@ set showmode
 let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['pyflakes', 'pep8']
 
+""""""""""""""""
+" NeoComplete
+""""""""""""""""
+let g:neocomplete#enable_at_startup = 1
+
 """""""""""""""""""
 "   LaTeX suite   
 """""""""""""""""""
