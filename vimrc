@@ -84,6 +84,7 @@ set expandtab               "insert 'softtabstop' spaces
 
 "fileType specific indentation
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 """""""""""""""
