@@ -207,6 +207,7 @@ bindsym Control+XF86LaunchA exec --no-startup-id ~/.scripts/displays-config
 bindsym XF86LaunchA exec --no-startup-id ~/.scripts/displays-config mendix
 bindsym $mod+XF86LaunchA exec --no-startup-id ~/.scripts/displays-config home
 bindsym XF86Explorer exec --no-startup-id exec ~/.scripts/reflow-workspaces.py
+bindsym XF86Tools exec --no-startup-id exec ~/.scripts/startup_mendix.sh
 
 #Fn Keys
 bindsym Control+$mod+F9 exec --no-startup-id banshee --toggle-playing
