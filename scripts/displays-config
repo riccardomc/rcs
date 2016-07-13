@@ -34,3 +34,4 @@ case $CONFIGURATION in
 esac
 
 feh --bg-scale ~/Pictures/wallpaper.jpg
+i3-msg restart
