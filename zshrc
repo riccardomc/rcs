@@ -80,6 +80,12 @@ vactivate() {
 }
 
 #
+# Aliases
+#
+
+alias mypublicip='wget http://ipinfo.io/ip -qO -'
+
+#
 # For SSH Host Completion - Zsh Style
 #
 # use ~/Projects/mendix/puppy/allemaal, ~/.ssh/known_hosts and /etc/hosts for hostname completion
