@@ -3,6 +3,9 @@
 import subprocess
 import math
 import json
+import i3ipc
+
+i3 = i3ipc.Connection()
 
 get_workspaces_cmd = 'i3-msg -t get_workspaces'.split()
 get_outputs_cmd = 'i3-msg -t get_outputs'.split()
@@ -68,21 +71,40 @@ def _reflow(workspaces, outputs):
         j += 1
 
 
+def get_non_empty_workspaces():
+    tree = i3.get_tree()
+
+    outputs = [o for o in tree.nodes if o.name != '__i3']
+    non_empty_workspaces = []
+    empty_workspaces = []
+    for output in outputs:
+        for con in [c for c in output.nodes if c.type == 'con']:
+            for workspace in [w for w in con.nodes if w.type == 'workspace']:
+                if len(workspace.nodes) > 0:
+                    non_empty_workspaces.append(workspace.name)
+                else:
+                    empty_workspaces.append(workspace.name)
+
+    return non_empty_workspaces
+
+
 def reflow_from_left_to_right():
     workspaces = get_workspaces()
     outputs = get_outputs()
+    non_empty_workspaces = get_non_empty_workspaces()
 
     focused_workspaces = get_names(get_focused_workspace(workspaces))
     focused_workspace = focused_workspaces[0] if focused_workspaces else None
 
-    workspace_names = get_names(workspaces_sorted_by_number(workspaces))
+    workspace_names = filter(lambda w: w in non_empty_workspaces, get_names(workspaces_sorted_by_number(workspaces)))
     output_names = get_names(outputs_from_left_to_right(outputs))
 
     print 'workspaces found: ',  workspace_names
     print 'outputs found: ', output_names
 
     _reflow(workspace_names, output_names)
-    go_to_workspace(focused_workspace)
+    if focused_workspace in non_empty_workspaces:
+        go_to_workspace(focused_workspace)
 
 
 if __name__ == '__main__':
