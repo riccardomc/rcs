@@ -84,6 +84,7 @@ vactivate() {
 #
 
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
+alias vim=nvim
 
 #
 # For SSH Host Completion - Zsh Style
