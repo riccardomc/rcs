@@ -27,7 +27,9 @@ endif
 if $SSH_CLIENT
     "find a proper way to handle mouse selection via SSH
 else
-    set ttymouse=xterm2         "terminal mouse handling
+    if !has('nvim')
+        set ttymouse=xterm2         "terminal mouse handling
+    endif
     set mouse=a                 "use mouse
 endif
 
@@ -40,9 +42,10 @@ execute pathogen#infect()
 """""""""""""""
 " View
 """""""""""""""
-colorscheme desert256       "nice dark colors
+colorscheme  desert256      "nice dark colors
 set ruler
 set showcmd                 "show command in statusline
+set noshowmode				"do not show mode, we use airline
 set nolist
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 set lazyredraw              "do not redraw running macros
@@ -64,6 +67,9 @@ set guioptions-=L
 
 set guifont="Monospace 8"
 
+" splits
+set splitbelow
+set splitright
 
 """""""""""""""
 " Edit
@@ -78,7 +84,7 @@ set formatoptions-=t        "do not auto-insert newline when wrapping
 "tabbing
 set smarttab                "indent instead of tabbing
 set autoindent              "keep indentation level on new line
-set softtabstop=4           "tab width
+set tabstop=4               "tab width
 set shiftwidth=4            "indent width
 set expandtab               "insert 'softtabstop' spaces
 
@@ -91,7 +97,7 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 " Programming
 """""""""""""""
 if &mouse == 'a'
-  set number                "line numbers (only with mouse selection)
+  set nonumber              "line numbers (only with mouse selection)
   if exists('+colorcolumn') "highlight limit column (only in 7.3)
     set colorcolumn=+1
   endif
@@ -99,8 +105,8 @@ endif
 set syntax=on               "syntax highlighting
 syntax on                   "syntax highlighting
 "folding
-set foldenable              "fold stuff
 set foldmethod=syntax       "fold by syntax
+set foldlevelstart=20       "unfold when opening a file
 set foldopen=block,hor,insert,jump,mark,percent,undo
 set foldclose=              "don't fold when cursor leaves
 
@@ -163,7 +169,6 @@ autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal formatoptions+=t
 "Use F2 to toggle paste mode
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
-set showmode
 
 """"""""""""""""
 " Syntastic
@@ -172,33 +177,50 @@ set showmode
 let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['pyflakes', 'pep8']
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" ☯ ☢ ☣ ☹ ⚑ ⚐ ⚠ ⚓ ⚔
+let g:syntastic_error_symbol = '☢'
+let g:syntastic_warning_symbol = '☢'
+let g:syntastic_style_error_symbol = '☯'
+let g:syntastic_style_warning_symbol = '☯'
+
 """"""""""""""""
 " NeoComplete
 """"""""""""""""
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#enable_at_startup = 1
+"let g:acp_enableAtStartup = 0
+"let g:neocomplete#enable_at_startup = 1
+"let g:neocomplete#enable_smart_case = 1
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
+"let g:neocomplete#enable_auto_select = 0
+"let g:neocomplete#disable_auto_complete = 0
 
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+"endfunction
 " <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
+"inoremap <expr><C-y>  neocomplete#close_popup()
+"inoremap <expr><C-e>  neocomplete#cancel_popup()
 
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 """""""""""""""""""
 "   Vim-Go
@@ -210,44 +232,27 @@ let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
-let g:neocomplete#auto_completion_start_length = 1
 
 let g:go_fmt_command = "goimports"
 
+" syntastic error highlight
+let g:syntastic_go_checkers = ['go', 'errcheck', 'golint']
+let g:syntastic_auto_loc_list = 0
+
 """""""""""""""""""
-"   Ack
+"  Ack
 """""""""""""""""""
 nnoremap <leader>a :Ack
 nnoremap <leader>A :Ack <C-r><C-w><CR>
 
 """""""""""""""""""
-"   LaTeX suite   
+"  Puppet
 """""""""""""""""""
-
-" " IMPORTANT: grep will sometimes skip displaying the file name if you
-" " search in a singe file. This will confuse Latex-Suite. Set your grep
-" " program to always generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-" " OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults
-" to
-" " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
-" " The following changes the default filetype back to 'tex':
-let g:tex_flavor='latex'
-
-"I want to use pdflatex in place of latex
-"g:Tex_CompileRule_dvi = 'latex --interaction=nonstopmode $*' 
-"let g:Tex_CompileRule_pdf = 'xelatex --src-specials  --interaction=nonstopmode $*' 
-let g:Tex_CompileRule_pdf = 'pdflatex --src-specials  --interaction=nonstopmode $*' 
-let g:Tex_CompileRule_dvi = 'latex --src-specials  --interaction=nonstopmode $*' 
-
-" set kpdf as default viewr
-let g:Tex_ViewRule_pdf = 'evince'
-let g:Tex_ViewRule_dvi = 'evince'
-
-" enable multiple time compilation for bibtex and stuff
-let g:Tex_MultipleCompileFormats = 'dvi,pdf'
-
-let g:Tex_DefaultTargetFormat = 'pdf'
-
 autocmd! BufNewFile,BufRead *.ppr setlocal ft=puppetreport
+
+"""""""""""""""""""
+"  Airline
+"""""""""""""""""""
+set laststatus=2
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'desertink'
