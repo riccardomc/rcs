@@ -18,18 +18,16 @@ CONFIGURATION=$1
 case $CONFIGURATION in 
     home)
         xrandr --output eDP1  --mode 1920x1080
-        xrandr --output DP1-8 --mode 2560x1440 --right-of eDP1
-        xrandr --output DP1-8 --primary
+        xrandr --output DP1-8 --mode 2560x1440 --right-of eDP1 --primary
         ;;
     mendix)
         xrandr --output eDP1  --mode 1920x1080
-        xrandr --output DP2-1 --mode 1920x1080 --right-of eDP1
-        xrandr --output DP2-2 --mode 1920x1080 --right-of DP2-1
-        xrandr --output DP2-1 --primary
+        xrandr --output DP2-2 --mode 1920x1080 --right-of eDP1
+        xrandr --output DP2-1 --mode 1920x1080 --right-of DP2-2 --primary
         ;;
     *)
+        xrandr --output eDP1 --auto --primary
         xrandr --auto
-        xrandr --output eDP1 --primary
         ;;
 esac
 
