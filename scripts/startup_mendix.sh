@@ -6,11 +6,10 @@ sleep 1
 
 i3-msg "workspace 2; \
         exec google-chrome --new-window \
-        https://sprintr.home.mendix.com \
-        https://trello.com ; \
+        https://sprintr.home.mendix.com; 
         exec slack" &
 
-sleep 1
+sleep 3
 
 i3-msg "workspace 1; \
         exec google-chrome --new-window \
