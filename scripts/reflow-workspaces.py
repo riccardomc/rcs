@@ -96,13 +96,18 @@ def reflow_from_left_to_right():
     focused_workspaces = get_names(get_focused_workspace(workspaces))
     focused_workspace = focused_workspaces[0] if focused_workspaces else None
 
-    workspace_names = filter(lambda w: w in non_empty_workspaces, get_names(workspaces_sorted_by_number(workspaces)))
+    workspace_names = get_names(workspaces_sorted_by_number(workspaces))
+    non_empty_workspace_names = filter(lambda w: w in non_empty_workspaces, get_names(workspaces_sorted_by_number(workspaces)))
     output_names = get_names(outputs_from_left_to_right(outputs))
 
     print 'workspaces found: ',  workspace_names
+    print 'non empty workspaces: ', non_empty_workspaces
     print 'outputs found: ', output_names
 
-    _reflow(workspace_names, output_names)
+    for w in workspace_names:
+        move_workspace(w, output_names[0])
+
+    _reflow(non_empty_workspace_names, output_names)
     if focused_workspace in non_empty_workspaces:
         go_to_workspace(focused_workspace)
 
