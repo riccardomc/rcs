@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+declare -A links
+
+populate_links() {
+    for link in *; do
+        links["$(pwd)/$link"]="$HOME/.${link##*/}"
+    done
+
+    links["$HOME/.vim"]="$HOME/.config/nvim"
+}
+
+make_links() {
+    for src in "${!links[@]}"; do
+        dst=${links[$src]}
+        if [[ -L "$dst" ]]; then
+            echo "OK: $dst -> $src"
+        elif [[ -e "$dst" ]]; then
+            echo "NOK: $dst -> $src"
+        else
+            echo "NEW: $dst -> $src"
+            ln -s "$src" "$dst"
+        fi
+    done
+}
+
+clean_up() {
+    rm -f ~/.make-links ~/.make-links-ng ~/.README.md
+}
+
+populate_links
+make_links
+clean_up
