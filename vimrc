@@ -12,6 +12,7 @@ Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
 Plug 'rodjek/vim-puppet'
 Plug 'vim-airline/vim-airline'
+Plug 'nathanielc/vim-tickscript'
 call plug#end()
 
 """"""""""""""
