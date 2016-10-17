@@ -53,7 +53,12 @@ plugins=(git)
 
 # User configuration
 
-export PATH="/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts"
+#
+# Exports 
+#
+
+export PATH="$PATH:/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts"
+export PATH="$PATH:$GOPATH/bin"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -68,6 +73,7 @@ export PATH="$GOPATH/bin:$PATH"
 #
 # Functions
 #
+
 keyadd() {
   KEY_PREFIX='_key-'
   ssh-add ~/.ssh/${KEY_PREFIX}${1}/id_rsa || ssh-add -L
@@ -101,3 +107,11 @@ hosts=(
   localhost
 )
 zstyle ':completion:*:hosts' hosts $hosts
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# enable vim bindings
+bindkey -v
+export KEYTIMEOUT=1
+bindkey '^e' history-incremental-search-backward
+
