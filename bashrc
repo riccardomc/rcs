@@ -238,3 +238,5 @@ fi
 #add home .bin to path
 export PATH="$PATH:$HOME/.bin"
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
