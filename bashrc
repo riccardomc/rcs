@@ -120,6 +120,8 @@ if [ "$(uname)" = "Darwin" ]; then
 
   #this is for vim installed by brew to have ruby support
   export PATH=/usr/local/cellar/vim/7.3.762/bin:$PATH
+
+  unset PROMPT_COMMAND
 else
   alias tgvim="gvim -p --remote-tab-silent"
 fi
@@ -218,9 +220,6 @@ vactivate() {
     echo source $VENV
     source $VENV
 }
-
-# set terminal tab
-PROMPT_COMMAND='stt "$TITLE_STRING $HOSTNAME:$PWD"'
 
 #
 # tmux/screen
