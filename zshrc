@@ -57,7 +57,7 @@ plugins=(git)
 # Exports 
 #
 
-export PATH="$PATH:/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
 source $ZSH/oh-my-zsh.sh
