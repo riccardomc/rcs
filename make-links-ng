@@ -8,6 +8,7 @@ populate_links() {
     done
 
     links["$HOME/.vim"]="$HOME/.config/nvim"
+    links["$HOME/Library/Preferences"]="$HOME/.rcs/Library/Preferences/com.googlecode.iterm2.plist"
 }
 
 make_links() {
