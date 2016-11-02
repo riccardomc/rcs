@@ -13,6 +13,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'rodjek/vim-puppet'
 Plug 'vim-airline/vim-airline'
 Plug 'nathanielc/vim-tickscript'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 """"""""""""""
@@ -33,7 +35,7 @@ let os = substitute(system('uname'), "\n", "", "")
 """""""""""""""
 " Clipboard
 """""""""""""""
-if os == "Linux"
+if os == "Linux" || os == "Darwin"
   "use X11 clipboard in linux
   set clipboard=unnamed
 endif
@@ -192,7 +194,7 @@ set pastetoggle=<F2>
 """"""""""""""""
 
 let g:syntastic_check_on_open=1
-let g:syntastic_python_checkers=['pyflakes', 'pep8']
+let g:syntastic_python_checkers=['pyflakes', 'flake8']
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -204,8 +206,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " ☯ ☢ ☣ ☹ ⚑ ⚐ ⚠ ⚓ ⚔
-let g:syntastic_error_symbol = '☢'
-let g:syntastic_warning_symbol = '☢'
+let g:syntastic_error_symbol = '⚠ '
+let g:syntastic_warning_symbol = '⚠ '
 let g:syntastic_style_error_symbol = '☯'
 let g:syntastic_style_warning_symbol = '☯'
 
@@ -248,3 +250,11 @@ autocmd! BufNewFile,BufRead *.ppr setlocal ft=puppetreport
 """""""""""""""""""
 set laststatus=2
 let g:airline_powerline_fonts = 1
+
+"""""""""""""""""""
+"  Brew
+"""""""""""""""""""
+if os == "Darwin"
+    let g:python2_host_prog = '/usr/local/bin/python'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+endif
