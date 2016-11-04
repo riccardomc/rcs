@@ -49,7 +49,7 @@ ZSH_THEME="candy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git svn brew)
 
 # User configuration
 
@@ -63,9 +63,9 @@ export PATH="$PATH:$GOPATH/bin"
 source $ZSH/oh-my-zsh.sh
 
 export GIT_AUTHOR_NAME="Riccardo M. Cefala"
-export GIT_AUTHOR_EMAIL="riccardo.cefala@mendix.com"
+export GIT_AUTHOR_EMAIL="riccardo.cefala@imc.com"
 export GIT_COMMITTER_NAME="Riccardo"
-export GIT_COMMITTER_EMAIL="riccardo.cefala@mendix.com"
+export GIT_COMMITTER_EMAIL="riccardo.cefala@imc.com"
 
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
