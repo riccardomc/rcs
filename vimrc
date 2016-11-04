@@ -15,6 +15,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'nathanielc/vim-tickscript'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 """"""""""""""
@@ -258,3 +259,12 @@ if os == "Darwin"
     let g:python2_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
 endif
+
+"""""""""""""""""""
+"  Vimwiki
+"""""""""""""""""""
+let g:vimwiki_list = [{'path': '~/Development/notes/',
+                     \ 'syntax': 'markdown', 'ext': '.md'}]
+
+" insert '# YYYY-MM-DD' at the top of a file and start writing
+nnoremap <F5> "="# " . strftime('%Y-%m-%d')<C-M>po<CR>
