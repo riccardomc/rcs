@@ -110,8 +110,12 @@ zstyle ':completion:*:hosts' hosts $hosts
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+# Fix home end keys
+bindkey "${terminfo[khome]}" beginning-of-line
+bindkey "${terminfo[kend]}" end-of-line
+
 # enable vim bindings
 bindkey -v
 export KEYTIMEOUT=1
-bindkey '^e' history-incremental-search-backward
+bindkey '^r' history-incremental-search-backward
 
