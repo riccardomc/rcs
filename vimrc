@@ -263,7 +263,7 @@ endif
 """""""""""""""""""
 "  Vimwiki
 """""""""""""""""""
-let g:vimwiki_list = [{'path': '~/Development/IMC/gitlab/rcefala/notes/',
+let g:vimwiki_list = [{'path': '~/Notes/',
                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 " insert '# YYYY-MM-DD' at the top of a file and start writing
