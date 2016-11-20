@@ -268,3 +268,5 @@ let g:vimwiki_list = [{'path': '~/Notes/',
 
 " insert '# YYYY-MM-DD' at the top of a file and start writing
 nnoremap <F5> "="# " . strftime('%Y-%m-%d')<C-M>po<CR>
+
+let g:vimwiki_folding='expr'
