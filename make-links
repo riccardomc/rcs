@@ -12,7 +12,6 @@ for link in *; do
 done
 
 ln -s `pwd`/Library/Preferences/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist || true
-ln -s `pwd`/.vim ~/.config/nvim || true
-
+ln -s ~/.vim ~/.config/nvim || true
 
 rm ~/.make-links ~/.README.md
