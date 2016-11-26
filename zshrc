@@ -123,5 +123,7 @@ bindkey '^r' history-incremental-pattern-search-backward
 # Fix home end keys
 bindkey "^[OH" beginning-of-line
 bindkey "^[OF" end-of-line
+bindkey "^[[1~" beginning-of-line
+bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
