@@ -49,7 +49,8 @@ ZSH_THEME="candy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git svn brew ssh-agent docker)
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$PATH"
+plugins=(git svn brew ssh-agent docker fasd zsh-syntax-highlighting)
 
 # User configuration
 
@@ -76,7 +77,6 @@ osx() {
 #
 # Exports
 #
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 
