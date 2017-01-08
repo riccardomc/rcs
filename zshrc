@@ -84,6 +84,7 @@ export GIT_AUTHOR_NAME="Riccardo M. Cefala"
 export GIT_AUTHOR_EMAIL="riccardo.cefala@imc.com"
 export GIT_COMMITTER_NAME="Riccardo"
 export GIT_COMMITTER_EMAIL="riccardo.cefala@imc.com"
+export EDITOR="/usr/local/bin/vim"
 
 #
 # Golang
@@ -98,7 +99,7 @@ export PATH="$GOPATH/bin:$PATH"
 #
 
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
-alias vim=nvim
+alias vim='/usr/local/bin/nvim'
 
 #
 # For SSH Host Completion - Zsh Style

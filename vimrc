@@ -181,7 +181,6 @@ set nospell
 """"""""""""""""
 
 "options for specific files
-autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal spell
 autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal nonumber
 autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal textwidth=75
 autocmd BufNewFile,BufRead *.rst,*.txt,*.tex,*.latex setlocal formatoptions+=t
