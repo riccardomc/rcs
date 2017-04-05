@@ -269,3 +269,4 @@ let g:vimwiki_list = [{'path': '~/Notes/',
 nnoremap <F5> "="# " . strftime('%Y-%m-%d')<C-M>po<CR>
 
 let g:vimwiki_folding='expr'
+let g:vimwiki_global_ext = 0
