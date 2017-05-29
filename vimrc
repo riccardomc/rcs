@@ -16,6 +16,10 @@ Plug 'nathanielc/vim-tickscript'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki'
+Plug 'pangloss/vim-javascript'
+Plug 'burnettk/vim-angular'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 call plug#end()
 
 """"""""""""""
@@ -62,7 +66,8 @@ execute pathogen#infect()
 """""""""""""""
 " View
 """""""""""""""
-colorscheme  desert256      "nice dark colors
+"colorscheme  desert256      "nice dark colors
+colorscheme   desert-warm-256 "nice dark colors
 set ruler
 set showcmd                 "show command in statusline
 set noshowmode				"do not show mode, we use airline
@@ -270,3 +275,19 @@ nnoremap <F5> "="# " . strftime('%Y-%m-%d')<C-M>po<CR>
 
 let g:vimwiki_folding='expr'
 let g:vimwiki_global_ext = 0
+
+
+"""""""""""""""""""
+" TMUX Slowness
+"""""""""""""""""""
+set nocompatible
+set lazyredraw
+set ttyfast
+hi Normal ctermbg=NONE
+hi NonText ctermbg=NONE
+
+
+""""""""""""""""""
+" NERD Tree
+""""""""""""""""""
+map <C-n> :NERDTreeToggle<CR>

@@ -299,7 +299,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     " }}}
 else
     " color terminal definitions
-    hi SpecialKey    ctermfg=darkgreen
+    "hi SpecialKey    ctermfg=darkgreen
     hi NonText       cterm=bold ctermfg=darkblue
     hi Directory     ctermfg=darkcyan
     hi ErrorMsg      cterm=bold ctermfg=7 ctermbg=1
