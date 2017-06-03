@@ -157,8 +157,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   position bottom
-        status_command /usr/bin/py3status
-        font pango:Monofur 12
+        status_command /home/rmc/.local/bin/py3status
+        font pango:Hack 9
         tray_output primary
   colors {
     separator #666666
@@ -172,7 +172,7 @@ bar {
 }
 
 # Font
-font pango:Monofur 12
+font pango:Hack 9
 
 # Jump to left/right desktop
 bindsym Control+mod1+Left workspace prev
