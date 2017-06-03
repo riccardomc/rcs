@@ -73,6 +73,9 @@ osx() {
     [ $(uname) = 'Darwin' ]
 }
 
+linux() {
+    [ $(uname) = 'Darwin' ]
+}
 
 #
 # Exports
@@ -84,22 +87,23 @@ export GIT_AUTHOR_NAME="Riccardo M. Cefala"
 export GIT_AUTHOR_EMAIL="riccardo.cefala@imc.com"
 export GIT_COMMITTER_NAME="Riccardo"
 export GIT_COMMITTER_EMAIL="riccardo.cefala@imc.com"
-export EDITOR="/usr/local/bin/vim"
+export EDITOR=$(which nvim)
 
 #
 # Golang
 #
-export GOPATH="$HOME/Development/golang"
+export GOROOT=$HOME/go
+export GOPATH=$HOME/Development/golang
 osx && export GOROOT=/usr/local/opt/go/libexec
-osx && export PATH="$GOROOT/bin:$PATH"
-export PATH="$GOPATH/bin:$PATH"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
 
 #
 # Aliases
 #
 
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
-alias vim='/usr/local/bin/nvim'
+alias vim=$(which nvim)
 
 #
 # For SSH Host Completion - Zsh Style
