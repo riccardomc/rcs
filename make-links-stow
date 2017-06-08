@@ -1,0 +1,22 @@
+#!/bin/bash
+
+components='
+bash
+bin
+fonts
+git
+i3
+mac
+screen
+scripts
+ssh
+term
+tmux
+vim
+zsh'
+
+mkdir -p ~/.config ~/.Library
+
+for c in $components ; do
+	stow -R -t $HOME $c
+done

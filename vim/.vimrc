@@ -221,6 +221,7 @@ let g:syntastic_style_warning_symbol = '☯'
 """"""""""""""""
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#enable_at_startup = 1
+let g:neoinclude#paths = '/tmp/cddp_keys.txt'
 
 """""""""""""""""""
 "   Vim-Go

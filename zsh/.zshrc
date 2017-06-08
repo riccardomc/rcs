@@ -132,3 +132,14 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
+# j completion
+
+CDDC='/Users/rcefala/Development/IMC/svn/cddc/'
+MASTER_HOST='peach'
+
+_j() { _values 'deployments' $(ls -1 $CDDC) }
+alias j="ssh -t $MASTER_HOST j $1"
+compdef _j j
+
+
+export PATH="/Users/rcefala/anaconda3/bin:$PATH"
