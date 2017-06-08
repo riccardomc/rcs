@@ -1,17 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-for link in *; do
-    if [[ -L ~/.${link##*/} ]]; then
-        echo OK: $link 
-    elif [[ -e ~/.${link##*/} ]]; then
-        echo NOK: $link
-    else
-        echo NEW: $link
-        ln -s `pwd`/$link ~/.${link##*/}
-    fi
+components='
+bash
+bin
+fonts
+git
+i3
+mac
+screen
+scripts
+ssh
+term
+tmux
+vim
+zsh'
+
+mkdir -p ~/.config ~/.Library
+
+for c in $components ; do
+	stow -R -t $HOME $c
 done
-
-ln -s `pwd`/Library/Preferences/com.googlecode.iterm2.plist ~/Library/Preferences/com.googlecode.iterm2.plist || true
-ln -s ~/.vim ~/.config/nvim || true
-
-rm ~/.make-links ~/.README.md
