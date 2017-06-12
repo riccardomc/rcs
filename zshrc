@@ -84,9 +84,9 @@ linux() {
 source $ZSH/oh-my-zsh.sh
 
 export GIT_AUTHOR_NAME="Riccardo M. Cefala"
-export GIT_AUTHOR_EMAIL="riccardo.cefala@imc.com"
+export GIT_AUTHOR_EMAIL="riccardo.cefala@gmail.com"
 export GIT_COMMITTER_NAME="Riccardo"
-export GIT_COMMITTER_EMAIL="riccardo.cefala@imc.com"
+export GIT_COMMITTER_EMAIL="riccardo.cefala@gmail.com"
 export EDITOR=$(which nvim)
 
 #
