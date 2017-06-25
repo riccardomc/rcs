@@ -58,12 +58,6 @@ else
 endif
 
 """""""""""""""
-" Plugins
-"""""""""""""""
-"pathogen! (https://github.com/tpope/vim-pathogen)
-execute pathogen#infect()
-
-"""""""""""""""
 " View
 """""""""""""""
 "colorscheme  desert256      "nice dark colors
