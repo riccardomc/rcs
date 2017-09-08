@@ -142,6 +142,16 @@ mode "resize" {
 }
 
 #
+# Scratchpad
+#
+# Make the currently focused window a scratchpad
+bindsym Shift+$mod+equal move scratchpad
+# Show the first scratchpad window
+bindsym $mod+equal scratchpad show
+# Remove from scratchpad (Floating toggle)
+bindsym $mod+minus floating toggle
+
+#
 # Borders
 #
 
@@ -194,40 +204,24 @@ bindsym $mod+z move workspace to output left
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -SIGUSR1 i3status"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status"
-bindsym $mod+XF86AudioMute exec --no-startup-id banshee --toggle-playing
-bindsym $mod+XF86AudioLowerVolume exec --no-startup-id banshee --restart-or-previous
-bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id banshee --next
 #XF86 Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 #XF86 Shortcuts
-bindsym XF86Search exec ~/.bin/google-keep
-bindsym Control+XF86LaunchA exec --no-startup-id ~/.scripts/displays-config
-bindsym XF86LaunchA exec --no-startup-id ~/.scripts/displays-config mendix
-bindsym $mod+XF86LaunchA exec --no-startup-id ~/.scripts/displays-config home
-bindsym XF86Explorer exec --no-startup-id exec ~/.scripts/reflow-workspaces.py
-bindsym XF86Tools exec --no-startup-id exec ~/.scripts/startup_mendix.sh
+bindsym XF86Display exec --no-startup-id ~/.scripts/displays-config
+bindsym $mod+XF86Display exec --no-startup-id ~/.scripts/displays-config home
+bindsym Control+$mod+XF86Display exec --no-startup-id ~/.scripts/reflow-workspaces.py
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
 
 #XF86 KBD Brightness
 bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.scripts/asus-kbd-brightness.sh on
 bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.scripts/asus-kbd-brightness.sh off
 
-
 #XF86 Spotify
 bindsym XF86AudioPlay exec --no-startup-id ~/.scripts/sp play
 bindsym XF86AudioPrev exec --no-startup-id ~/.scripts/sp prev
 bindsym XF86AudioNext exec --no-startup-id ~/.scripts/sp next
-
-#Fn Keys
-bindsym Control+$mod+F9 exec --no-startup-id banshee --toggle-playing
-bindsym Control+$mod+F10 exec --no-startup-id banshee --restart-or-previous
-bindsym Control+$mod+F11 exec --no-startup-id banshee --next
-bindsym Control+$mod+F12 exec --no-startup-id banshee --stop
-bindsym Control+$mod+End  exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -SIGUSR1 i3status"
-bindsym Control+$mod+Next exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status"
-bindsym Control+$mod+Prior exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status"
-
 
 #
 # Daemons
@@ -245,6 +239,7 @@ exec --no-startup-id dropbox start &
 exec --no-startup-id clipit &
 exec --no-startup-id nm-applet &
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
+exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
 
 #
 # Key bindings
@@ -252,17 +247,9 @@ exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 # Dropbox
 bindsym Control+mod1+d exec dropbox start &
 # Lock screen
-bindsym Control+mod1+l exec ~/.scripts/shot-lock
+bindsym Control+mod1+l exec xautolock -locknow
 # Journal (zim)
 bindsym Control+mod1+j exec zim
-# Music player (banshee)
-bindsym Control+mod1+p exec banshee
-# Make the currently focused window a scratchpad
-bindsym Shift+$mod+equal move scratchpad
-# Show the first scratchpad window
-bindsym $mod+equal scratchpad show
-# Remove from scratchpad (Floating toggle)
-bindsym $mod+minus floating toggle
 
 client.focused #888888 #dddddd #222222 #2e9ef4
 client.focused_inactive #333333 #555555 #bbbbbb #484e50
