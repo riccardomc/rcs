@@ -9,5 +9,5 @@ SCREEN2=`tempfile --prefix shot- --suffix .png`
 scrot $SCREEN1
 convert $SCREEN1 -scale 20% -scale 500% $SCREEN2
 rm -f $SCREEN1
-i3lock -i $SCREEN2
+i3lock --nofork -i $SCREEN2
 rm -f $SCREEN2
