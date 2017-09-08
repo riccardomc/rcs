@@ -3,6 +3,7 @@
 components='
 bash
 bin
+fontconfig
 fonts
 git
 i3
