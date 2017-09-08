@@ -234,6 +234,9 @@ let g:go_fmt_command = "goimports"
 let g:syntastic_go_checkers = ['go', 'errcheck', 'golint']
 let g:syntastic_auto_loc_list = 0
 
+" do not show preview scratch window
+set completeopt-=preview
+
 """""""""""""""""""
 "  Ack
 """""""""""""""""""
