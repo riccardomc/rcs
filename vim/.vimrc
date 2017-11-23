@@ -18,8 +18,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki'
 Plug 'pangloss/vim-javascript'
 Plug 'burnettk/vim-angular'
+Plug 'leafgarland/typescript-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 """"""""""""""
@@ -108,6 +110,7 @@ set shiftwidth=4            "indent width
 set expandtab               "insert 'softtabstop' spaces
 
 "fileType specific indentation
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
@@ -255,11 +258,14 @@ set laststatus=2
 let g:airline_powerline_fonts = 1
 
 """""""""""""""""""
-"  Brew
+"  Python
 """""""""""""""""""
 if os == "Darwin"
-    let g:python2_host_prog = '/usr/local/bin/python'
+    let g:python_host_prog = '/usr/local/bin/python'
     let g:python3_host_prog = '/usr/local/bin/python3'
+else
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
 endif
 
 """""""""""""""""""
