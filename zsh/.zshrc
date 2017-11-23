@@ -49,7 +49,7 @@ ZSH_THEME="candy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
 plugins=(git svn brew ssh-agent docker fasd zsh-syntax-highlighting)
 
 # User configuration
@@ -74,7 +74,7 @@ osx() {
 }
 
 linux() {
-    [ $(uname) = 'Darwin' ]
+    [ $(uname) = 'Linux' ]
 }
 
 #
@@ -99,11 +99,26 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 
 #
+# Python (virtualenvwrapper)
+#
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source /home/rmc/.local/bin/virtualenvwrapper.sh
+
+#
+# Google Cloud SDK
+#
+source /home/rmc/opt/google-cloud-sdk/path.zsh.inc
+source /home/rmc/opt/google-cloud-sdk/completion.zsh.inc
+
+#
 # Aliases
 #
 
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
 alias vim=$(which nvim)
+linux && alias pbcopy='xsel --clipboard --input'
+linux && alias pbpaste='xsel --clipboard'
 
 #
 # For SSH Host Completion - Zsh Style
@@ -140,6 +155,5 @@ MASTER_HOST='peach'
 _j() { _values 'deployments' $(ls -1 $CDDC) }
 alias j="ssh -t $MASTER_HOST j $1"
 compdef _j j
-
 
 export PATH="/Users/rcefala/anaconda3/bin:$PATH"
