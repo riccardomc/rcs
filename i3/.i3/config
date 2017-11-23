@@ -195,6 +195,8 @@ bindsym Control+mod1+Shift+Right move to workspace next ; workspace next
 # Move workspace to output
 bindsym $mod+x move workspace to output right
 bindsym $mod+z move workspace to output left
+bindsym $mod+Shift+x move workspace to output up
+bindsym $mod+Shift+z move workspace to output down
 
 #
 # Media Keys
@@ -209,7 +211,8 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 #XF86 Shortcuts
-bindsym XF86Display exec --no-startup-id ~/.scripts/displays-config
+bindsym Control+XF86Display exec --no-startup-id ~/.scripts/displays-config
+bindsym XF86Display exec --no-startup-id ~/.scripts/displays-config cs
 bindsym $mod+XF86Display exec --no-startup-id ~/.scripts/displays-config home
 bindsym Control+$mod+XF86Display exec --no-startup-id ~/.scripts/reflow-workspaces.py
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
