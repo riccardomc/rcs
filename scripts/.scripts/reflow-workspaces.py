@@ -1,62 +1,84 @@
 #!/usr/bin/env python
 
-import subprocess
 import math
-import json
 import i3ipc
 
 i3 = i3ipc.Connection()
 
-get_workspaces_cmd = 'i3-msg -t get_workspaces'.split()
-get_outputs_cmd = 'i3-msg -t get_outputs'.split()
 
+def get_names(things): 
+    """ 
+    Returns a filtered list of strings with just the 'name' attribute of the
+    dictionaries tings passed as parameter
 
-def get_workspaces():
-    return json.loads(subprocess.check_output(get_workspaces_cmd))
-
-
-def get_outputs():
-
-    def active(output):
-        return output['active'] == True
-
-    return filter(active, json.loads(subprocess.check_output(get_outputs_cmd)))
-
-
-def get_names(things):
+    @param things: a list of dictionaries with a 'name' attribute
+    @returns: a list of strings, the 'name' attributes of the dictionaries
+    """
     return [t['name'] for t in things]
 
 
 def get_focused_workspace(workspaces):
-    return filter(lambda workspace: workspace['focused'], workspaces)
+    """
+    Returns the workspace with 'focused' True. It can be None in
+    some cases.
+
+    @param workspaces: a list of workspace objects
+    @returns the focused workspace name
+    """
+    focused_workspaces = [w for w in workspaces if w['focused']]
+    return focused_workspaces[0] if len(focused_workspaces) else None
+
+
+def get_non_empty_workspaces():
+    """
+    Returns a list of workspace names without any node (i.e. a window or client).
+
+    @returns a list of non-empty workspaces
+    """
+    tree = i3.get_tree()
+
+    outputs = [o for o in tree.nodes if o.name != '__i3']
+    non_empty_workspaces = []
+    for output in outputs:
+        for con in [c for c in output.nodes if c.type == 'con']:
+            for workspace in [w for w in con.nodes if w.type == 'workspace']:
+                if len(workspace.nodes) > 0:
+                    non_empty_workspaces.append(workspace.name)
+
+    return non_empty_workspaces
 
 
 def workspaces_sorted_by_number(workspaces):
+    """
+    Returns the list of workspaces sorted in numerical order.
+    """
     return sorted(workspaces, key=lambda workspace: int(workspace['num']))
 
 
 def outputs_from_left_to_right(outputs):
+    """
+    Returns the list of outputs sorted from left to right based on geometry.
+    """
     return sorted(outputs, key=lambda output: output['rect']['x'])
 
 
-def go_to_workspace(workspace):
-    if workspace:
-        go_to_workspace_cmd = ['i3-msg', 'workspace', workspace]
-        subprocess.call(go_to_workspace_cmd)
-
-
 def move_workspace(workspace, output):
-    move_workspace_cmd = [
-            'i3-msg', 'move', 'workspace', 'to', 'output', output
-            ]
-    go_to_workspace(workspace)
-    subprocess.call(move_workspace_cmd)
+    """
+    Move a workspace to an output.
+
+    @param workspace: the workspace to move
+    @param output: the destination output
+    """
+    i3.command('workspace %s' % workspace)
+    i3.command('move workspace to output %s' % output)
 
 
 def _reflow(workspaces, outputs):
     """
-        workspaces is a list of workspace names i.e. ['1', '2', '3']
-        outputs is a list of output names i.e. ['VGA1', 'DP1']
+    Distribute workspaces evenly across outputs.
+
+    @param workspaces: is a list of workspace names i.e. ['1', '2', '3']
+    @param outputs: is a list of output names i.e. ['VGA1', 'DP1']
     """
     i = 0
     j = 1
@@ -64,52 +86,45 @@ def _reflow(workspaces, outputs):
     while j < len(workspaces) + 1:
         workspace = workspaces[j - 1]
         output = outputs[i]
-        print workspace, ' goes on ', output
+        print '%s goes on %s' % (workspace, output)
         move_workspace(workspace, output)
         if math.fmod(j, workspaces_per_output) == 0 and i < len(outputs) - 1:
             i += 1
         j += 1
 
 
-def get_non_empty_workspaces():
-    tree = i3.get_tree()
-
-    outputs = [o for o in tree.nodes if o.name != '__i3']
-    non_empty_workspaces = []
-    empty_workspaces = []
-    for output in outputs:
-        for con in [c for c in output.nodes if c.type == 'con']:
-            for workspace in [w for w in con.nodes if w.type == 'workspace']:
-                if len(workspace.nodes) > 0:
-                    non_empty_workspaces.append(workspace.name)
-                else:
-                    empty_workspaces.append(workspace.name)
-
-    return non_empty_workspaces
-
-
 def reflow_from_left_to_right():
-    workspaces = get_workspaces()
-    outputs = get_outputs()
-    non_empty_workspaces = get_non_empty_workspaces()
+    """
+    Evenly distribute workspaces from left to right outputs.
+    """
 
-    focused_workspaces = get_names(get_focused_workspace(workspaces))
-    focused_workspace = focused_workspaces[0] if focused_workspaces else None
+    # get all the things
+    workspaces = i3.get_workspaces()
+    outputs = [output for output in i3.get_outputs() if output['active']]
+    focused_workspace = get_focused_workspace(workspaces)
+    non_empty_workspace_names = get_non_empty_workspaces()
 
+    # sort and extract the the ids (names)
     workspace_names = get_names(workspaces_sorted_by_number(workspaces))
-    non_empty_workspace_names = filter(lambda w: w in non_empty_workspaces, get_names(workspaces_sorted_by_number(workspaces)))
     output_names = get_names(outputs_from_left_to_right(outputs))
+    focused_workspace_name = focused_workspace['name'] if focused_workspace else None
+    sorted_non_empty_workspace_names = [w for w in workspace_names if w in non_empty_workspace_names]
 
-    print 'workspaces found: ',  workspace_names
-    print 'non empty workspaces: ', non_empty_workspaces
-    print 'outputs found: ', output_names
+    print 'workspaces found: %s' % ', '.join(workspace_names)
+    print 'non empty workspaces: %s' % ', '.join(non_empty_workspace_names)
+    print 'outputs found: %s' % ', '.join(output_names)
+    print 'focused workspace: %s' % focused_workspace_name
 
+    # move all workspaces to first output before reflowing
     for w in workspace_names:
         move_workspace(w, output_names[0])
 
-    _reflow(non_empty_workspace_names, output_names)
-    if focused_workspace in non_empty_workspaces:
-        go_to_workspace(focused_workspace)
+    # reflow workspaces
+    _reflow(sorted_non_empty_workspace_names, output_names)
+
+    # focus back the workspace that was focused before reflowing
+    if focused_workspace_name in non_empty_workspace_names:
+        i3.command('workspace %s' % focused_workspace_name)
 
 
 if __name__ == '__main__':
