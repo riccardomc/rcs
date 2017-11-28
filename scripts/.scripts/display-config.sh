@@ -20,15 +20,11 @@ case $CONFIGURATION in
         xrandr --output eDP1 --mode 2560x1440
         xrandr --output HDMI1 --mode 2560x1440 --right-of eDP1 --primary
         ;;
-    cs)
-        xrandr --output eDP1 --mode 2560x1440
-        xrandr --output HDMI1 --mode 2560x1440 --above eDP1 --primary
-        ;;
     *)
         xrandr --auto
         xrandr --output eDP1 --mode 2560x1440 --primary
         ;;
 esac
 
-feh --bg-scale ~/Pictures/wallpaper.jpg || true
+feh --bg-fill ~/Pictures/wallpaper.jpg || true
 i3-msg restart
