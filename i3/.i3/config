@@ -212,8 +212,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 #XF86 Shortcuts
 bindsym Control+XF86Display exec --no-startup-id ~/.scripts/displays-config
-bindsym XF86Display exec --no-startup-id ~/.scripts/displays-config cs
-bindsym $mod+XF86Display exec --no-startup-id ~/.scripts/displays-config home
+bindsym XF86Display exec --no-startup-id ~/.scripts/displays-config home
 bindsym Control+$mod+XF86Display exec --no-startup-id ~/.scripts/reflow-workspaces.py
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
 
@@ -235,6 +234,8 @@ exec --no-startup-id /usr/bin/gnome-settings-daemon &
 exec --no-startup-id xautolock -detectsleep -time 5 -locker ~/.scripts/shot-lock &
 # Dropbox daemon
 exec --no-startup-id dropbox start &
+# Google drive
+exec --no-startup-id insync start &
 
 #
 # Startup apps
@@ -243,6 +244,7 @@ exec --no-startup-id clipit &
 exec --no-startup-id nm-applet &
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
+exec --no-startup-id ~/.scripts/touchpad.sh
 
 #
 # Key bindings
