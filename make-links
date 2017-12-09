@@ -14,7 +14,8 @@ ssh
 term
 tmux
 vim
-zsh'
+zsh
+oh-my-zsh'
 
 mkdir -p ~/.config ~/.Library
 
