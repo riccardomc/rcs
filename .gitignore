@@ -1,1 +1,4 @@
 vim/autoload/plug.vim
+bin/.bin/vim
+bin/.bin/nvim
+bin/.bin/nvim.appimage
