@@ -89,6 +89,9 @@ export GIT_COMMITTER_NAME="Riccardo"
 export GIT_COMMITTER_EMAIL="riccardo.cefala@gmail.com"
 export EDITOR=$(which nvim)
 
+# revert ls quoting behaviour introduced in coreutils 8.25
+export QUOTING_STYLE=literal
+
 #
 # Golang
 #
