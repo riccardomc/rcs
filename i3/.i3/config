@@ -203,16 +203,16 @@ bindsym $mod+Shift+z move workspace to output down
 #
 
 #XF86 Volume
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && killall -SIGUSR1 i3status"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status"
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGUSR1 i3status"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGUSR1 i3status"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGUSR1 i3status"
 #XF86 Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 #XF86 Shortcuts
-bindsym XF86Display exec --no-startup-id ~/.scripts/display-config.sh
-bindsym $mod+XF86Display exec --no-startup-id ~/.scripts/display-config.sh home
+bindsym XF86Display exec --no-startup-id ~/.scripts/display-config.sh home
+bindsym Control+XF86Display exec --no-startup-id ~/.scripts/display-config.sh
 bindsym Control+$mod+XF86Display exec --no-startup-id ~/.scripts/reflow-workspaces.py
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
 
@@ -224,6 +224,12 @@ bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.scripts/asus-kbd-brightnes
 bindsym XF86AudioPlay exec --no-startup-id ~/.scripts/sp play
 bindsym XF86AudioPrev exec --no-startup-id ~/.scripts/sp prev
 bindsym XF86AudioNext exec --no-startup-id ~/.scripts/sp next
+
+#XF86 Tools
+bindsym XF86Tools exec --no-startup-id ~/.scripts/startup-workspace.sh
+
+bindsym Control+Shift+Insert exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status"
+bindsym Control+Shift+Delete exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status"
 
 #
 # Daemons
@@ -245,6 +251,7 @@ exec --no-startup-id nm-applet &
 exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.jpg
 exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
 exec --no-startup-id ~/.scripts/touchpad.sh
+exec --no-startup-id redshift-gtk
 
 #
 # Key bindings
@@ -260,3 +267,8 @@ client.focused #888888 #dddddd #222222 #2e9ef4
 client.focused_inactive #333333 #555555 #bbbbbb #484e50
 client.unfocused #333333 #333333 #888888 #292d2e
 client.urgent #2f343a #900000 #ffffff #900000
+
+#
+# Application windows settings
+#
+for_window [class="Pomello"] floating enable
