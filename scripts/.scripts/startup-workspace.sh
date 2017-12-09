@@ -1,19 +1,12 @@
 #!/bin/bash
 
-i3-msg "workspace 3; exec gnome-terminal"
+i3-msg "workspace 2; exec gnome-terminal"
 
-sleep 1
-
-i3-msg "workspace 2; \
-        exec google-chrome --new-window \
-        https://sprintr.home.mendix.com; 
-        exec slack" &
-
-sleep 3
+sleep 0.2
 
 i3-msg "workspace 1; \
+        exec slack;\
         exec google-chrome --new-window \
-            https://webmail.mendix.com/ \
+            https://calendar.google.com/ \
             https://inbox.google.com/ \
-            https://web.whatsapp.com/" &
-
+            https://web.whatsapp.com/;" &
