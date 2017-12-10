@@ -34,10 +34,6 @@ bindsym Control+XF86Display exec --no-startup-id ~/.scripts/display-config.sh
 bindsym Control+$mod+XF86Display exec --no-startup-id ~/.scripts/reflow-workspaces.py
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
 
-#XF86 KBD Brightness
-bindsym XF86KbdBrightnessUp exec --no-startup-id ~/.scripts/asus-kbd-brightness.sh on
-bindsym XF86KbdBrightnessDown exec --no-startup-id ~/.scripts/asus-kbd-brightness.sh off
-
 #XF86 Spotify
 bindsym XF86AudioPlay exec --no-startup-id ~/.scripts/sp play
 bindsym XF86AudioPrev exec --no-startup-id ~/.scripts/sp prev
