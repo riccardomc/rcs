@@ -20,6 +20,10 @@ bindsym Control+mod1+j exec zim
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGUSR1 i3status"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGUSR1 i3status"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGUSR1 i3status"
+
+#XF86 Microphone
+bindsym XF86AudioMicMute exec "amixer set Capture toggle"
+
 #XF86 Brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
