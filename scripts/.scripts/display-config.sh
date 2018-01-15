@@ -16,17 +16,8 @@ sleep 0.1
 
 CONFIGURATION=$1
 case $CONFIGURATION in 
-    ht)
-        xrandr --output eDP1 --mode 2560x1440
-        xrandr --output DP2 --mode 2560x1440 --right-of eDP1 --primary
-        ;;
-    home)
-        xrandr --output eDP1 --mode 2560x1440
-        xrandr --output HDMI1 --mode 2560x1440 --right-of eDP1 --primary
-        ;;
-    4k)
-        xrandr --output eDP1 --mode 2560x1440
-        xrandr --output HDMI1 --mode 3840x2160 --right-of eDP1 --primary
+    auto)
+        ~/.scripts/display-config.py
         ;;
     *)
         xrandr --auto
@@ -35,4 +26,5 @@ case $CONFIGURATION in
 esac
 
 feh --bg-fill ~/Pictures/wallpaper.jpg || true
+~/.scripts/reflow-workspaces.py
 i3-msg restart
