@@ -210,10 +210,16 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " ☯ ☢ ☣ ☹ ⚑ ⚐ ⚠ ⚓ ⚔
-let g:syntastic_error_symbol = '⚠ '
-let g:syntastic_warning_symbol = '⚠ '
-let g:syntastic_style_error_symbol = '☯'
-let g:syntastic_style_warning_symbol = '☯'
+let g:syntastic_error_symbol = '😠'
+let g:syntastic_warning_symbol = '😠'
+let g:syntastic_style_error_symbol = '💩'
+let g:syntastic_style_warning_symbol = '💩'
+
+" highlight according to desert-256-warm scheme
+highlight SyntasticErrorSign ctermbg=235
+highlight SyntasticWarningSign ctermbg=235
+highlight SyntasticStyleErrorSign ctermbg=235
+highlight SyntasticStyleWarningSign ctermbg=235
 
 """"""""""""""""
 " NeoComplete
@@ -231,6 +237,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 
 let g:go_fmt_command = "goimports"
