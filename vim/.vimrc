@@ -38,6 +38,8 @@ filetype plugin on          "load filetype plugins
 set filetype=on
 
 let os = substitute(system('uname'), "\n", "", "")
+" save with Leader+s
+noremap <Leader>w :update<CR>
 
 """""""""""""""
 " Clipboard
