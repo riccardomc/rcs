@@ -48,8 +48,8 @@ bindsym XF86AudioNext exec --no-startup-id ~/.scripts/sp next
 
 #XF86 Tools
 bindsym XF86Tools exec --no-startup-id ~/.scripts/startup-workspace.sh
-bindsym $mod+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh start
-bindsym Control+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh stop
+bindsym Control+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh start
+bindsym Control+Shift+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh stop
 
 bindsym Control+Shift+Insert exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status"
 bindsym Control+Shift+Delete exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status"
@@ -189,7 +189,7 @@ mode "resize" {
 # Appearance
 #
 # font
-font pango:Hack 9
+font pango:Hack 10
 
 # borders 1px <normal|1pixel|none|pixel>
 new_window normal 1
