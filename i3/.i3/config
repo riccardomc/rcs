@@ -14,6 +14,12 @@ bindsym Control+mod1+l exec xautolock -locknow
 bindsym Control+mod1+j exec zim
 
 #
+# Screenshot
+#
+bindsym Print exec --no-startup-id "sleep 0.2 ; scrot -m '%Y%m%d%H%M%S-$wx$h.png' -e 'mv $f ~/Pictures'"
+bindsym Control+Print exec --no-startup-id "sleep 0.2 ; scrot -s '%Y%m%d%H%M%S-$wx$h.png' -e 'mv $f ~/Pictures'"
+
+#
 # Media Keys
 #
 #XF86 Volume

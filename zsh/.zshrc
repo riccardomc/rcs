@@ -83,10 +83,10 @@ linux() {
 
 source $ZSH/oh-my-zsh.sh
 
-export GIT_AUTHOR_NAME="Riccardo M. Cefala"
-export GIT_AUTHOR_EMAIL="riccardo.cefala@gmail.com"
-export GIT_COMMITTER_NAME="Riccardo"
-export GIT_COMMITTER_EMAIL="riccardo.cefala@gmail.com"
+export GIT_AUTHOR_NAME="Riccardo Cefala"
+export GIT_AUTHOR_EMAIL="riccardo.cefala@container-solutions.com"
+export GIT_COMMITTER_NAME="Riccardo Cefala"
+export GIT_COMMITTER_EMAIL="riccardo.cefala@container-solutions.com"
 export EDITOR=$(which nvim)
 
 # revert ls quoting behaviour introduced in coreutils 8.25
