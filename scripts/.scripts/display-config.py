@@ -33,9 +33,13 @@ class MyRandr(object):
 
         @return a CRTC ID
         """
+        min_id = -1
+        min_outputs = 2048
         for crtc_id, crtc in r.crtcs.items():
-            if len(crtc.outputs) == 0 and output_id in crtc.possible_outputs:
-                return crtc_id
+            if len(crtc.outputs) < min_outputs and output_id in crtc.possible_outputs:
+                min_id = crtc_id
+                min_outputs = len(crtc.outputs)
+        return min_id
 
     def _build_modes_dict(self, mode_names, modes):
         """
@@ -77,7 +81,7 @@ class MyRandr(object):
         """
         crtc_id = self.next_free_crtc(output_id)
         mode_id = self.outputs[output_id].modes[0]
-        print "%5s +%4d %s" % (self.outputs[output_id].name, width, self.modes[mode_id]['name'])
+        print "%5s +%4d %s crtc %d" % (self.outputs[output_id].name, width, self.modes[mode_id]['name'], crtc_id)
         self.display.xrandr_set_crtc_config(crtc_id, 0, width, 0, mode_id, 1, [output_id], X.CurrentTime)
         return self.modes[mode_id]['width'], self.modes[mode_id]['height']
 
