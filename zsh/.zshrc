@@ -1,63 +1,17 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="rmc"
+COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
-plugins=(git svn brew ssh-agent docker fasd zsh-syntax-highlighting)
+plugins=(git svn brew ssh-agent docker kubectl fasd zsh-syntax-highlighting)
 
-# User configuration
+#
+# User config
+#
 
 #
 # Functions
 #
-
 keyadd() {
   KEY_PREFIX='_key-'
   ssh-add ~/.ssh/${KEY_PREFIX}${1}/id_rsa || ssh-add -L
@@ -100,7 +54,6 @@ export GOPATH=$HOME/Development/golang
 osx && export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-
 #
 # Python (virtualenvwrapper)
 #
@@ -115,17 +68,35 @@ source /home/rmc/opt/google-cloud-sdk/path.zsh.inc
 source /home/rmc/opt/google-cloud-sdk/completion.zsh.inc
 
 #
+# Gradle
+#
+export PATH=$HOME/opt/gradle-4.5.1/bin:$PATH
+
+#
 # Aliases
 #
-
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
 alias vim=$(which nvim)
 linux && alias pbcopy='xsel --clipboard --input'
 linux && alias pbpaste='xsel --clipboard'
+linux && alias vpnup='nmcli c up riccardo_teal --ask'
+linux && alias vpndown='nmcli c down riccardo_teal'
+
+# kubectl
+alias k='kubectl'
+alias kns='k get namespaces'
+
+# Openfiles quick in vim with FASD
+alias v='f -e nvim'
+
 
 #
-# For SSH Host Completion - Zsh Style
+# Completion - aws, kubectl, ssh, ...
 #
+source <(kubectl completion zsh)
+source ~/.local/bin/aws_zsh_completer.sh
+
+# ssh host completion
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
 [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 hosts=(
@@ -136,27 +107,29 @@ hosts=(
 )
 zstyle ':completion:*:hosts' hosts $hosts
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 # enable vim bindings
 bindkey -v
 export KEYTIMEOUT=1
+bindkey "^I" expand-or-complete-with-dots #fix dot completion
+
+# backward and forward history search
 bindkey '^r' history-incremental-pattern-search-backward
+bindkey '^s' history-incremental-pattern-search-forward
 
 # Fix home end keys
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+bindkey "^u" backward-kill-line
+bindkey "^k" kill-line
+bindkey "^w" backward-kill-word
+
 bindkey "^[OH" beginning-of-line
 bindkey "^[OF" end-of-line
 bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
-# j completion
 
-CDDC='/Users/rcefala/Development/IMC/svn/cddc/'
-MASTER_HOST='peach'
-
-_j() { _values 'deployments' $(ls -1 $CDDC) }
-alias j="ssh -t $MASTER_HOST j $1"
-compdef _j j
-
-export PATH="/Users/rcefala/anaconda3/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
