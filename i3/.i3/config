@@ -36,6 +36,7 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 #XF86 Shortcuts
 bindsym XF86Display exec --no-startup-id ~/.scripts/display-config.sh auto
+bindsym $mod+XF86Display exec --no-startup-id notify-send -t 1000 "$(echo "Display blanking $(~/.scripts/display-blanking.sh)")"
 bindsym Control+XF86Display exec --no-startup-id ~/.scripts/display-config.sh
 bindsym Control+$mod+XF86Display exec --no-startup-id ~/.scripts/reflow-workspaces.py
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
@@ -47,6 +48,8 @@ bindsym XF86AudioNext exec --no-startup-id ~/.scripts/sp next
 
 #XF86 Tools
 bindsym XF86Tools exec --no-startup-id ~/.scripts/startup-workspace.sh
+bindsym $mod+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh start
+bindsym Control+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh stop
 
 bindsym Control+Shift+Insert exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status"
 bindsym Control+Shift+Delete exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status"
@@ -55,11 +58,7 @@ bindsym Control+Shift+Delete exec --no-startup-id "pactl set-sink-volume @DEFAUL
 # Daemons
 #
 # Use xautolock to lock screen automatically after timeout
-exec --no-startup-id xautolock -detectsleep -time 5 -locker ~/.scripts/shot-lock &
-# Dropbox daemon
-exec --no-startup-id dropbox start &
-# Google drive
-exec --no-startup-id insync start &
+exec --no-startup-id xautolock -time 5 -locker ~/.scripts/shot-lock &
 
 #
 # Startup scripts
@@ -71,9 +70,8 @@ exec ~/.scripts/touchpad.sh
 #
 # Startup apps
 #
-exec --no-startup-id clipit &
+exec --no-startup-id ~/.scripts/startup-applications.sh start
 exec --no-startup-id nm-applet &
-exec --no-startup-id redshift-gtk
 
 #
 # Application windows settings
