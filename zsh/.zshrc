@@ -3,7 +3,7 @@ ZSH_THEME="rmc"
 COMPLETION_WAITING_DOTS="true"
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
-plugins=(git svn brew ssh-agent docker kubectl fasd zsh-syntax-highlighting)
+plugins=(git ssh-agent docker kubectl history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
 
 #
 # User config
@@ -89,6 +89,8 @@ alias kns='k get namespaces'
 # Openfiles quick in vim with FASD
 alias v='f -e nvim'
 
+# grep through history
+alias hg="history | grep"
 
 #
 # Completion - aws, kubectl, ssh, ...
@@ -114,7 +116,10 @@ bindkey "^I" expand-or-complete-with-dots #fix dot completion
 
 # backward and forward history search
 bindkey '^r' history-incremental-pattern-search-backward
-bindkey '^s' history-incremental-pattern-search-forward
+bindkey '^t' history-incremental-pattern-search-forward
+
+# Ctrl+space: print Git status
+bindkey -s '^s' 'git status^M'
 
 # Fix home end keys
 bindkey "^a" beginning-of-line
@@ -122,6 +127,7 @@ bindkey "^e" end-of-line
 bindkey "^u" backward-kill-line
 bindkey "^k" kill-line
 bindkey "^w" backward-kill-word
+bindkey "^p" kill-word
 
 bindkey "^[OH" beginning-of-line
 bindkey "^[OF" end-of-line
