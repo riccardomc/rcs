@@ -10,18 +10,21 @@ Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
-Plug 'rodjek/vim-puppet'
+"Plug 'rodjek/vim-puppet'
 Plug 'vim-airline/vim-airline'
-Plug 'nathanielc/vim-tickscript'
-Plug 'godlygeek/tabular'
+"Plug 'nathanielc/vim-tickscript'
+"Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'vimwiki/vimwiki'
-Plug 'pangloss/vim-javascript'
-Plug 'burnettk/vim-angular'
-Plug 'leafgarland/typescript-vim'
+"Plug 'pangloss/vim-javascript'
+"Plug 'burnettk/vim-angular'
+"Plug 'leafgarland/typescript-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'hashivim/vim-terraform'
+"Plug 'hashivim/vim-terraform'
+"Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'avakhov/vim-yaml'
+"Plug 'tfnico/vim-gradle'
 call plug#end()
 
 """"""""""""""
@@ -117,6 +120,12 @@ autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
+"indent guides, nathanaelkane/vim-indent-guides
+let g:indent_guides_auto_colors = 1
+let g:indent_guides_enable_on_vim_startup = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=None
+
 """""""""""""""
 " Programming
 """""""""""""""
@@ -135,6 +144,9 @@ set foldopen=block,hor,insert,jump,mark,percent,undo
 set foldclose=              "don't fold when cursor leaves
 
 filetype indent on          "filetype indent plugin
+
+"http://vim.wikia.com/wiki/Fix_syntax_highlighting
+autocmd BufEnter * :syntax sync ccomment
 
 """"""""""""""""""
 " Tabs and Windows
