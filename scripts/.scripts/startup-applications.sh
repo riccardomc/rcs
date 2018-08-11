@@ -11,17 +11,17 @@ case "$1" in
 
 start)
     dropbox start &
-    insync start &
-    clipit &
+    ~/.scripts/insync start &
+    diodon &
     redshift-gtk &
     blueman-applet & 
     ;;
 
 stop)
-    dropbox stop &
-    insync quit &
-    pkill clipit
-    pkill redshift-gtk
+    dropbox stop
+    ~/.scripts/insync quit
+    pkill diodon
+    pkill redshift
     pkill blueman-applet 
     ;;
 
