@@ -1,0 +1,24 @@
+#!/bin/bash
+
+
+MINIDLNA_FRIENDLY_NAME=${MINIDLNA_FRIENDLY_NAME:-YouAreAPirate}
+MINIDLNA_HOST_VOLUME=${MINIDLNA_HOST_VOLUME:-/home/rmc/Videos}
+
+case $1 in
+    start)
+        docker run -d --rm --name minidlna \
+            --net=host \
+            -v $MINIDLNA_HOST_VOLUME:/media \
+            -e MINIDLNA_MEDIA_DIR=/media \
+            -e MINIDLNA_FRIENDLY_NAME=${MINIDLNA_FRIENDLY_NAME} \
+            vladgh/minidlna
+        ;;
+
+    stop)
+        docker stop minidlna
+        ;;
+
+    *)
+        $0 '<start|stop>'
+        ;;
+esac
