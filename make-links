@@ -1,6 +1,7 @@
 #!/bin/bash
 
 components='
+ack
 bash
 bin
 fontconfig
