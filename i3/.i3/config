@@ -22,7 +22,7 @@ bindsym Control+Print exec --no-startup-id "sleep 0.2 ; scrot -s '%Y%m%d%H%M%S-$
 #
 # Clipboard
 #
-bindsym Control+Shift+v exec --no-startup-id "/usr/bin/diodon"
+bindsym Control+mod1+v exec --no-startup-id "/usr/bin/diodon"
 
 #
 # Media Keys
@@ -63,7 +63,7 @@ bindsym Control+Shift+Delete exec --no-startup-id "pactl set-sink-volume @DEFAUL
 # Daemons
 #
 # Use xautolock to lock screen automatically after timeout
-exec --no-startup-id xautolock -time 5 -locker ~/.scripts/shot-lock &
+exec --no-startup-id xautolock -time 5 -locker /usr/bin/i3lock-fancy &
 
 #
 # Startup scripts
@@ -77,6 +77,7 @@ exec ~/.scripts/touchpad.sh
 #
 exec --no-startup-id ~/.scripts/startup-applications.sh start
 exec --no-startup-id nm-applet &
+exec --no-startup-id pasystray &
 
 #
 # Application windows settings
@@ -182,12 +183,12 @@ bindsym $mod+Shift+z move workspace to output down
 #
 bindsym $mod+r mode "resize"
 mode "resize" {
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 #
@@ -201,11 +202,12 @@ new_window normal 1
 new_float normal
 hide_edge_borders both
 
-# color theme
-client.focused #888888 #dddddd #222222 #2e9ef4
+# color theme okraits from: https://github.com/okraits/j4-make-config
+# class                 border  backgr. text    indicator
+client.focused          #888888 #dddddd #222222 #2e9ef4
 client.focused_inactive #333333 #555555 #bbbbbb #484e50
-client.unfocused #333333 #333333 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
+client.unfocused        #333333 #333333 #888888 #292d2e
+client.urgent           #2f343a #900000 #ffffff #900000
 
 # i3bar
 bar {
@@ -219,13 +221,11 @@ bar {
   tray_padding 0
   font pango:Hack 10
   colors {
-    separator #666666
-    background #333333
-    statusline #bbbbbb
-    focused_workspace #888888 #dddddd #222222
-    active_workspace #333333 #555555 #bbbbbb
-    inactive_workspace #333333 #555555 #bbbbbb
-    urgent_workspace #2f343a #900000 #ffffff
+      background #333333
+      statusline #bbbbbb
+      focused_workspace #888888 #dddddd #222222
+      active_workspace #333333 #555555 #bbbbbb
+      inactive_workspace #333333 #555555 #bbbbbb
   }
 }
 
@@ -238,3 +238,5 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit?' -b 'Yes' 'i3-msg exit'"
+
+# vi: ft=i3config
