@@ -25,6 +25,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'avakhov/vim-yaml'
 "Plug 'tfnico/vim-gradle'
+Plug 'mboughaba/i3config.vim'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 """"""""""""""
