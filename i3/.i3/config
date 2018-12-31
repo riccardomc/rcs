@@ -7,7 +7,7 @@ set $mod Mod4
 # dmenu
 bindsym $mod+d exec "rofi -combi-modi window,run,drun -show-icons -show combi -modi combi"
 # Terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec kitty
 # Lock screen
 bindsym Control+mod1+l exec xautolock -locknow
 # Journal (zim)
