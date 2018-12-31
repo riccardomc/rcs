@@ -2,7 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="rmc"
 COMPLETION_WAITING_DOTS="true"
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
 plugins=(git ssh-agent docker kubectl history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
 
 #
@@ -135,7 +135,20 @@ bindkey "^[[1~" beginning-of-line
 bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
+#
+# NPM
+#
+# https://stackoverflow.com/a/13021677
+#
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# NPM packages in homedir
+NPM_PACKAGES="$HOME/.npm-packages"
+
+# Tell our environment about user-installed node tools
+PATH="$NPM_PACKAGES/bin:$PATH"
+# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+unset MANPATH  # delete if you already modified MANPATH elsewhere in your configuration
+MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+
+# Tell Node about these packages
+NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
