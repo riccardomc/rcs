@@ -5,7 +5,7 @@ set $mod Mod4
 # Key bindings
 #
 # dmenu
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec "rofi -combi-modi window,run,drun -show-icons -show combi -modi combi"
 # Terminal
 bindsym $mod+Return exec gnome-terminal
 # Lock screen
