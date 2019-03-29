@@ -1,9 +1,23 @@
+#
+# Oh My ZSH config
+#
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="rmc"
+
+#
+# Completion plugin config
+#
 COMPLETION_WAITING_DOTS="true"
 
+#
+# TMUX plugin config
+#
+
+# enable autostart only if not running on i3
+[ ! -z "$(pgrep '^i3$')" ] && ZSH_TMUX_AUTOSTART=false || ZSH_TMUX_AUTOSTART=true
+
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
-plugins=(git ssh-agent docker kubectl history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git ssh-agent tmux docker kubectl history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
 
 #
 # User config
