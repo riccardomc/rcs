@@ -7,7 +7,7 @@ set $mod Mod4
 # dmenu
 bindsym $mod+d exec "rofi -combi-modi window,run,drun -show-icons -show combi -modi combi"
 # Terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec gnome-terminal
 # Lock screen
 bindsym Control+mod1+l exec xautolock -locknow
 # Journal (zim)
@@ -77,7 +77,7 @@ exec ~/.scripts/touchpad.sh
 #
 exec --no-startup-id ~/.scripts/startup-applications.sh start
 exec --no-startup-id nm-applet &
-exec --no-startup-id pasystray &
+exec --no-startup-id pasystray --no-notify &
 
 #
 # Application windows settings
