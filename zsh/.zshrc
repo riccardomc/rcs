@@ -31,15 +31,24 @@ linux() {
     [ $(uname) = 'Linux' ]
 }
 
+fixssh() {
+  for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do
+    if (tmux show-environment | grep "^${key}" > /dev/null); then
+      value=`tmux show-environment | grep "^${key}" | sed -e "s/^[A-Z_]*=//"`
+      export ${key}="${value}"
+    fi
+  done
+}
+
 #
 # Exports
 #
 
 source $ZSH/oh-my-zsh.sh
 
-export GIT_AUTHOR_NAME="Riccardo Cefala"
+export GIT_AUTHOR_NAME="Riccardo M. Cefala"
 export GIT_AUTHOR_EMAIL="riccardo.cefala@container-solutions.com"
-export GIT_COMMITTER_NAME="Riccardo Cefala"
+export GIT_COMMITTER_NAME="Riccardo M. Cefala"
 export GIT_COMMITTER_EMAIL="riccardo.cefala@container-solutions.com"
 export EDITOR=$(which nvim)
 
