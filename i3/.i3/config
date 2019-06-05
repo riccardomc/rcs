@@ -28,6 +28,7 @@ bindsym Control+mod1+v exec --no-startup-id "/usr/bin/diodon"
 # Media Keys
 #
 #XF86 Volume
+bindsym $mod+XF86AudioMute exec --no-startup-id ~/.scripts/bt_fiio_connect.sh
 bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -SIGUSR1 i3status"
 bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -SIGUSR1 i3status"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -SIGUSR1 i3status"
@@ -77,7 +78,7 @@ exec ~/.scripts/touchpad.sh
 #
 exec --no-startup-id ~/.scripts/startup-applications.sh start
 exec --no-startup-id nm-applet &
-exec --no-startup-id pasystray --no-notify &
+exec --no-startup-id pasystray &
 
 #
 # Application windows settings
