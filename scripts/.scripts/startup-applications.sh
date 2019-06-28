@@ -10,7 +10,6 @@ i3popup $1
 case "$1" in 
 
 start)
-    dropbox start &
     insync start &
     diodon &
     redshift-gtk &
@@ -18,7 +17,6 @@ start)
     ;;
 
 stop)
-    dropbox stop
     insync quit
     pkill diodon
     pkill redshift
