@@ -67,6 +67,8 @@ bindsym Control+Shift+Delete exec --no-startup-id "pactl set-sink-volume @DEFAUL
 #
 # Use xautolock to lock screen automatically after timeout
 exec --no-startup-id xautolock -time 5 -locker /usr/bin/i3lock-fancy &
+exec --no-startup-id compton -b &
+exec --no-startup-id dunst &
 
 #
 # Startup scripts
