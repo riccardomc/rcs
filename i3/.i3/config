@@ -16,8 +16,10 @@ bindsym Control+mod1+j exec zim
 #
 # Screenshot
 #
-bindsym Print exec --no-startup-id "sleep 0.2 ; scrot -m '%Y%m%d%H%M%S-$wx$h.png' -e 'mv $f ~/Pictures'"
-bindsym Control+Print exec --no-startup-id "sleep 0.2 ; scrot -s '%Y%m%d%H%M%S-$wx$h.png' -e 'mv $f ~/Pictures'"
+bindsym Print exec --no-startup-id "maim ~/Pictures/Screenshot-$(date +%Y%m%d%H%M%S).png"
+bindsym Shift+Print exec --no-startup-id "maim | xclip -selection clipboard -t image/png"
+bindsym Control+Print exec --no-startup-id "maim -s ~/Pictures/Screenshot-$(date +%Y%m%d%H%M%S).png"
+bindsym Shift+Control+Print exec --no-startup-id "maim -s | xclip -selection clipboard -t image/png"
 
 #
 # Clipboard
