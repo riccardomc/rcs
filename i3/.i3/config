@@ -75,6 +75,7 @@ exec --no-startup-id dunst &
 #
 exec feh --bg-scale ~/Pictures/wallpaper.jpg
 exec ~/.scripts/touchscreen-toggle.sh
+exec ~/.scripts/keyboard.sh
 exec ~/.scripts/touchpad.sh
 
 #
