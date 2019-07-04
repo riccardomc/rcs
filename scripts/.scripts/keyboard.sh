@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Set repeat rate
-xset r rate 150 80
+xset r rate 160 80
