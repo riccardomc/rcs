@@ -1,3 +1,5 @@
+#zmodload zsh/zprof
+
 #
 # Oh My ZSH config
 #
@@ -17,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 [ ! -z "$(pgrep '^i3$')" ] && ZSH_TMUX_AUTOSTART=false || ZSH_TMUX_AUTOSTART=true
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
-plugins=(git ssh-agent tmux docker kubectl history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git ssh-agent tmux kubectl docker history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
 
 #
 # User config
@@ -175,3 +177,5 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 
 # Tell Node about these packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
+#zprof
