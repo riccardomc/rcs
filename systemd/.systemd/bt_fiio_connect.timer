@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for FiiO μBTR autoconnect
+
+[Timer]
+OnUnitActiveSec=5s
+OnBootSec=1s
+AccuracySec=1ms
+
+[Install]
+WantedBy=timers.target
