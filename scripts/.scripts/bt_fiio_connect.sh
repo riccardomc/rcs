@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 DEVICE='40:ED:98:19:0D:08'
 
 notify-send -t 5000 "Connecting FiiO ${DEVICE}"
