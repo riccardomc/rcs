@@ -7,20 +7,22 @@ i3popup() {
 
 i3popup $1
 
-case "$1" in 
+case "$1" in
 
 start)
     insync start &
     diodon &
     redshift-gtk &
-    blueman-applet & 
+    blueman-applet &
+    caffeine-indicator &
     ;;
 
 stop)
     insync quit
     pkill diodon
     pkill redshift
-    pkill blueman-applet 
+    pkill blueman-applet
+    pkill -f caffeine-indicator
     ;;
 
 *)
