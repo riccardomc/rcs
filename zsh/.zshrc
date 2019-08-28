@@ -56,6 +56,10 @@ fixssh() {
   done
 }
 
+rmtrailspaces() {
+    sed -i 's/[[:space:]]\+$//' $1
+}
+
 #
 # Exports
 #
