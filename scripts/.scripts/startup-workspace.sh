@@ -1,12 +1,41 @@
 #!/bin/bash
 
-i3-msg "workspace 2; exec gnome-terminal"
+SCRIPT=$(basename $0)
 
-sleep 0.2
+i3popup() {
+    notify-send -t 5000 "$SCRIPT: $1"
+}
 
-i3-msg "workspace 1; \
-        exec slack;\
-        exec firefox \
-            https://calendar.google.com \
-            https://mail.google.com/ \
-            https://web.whatsapp.com/;" &
+i3popup $1
+
+case "$1" in
+
+start)
+
+    i3-msg "workspace 2; exec gnome-terminal"
+
+    sleep 0.2
+
+    i3-msg "workspace 1; \
+            exec slack;\
+            exec firefox \
+                https://calendar.google.com \
+                https://mail.google.com/ \
+                https://web.whatsapp.com/;" &
+    ;;
+
+stop)
+    pkill firefox
+    pkill slack
+    pkill zim
+    pkill keepassx
+    ;;
+
+
+*)
+    echo "$0 <start|stop>"
+    ;;
+
+esac
+
+i3popup "done"
