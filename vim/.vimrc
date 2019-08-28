@@ -4,8 +4,9 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'kien/ctrlp.vim'
-Plug 'davidhalter/jedi-vim'
+"Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/syntastic'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go'
@@ -27,6 +28,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'tfnico/vim-gradle'
 Plug 'mboughaba/i3config.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'psf/black'
 call plug#end()
 
 """"""""""""""
@@ -104,7 +106,7 @@ set splitright
 """""""""""""""
 set nostartofline           "keep cursor on current column with pag keys
 set bs=indent,eol,start     "use backspace in insert mode
-set textwidth=79            "lines width
+set textwidth=89            "lines width
 set wildmenu                "Show all auto-completion options
 set whichwrap=<,>,h,l,[,]   "go up or down when reach end first or last char
 set formatoptions-=t        "do not auto-insert newline when wrapping
@@ -240,6 +242,8 @@ highlight SyntasticStyleWarningSign ctermbg=235
 """"""""""""""""
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_start_length=1
+
 
 """""""""""""""""""
 "   Vim-Go
