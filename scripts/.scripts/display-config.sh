@@ -14,6 +14,7 @@ displays_off() {
     done
 }
 
+killall compton
 displays_off
 sleep 1
 
@@ -32,3 +33,4 @@ sleep 0.5
 feh --bg-fill ~/Pictures/wallpaper.jpg || true
 ~/.scripts/reflow-workspaces.py 2>&1 | log
 i3-msg restart
+compton -b
