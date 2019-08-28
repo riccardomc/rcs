@@ -55,7 +55,8 @@ bindsym XF86AudioPrev exec --no-startup-id ~/.scripts/sp prev
 bindsym XF86AudioNext exec --no-startup-id ~/.scripts/sp next
 
 #XF86 Tools
-bindsym XF86Tools exec --no-startup-id ~/.scripts/startup-workspace.sh
+bindsym XF86Tools exec --no-startup-id ~/.scripts/startup-workspace.sh start
+bindsym Shift+XF86Tools exec --no-startup-id ~/.scripts/startup-workspace.sh stop
 bindsym Control+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh start
 bindsym Control+Shift+XF86Tools exec --no-startup-id ~/.scripts/startup-applications.sh stop
 
@@ -115,7 +116,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h
 bindsym $mod+v split v
 
-# change container layout 
+# change container layout
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -238,10 +239,10 @@ bar {
 
 #
 # Exit/Restart/Reload i3
-# 
+#
 # reload the configuration file
 bindsym $mod+Shift+c reload
-# restart i3 inplace 
+# restart i3 inplace
 bindsym $mod+Shift+r restart
 # exit i3
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit?' -b 'Yes' 'i3-msg exit'"
