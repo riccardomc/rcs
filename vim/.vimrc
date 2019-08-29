@@ -2,33 +2,60 @@
 " Plug
 """"""""""""""
 call plug#begin('~/.config/nvim/plugged')
+" Completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+" VimL completion
+Plug 'Shougo/neco-vim'
+" golang completion
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+" python completion
 Plug 'deoplete-plugins/deoplete-jedi'
+" Show function signatures, etc.
+Plug 'Shougo/echodoc.vim'
+
+" Files navigation
 Plug 'kien/ctrlp.vim'
-"Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" Syntax checking
 Plug 'scrooloose/syntastic'
+
+" Eyecandy/Info
 Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-fugitive'
-"Plug 'rodjek/vim-puppet'
 Plug 'vim-airline/vim-airline'
+Plug 'nathanaelkane/vim-indent-guides'
+
+" Programming Language specific support
+Plug 'fatih/vim-go'
+" git
+Plug 'tpope/vim-fugitive'
+" markdown
+Plug 'plasticboy/vim-markdown'
+" i3 config syntax
+Plug 'mboughaba/i3config.vim'
+" rust
+Plug 'rust-lang/rust.vim'
+" python formatter
+Plug 'davidhalter/jedi-vim'
+Plug 'psf/black'
+" Close parenthesis
+Plug 'jiangmiao/auto-pairs'
+
+" Rarely used (commented to avoid initialization)
+"Plug 'rodjek/vim-puppet'
 "Plug 'nathanielc/vim-tickscript'
 "Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'vimwiki/vimwiki'
+"Plug 'vimwiki/vimwiki'
 "Plug 'pangloss/vim-javascript'
 "Plug 'burnettk/vim-angular'
 "Plug 'leafgarland/typescript-vim'
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 "Plug 'hashivim/vim-terraform'
-"Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'avakhov/vim-yaml'
 "Plug 'tfnico/vim-gradle'
-Plug 'mboughaba/i3config.vim'
-Plug 'rust-lang/rust.vim'
-Plug 'psf/black'
 call plug#end()
 
 """"""""""""""
@@ -45,7 +72,7 @@ filetype plugin on          "load filetype plugins
 set filetype=on
 
 let os = substitute(system('uname'), "\n", "", "")
-" save with Leader+s
+" save with Leader+w
 noremap <Leader>w :update<CR>
 
 """""""""""""""
@@ -77,7 +104,7 @@ set ruler
 set showcmd                 "show command in statusline
 set noshowmode				"do not show mode, we use airline
 set nolist
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lazyredraw              "do not redraw running macros
 set hidden                  "hide buffer when leaving
 
@@ -126,9 +153,9 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 
 "indent guides, nathanaelkane/vim-indent-guides
 let g:indent_guides_auto_colors = 1
-let g:indent_guides_enable_on_vim_startup = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=None
+let g:indent_guides_enable_on_vim_startup = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=None
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 
 """""""""""""""
 " Programming
@@ -162,8 +189,8 @@ map <C-k> :tabnext<CR>
 imap <C-k> <C-o>:tabnext<CR>
 
 "right arrow for next window
-nmap <Esc>[C <C-w>w 
-imap <Esc>[C <C-o><C-w>w 
+nmap <Esc>[C <C-w>w
+imap <Esc>[C <C-o><C-w>w
 
 "arrows up/down for prev/next tab
 nmap <Esc>[A :tabprevious<CR>
@@ -186,7 +213,7 @@ set incsearch               "incremental search
 set ignorecase              "ignore case in searches
 set smartcase               "not sure
 "get rid of highlighting by pressing enter in command mode
-nnoremap <return> :noh<return> 
+nnoremap <return> :noh<return>
 
 
 """"""""""""""""
@@ -242,8 +269,33 @@ highlight SyntasticStyleWarningSign ctermbg=235
 """"""""""""""""
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length=1
+let g:deoplete#auto_complete_start_length = 1
 
+" disable jedi-vim completion
+let g:jedi#completions_enabled = 0
+
+""""""""""""""""
+" EchoDoc
+""""""""""""""""
+let g:echodoc#enable_at_startup = 1
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Pmenu
+
+""""""""""""""""
+" NeoSnippet
+""""""""""""""""
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <expr><TAB>
+ \ pumvisible() ? "\<C-n>" :
+ \ neosnippet#expandable_or_jumpable() ?
+ \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 """""""""""""""""""
 "   Vim-Go
