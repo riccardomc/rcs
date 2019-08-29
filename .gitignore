@@ -3,3 +3,7 @@ bin/.bin/vim
 bin/.bin/nvim
 bin/.bin/nvim.appimage
 fonts/.fonts/**/.uuid
+__pycache__
+*.pyc
+#specifically ignore black
+vim/.vim/black/
