@@ -221,11 +221,11 @@ client.urgent           #2f343a #900000 #ffffff #900000
 bar {
   position top
   status_command i3status
-  tray_output DP1
-  tray_output DP2
-  tray_output HDMI1
-  tray_output HDMI2
-  tray_output eDP1
+  tray_output DP-1
+  tray_output DP-2
+  tray_output HDMI-1
+  tray_output HDMI-2
+  tray_output eDP-1
   tray_padding 0
   font pango:Hack 10
   colors {
