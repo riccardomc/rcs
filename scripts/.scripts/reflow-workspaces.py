@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import math
 import i3ipc
@@ -14,7 +14,7 @@ def get_names(things):
     @param things: a list of dictionaries with a 'name' attribute
     @returns: a list of strings, the 'name' attributes of the dictionaries
     """
-    return [t["name"] for t in things]
+    return [t.name for t in things]
 
 
 def get_focused_workspace(workspaces):
@@ -25,7 +25,7 @@ def get_focused_workspace(workspaces):
     @param workspaces: a list of workspace objects
     @returns the focused workspace name
     """
-    focused_workspaces = [w for w in workspaces if w["focused"]]
+    focused_workspaces = [w for w in workspaces if w.focused]
     return focused_workspaces[0] if len(focused_workspaces) else None
 
 
@@ -52,14 +52,14 @@ def workspaces_sorted_by_number(workspaces):
     """
     Returns the list of workspaces sorted in numerical order.
     """
-    return sorted(workspaces, key=lambda workspace: int(workspace["num"]))
+    return sorted(workspaces, key=lambda workspace: int(workspace.num))
 
 
 def outputs_from_left_to_right(outputs):
     """
     Returns the list of outputs sorted from left to right based on geometry.
     """
-    return sorted(outputs, key=lambda output: output["rect"]["x"])
+    return sorted(outputs, key=lambda output: output.rect.x)
 
 
 def move_workspace(workspace, output):
@@ -100,14 +100,14 @@ def reflow_from_left_to_right():
 
     # get all the things
     workspaces = i3.get_workspaces()
-    outputs = [output for output in i3.get_outputs() if output["active"]]
+    outputs = [output for output in i3.get_outputs() if output.active]
     focused_workspace = get_focused_workspace(workspaces)
     non_empty_workspace_names = get_non_empty_workspaces()
 
     # sort and extract the the ids (names)
     workspace_names = get_names(workspaces_sorted_by_number(workspaces))
     output_names = get_names(outputs_from_left_to_right(outputs))
-    focused_workspace_name = focused_workspace["name"] if focused_workspace else None
+    focused_workspace_name = focused_workspace.name if focused_workspace else None
     sorted_non_empty_workspace_names = [
         w for w in workspace_names if w in non_empty_workspace_names
     ]
