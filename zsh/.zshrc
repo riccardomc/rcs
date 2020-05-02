@@ -33,12 +33,6 @@ keyadd() {
   ssh-add ~/.ssh/${KEY_PREFIX}${1}/id_rsa || ssh-add -L
 }
 
-vactivate() {
-    VENV=~/virtualenv/${PWD##*/}/bin/activate
-    echo source $VENV
-    source $VENV
-}
-
 osx() {
     [ $(uname) = 'Darwin' ]
 }

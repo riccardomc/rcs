@@ -240,7 +240,7 @@ export PATH="$PATH:$HOME/.bin"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-/usr/local/bin/zsh
+#/usr/local/bin/zsh
 
 PATH="/Users/rcefala/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/Users/rcefala/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

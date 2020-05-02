@@ -30,7 +30,7 @@ case $CONFIGURATION in
 esac
 sleep 0.5
 
-feh --bg-fill ~/Pictures/wallpaper.jpg || true
+feh --bg-fill ~/Pictures/wallpaper.png || true
 ~/.scripts/reflow-workspaces.py 2>&1 | log
 i3-msg restart
 compton -b
