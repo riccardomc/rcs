@@ -43,7 +43,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'psf/black'
 " Close parenthesis
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 
 " Rarely used (commented to avoid initialization)
 "Plug 'rodjek/vim-puppet'
@@ -269,7 +269,6 @@ highlight SyntasticStyleWarningSign ctermbg=235
 """"""""""""""""
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_start_length = 1
 
 " disable jedi-vim completion
 let g:jedi#completions_enabled = 0
