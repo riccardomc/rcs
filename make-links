@@ -4,6 +4,8 @@ components='
 ack
 bash
 bin
+compton
+dunst
 fontconfig
 fonts
 git

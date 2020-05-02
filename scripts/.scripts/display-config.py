@@ -147,4 +147,4 @@ class MyRandr(object):
 
 if __name__ == "__main__":
     r = MyRandr()
-    r.set_from_left_to_right("eDP-1")
+    r.set_from_left_to_right("eDP1")

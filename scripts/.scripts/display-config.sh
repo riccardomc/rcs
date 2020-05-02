@@ -1,16 +1,16 @@
 #!/bin/bash
 
 log() {
-    logger -t 'display-config' $@
+    logger -t 'display-config' "$@"
 }
 
-[ -z $DISPLAY ] && export DISPLAY=':0'
+[ -z "$DISPLAY" ] && export DISPLAY=':0'
 
 displays_off() {
     DISPLAYS=$(xrandr | grep ' connected ' | grep -v eDP1 | awk '{print $1}')
 
     for i in $DISPLAYS ; do 
-        xrandr --output $i --off || echo off $i failed
+        xrandr --output "$i" --off || echo off "$i" failed
     done
 }
 
