@@ -27,5 +27,5 @@ oh-my-zsh'
 mkdir -p ~/.config ~/.Library
 
 for c in $components ; do
-	stow --verbose 1 -R -t $HOME $c
+	stow --verbose 1 -R -t "$HOME" "$c"
 done

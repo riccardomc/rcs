@@ -18,14 +18,15 @@ start)
 
     i3-msg "workspace 1; \
             exec slack;\
-            exec firefox \
+            exec google-chrome \
                 https://calendar.google.com \
                 https://mail.google.com/ \
+                https://kanbanflow.com/board/PvQU1A \
                 https://web.whatsapp.com/;" &
     ;;
 
 stop)
-    pkill firefox
+    pkill google-chrome
     pkill slack
     pkill zim
     pkill keepassx

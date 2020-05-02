@@ -64,7 +64,7 @@ export GIT_AUTHOR_NAME="Riccardo M. Cefala"
 export GIT_AUTHOR_EMAIL="riccardo.cefala@container-solutions.com"
 export GIT_COMMITTER_NAME="Riccardo M. Cefala"
 export GIT_COMMITTER_EMAIL="riccardo.cefala@container-solutions.com"
-export EDITOR=$(which nvim)
+export EDITOR=$(which nvim.appimage)
 
 # revert ls quoting behaviour introduced in coreutils 8.25
 export QUOTING_STYLE=literal
@@ -99,7 +99,7 @@ export PATH=$HOME/opt/gradle-4.5.1/bin:$PATH
 # Aliases
 #
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
-alias vim=$(which nvim)
+alias vim=$(which nvim.appimage)
 linux && alias pbcopy='xsel --clipboard --input'
 linux && alias pbpaste='xsel --clipboard'
 linux && alias vpnup='nmcli c up riccardo_teal --ask'
@@ -110,7 +110,7 @@ alias k='kubectl'
 alias kns='k get namespaces'
 
 # Openfiles quick in vim with FASD
-alias v='f -e nvim'
+alias v='f -e nvim.appimage'
 
 # grep through history
 alias hg="history | grep"
