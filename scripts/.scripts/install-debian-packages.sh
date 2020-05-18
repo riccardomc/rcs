@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-apt install -y \
+sudo apt install -y \
     apt-transport-https \
     blueman \
     build-essential \
@@ -12,6 +12,7 @@ apt install -y \
     diodon \
     docker-ce \
     feh \
+    firmware-misc-nonfree \
     flake8 \
     git \
     gnupg \
@@ -27,6 +28,7 @@ apt install -y \
     libnotify-bin \
     linux-cpupower \
     maim \
+    network-manager-openvpn \
     nmap \
     nmon \
     pasystray \
