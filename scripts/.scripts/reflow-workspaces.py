@@ -80,6 +80,12 @@ def _reflow(workspaces, outputs):
     @param workspaces: is a list of workspace names i.e. ['1', '2', '3']
     @param outputs: is a list of output names i.e. ['VGA1', 'DP1']
     """
+
+    if len(workspaces) < 2:
+        # if there's 1 or 0 workspaces, apply initial configuration
+        _reflow_initial_configuration(outputs)
+        return
+
     i = 0
     j = 1
     workspaces_per_output = math.ceil(float(len(workspaces)) / len(outputs))
@@ -91,6 +97,19 @@ def _reflow(workspaces, outputs):
         if math.fmod(j, workspaces_per_output) == 0 and i < len(outputs) - 1:
             i += 1
         j += 1
+
+
+def _reflow_initial_configuration(outputs):
+    """
+    Just sort workspaces per output numerically
+
+    @param outputs: is a list of output names i.e. ['VGA1', 'DP1']
+    """
+    print("applying initial configuration")
+    for index, output in zip(range(len(outputs)), outputs):
+        workspace = str(index + 1)
+        print(("%s goes on %s" % (workspace, output)))
+        move_workspace(workspace, output)
 
 
 def reflow_from_left_to_right():
