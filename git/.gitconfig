@@ -1,12 +1,17 @@
 [user]
-        name = Riccardo M. Cefala
-        email = riccardo.cefala@container-solutions.com
-        signkey = 35693B03541B7527C790EE735C134572339E936F
+    name = Riccardo M. Cefala
+    email = riccardo.cefala@container-solutions.com
+    signkey = 35693B03541B7527C790EE735C134572339E936F
 [github]
-        user = riccardomc
+    user = riccardomc
 [core]
-        editor = nvim
-        excludesfile = ~/.gitignore
+    editor = vim
+    excludesfile = ~/.gitignore
+    # https://github.com/dandavison/delta/releases
+    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
+
+[interactive]
+    diffFilter = delta --color-only
 [color]
         ui = true
 [alias]
@@ -22,4 +27,4 @@
 [mergetool "kdiff3NoAuto"]
 	cmd = kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 [log]
-        decorate = true
+    decorate = true

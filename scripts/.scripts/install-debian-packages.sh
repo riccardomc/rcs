@@ -55,3 +55,14 @@ apt install -y \
     zim \
     zsh-autosuggestions \
     zsh-syntax-highlighting
+
+# third parties
+
+# isync
+# google-chrome
+
+# git-delta
+GIT_DELTA_VERSION=0.1.1
+GIT_DELTA_DEB=~/Downloads/git-delta_${GIT_DELTA_VERSION}_amd64.deb
+curl -s -C - -Lo $GIT_DELTA_DEB https://github.com/dandavison/delta/releases/download/$GIT_DELTA_VERSION/$GIT_DELTA_DEB
+sudo apt install $GIT_DELTA_DEB
