@@ -86,8 +86,8 @@ source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 #
 # Google Cloud SDK
 #
-source /home/rmc/opt/google-cloud-sdk/path.zsh.inc
-source /home/rmc/opt/google-cloud-sdk/completion.zsh.inc
+#source ~/opt/google-cloud-sdk/path.zsh.inc
+#source ~/opt/google-cloud-sdk/completion.zsh.inc
 
 #
 # Gradle
@@ -117,7 +117,7 @@ alias hg="history | grep"
 #
 # Completion - aws, kubectl, ssh, ...
 #
-source <(kubectl completion zsh)
+#source <(kubectl completion zsh)
 source ~/.local/bin/aws_zsh_completer.sh
 
 # ssh host completion
