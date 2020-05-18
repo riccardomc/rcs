@@ -81,8 +81,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Python (virtualenvwrapper)
 #
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Devel
-source /home/rmc/.local/bin/virtualenvwrapper.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 #
 # Google Cloud SDK
