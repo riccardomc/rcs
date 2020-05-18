@@ -179,6 +179,9 @@ filetype indent on          "filetype indent plugin
 "http://vim.wikia.com/wiki/Fix_syntax_highlighting
 autocmd BufEnter * :syntax sync ccomment
 
+"refresh, mainly for gitgutter
+set updatetime=100
+
 """"""""""""""""""
 " Tabs and Windows
 """"""""""""""""""

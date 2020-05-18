@@ -355,6 +355,11 @@ else
     hi Error         cterm=bold ctermfg=7 ctermbg=1
 endif
 
+highlight GitGutterAdd    guifg=#009900 ctermfg=2 ctermbg=black
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3 ctermbg=black
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1 ctermbg=black
+
+
 hi SignColumn ctermbg=black
 hi ColorColumn ctermbg=black
 
