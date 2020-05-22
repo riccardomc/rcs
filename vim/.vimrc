@@ -9,8 +9,6 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 " VimL completion
 Plug 'Shougo/neco-vim'
-" golang completion
-Plug 'zchee/deoplete-go', { 'do': 'make' }
 " python completion
 Plug 'deoplete-plugins/deoplete-jedi'
 " Show function signatures, etc.
@@ -270,8 +268,12 @@ highlight SyntasticStyleWarningSign ctermbg=235
 """"""""""""""""
 " NeoComplete
 """"""""""""""""
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#enable_at_startup = 1
+
+" enable completion for go
+set completeopt+=noselect
+call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
 
 " disable jedi-vim completion
 let g:jedi#completions_enabled = 0
