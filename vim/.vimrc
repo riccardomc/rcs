@@ -20,7 +20,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Syntax checking
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 
 " Eyecandy/Info
 Plug 'airblade/vim-gitgutter'
@@ -42,6 +42,9 @@ Plug 'davidhalter/jedi-vim'
 Plug 'psf/black'
 " Close parenthesis
 "Plug 'jiangmiao/auto-pairs'
+" terraform completion
+Plug 'hashivim/vim-terraform'
+Plug 'juliosueiras/vim-terraform-completion'
 
 " Rarely used (commented to avoid initialization)
 "Plug 'rodjek/vim-puppet'
@@ -328,6 +331,15 @@ let g:go_list_type = 'quickfix'
 
 " do not show preview scratch window
 set completeopt-=preview
+
+"""""""""""""""""""
+"  Terraform
+"""""""""""""""""""
+call deoplete#custom#option('omni_patterns', {
+\ 'complete_method': 'omnifunc',
+\ 'terraform': '[^ *\t"{=$]\w*',
+\})
+call deoplete#initialize()
 
 """""""""""""""""""
 "  Ack
