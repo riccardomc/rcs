@@ -19,7 +19,9 @@ COMPLETION_WAITING_DOTS="true"
 [ ! -z "$(pgrep '^i3$')" ] && ZSH_TMUX_AUTOSTART=false || ZSH_TMUX_AUTOSTART=true
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
-plugins=(git ssh-agent tmux kubectl docker history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(aws git ssh-agent tmux kubectl docker history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
+
+SHOW_AWS_PROMPT=false
 
 #
 # User config
