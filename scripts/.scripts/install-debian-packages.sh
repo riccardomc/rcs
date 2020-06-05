@@ -17,6 +17,7 @@ sudo apt install -y \
     git \
     gnupg \
     gparted \
+    i3lock-fancy \
     i3 \
     i7z \
     jq \
@@ -41,6 +42,7 @@ sudo apt install -y \
     python3-xlib \
     redshift \
     rofi \
+    ruby-dev \
     shellcheck \
     software-properties-common \
     solaar-gnome3 \
