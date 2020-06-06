@@ -4,7 +4,20 @@
 # Oh My ZSH config
 #
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="rmc"
+
+ZSH_THEME="spaceship"
+#
+# Spaceship prompt
+#
+SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
+SPACESHIP_DIR_PREFIX="🦊 "
+SPACESHIP_PROMPT_DEFAULT_PREFIX=
+SPACESHIP_GIT_PREFIX=
+SPACESHIP_AWS_PREFIX=
+SPACESHIP_VI_MODE_SHOW=false
+SPACESHIP_JOBS_SYMBOL="🔧"
+
 
 #
 # Completion plugin config
@@ -178,3 +191,4 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 #zprof
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
