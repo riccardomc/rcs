@@ -1,6 +1,0 @@
-[Unit]
-Description=Auto connect my FiiO μBTR
-
-[Service]
-Type=oneshot
-ExecStart=/bin/bash -c "/usr/bin/bluetoothctl info 40:ED:98:19:0D:08 | /bin/grep 'Connected: yes' || /usr/bin/bluetoothctl connect 40:ED:98:19:0D:08"
