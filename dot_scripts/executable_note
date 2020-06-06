@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+NOTES_DIR=$HOME/Development/notes
+today=$NOTES_DIR/$(date +%Y-%m-%d).md
+
+nvim $today

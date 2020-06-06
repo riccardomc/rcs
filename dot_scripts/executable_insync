@@ -1,0 +1,18 @@
+#!/bin/bash
+
+INSYNC_BIN=~/opt/insync-portable/client/insync-portable
+PID_FILE=~/.config/Insync/insync.pid
+
+case $1 in
+    start)
+        $INSYNC_BIN start
+        sleep 0.5
+        pgrep -o insync-headless > $PID_FILE
+        ;;
+    quit)
+        $INSYNC_BIN quit
+        rm -rf $PID_FILE
+        ;;
+    *)
+        $INSYNC_BIN $@
+esac
