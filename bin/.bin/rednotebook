@@ -1,6 +1,0 @@
-#!/bin/bash
-
-RNDIR=~/opt/rednotebook
-
-cd $RNDIR
-./run
