@@ -122,6 +122,7 @@ linux && alias vpndown='nmcli c down riccardo_teal'
 # kubectl
 alias k='kubectl'
 alias kns='k get namespaces'
+path=+~/.krew/bin
 
 # Openfiles quick in vim with FASD
 alias v='f -e nvim.appimage'
@@ -129,10 +130,13 @@ alias v='f -e nvim.appimage'
 # grep through history
 alias hg="history | grep"
 
+# chezmoi
+alias cm=chezmoi
+
 #
-# Completion - aws, kubectl, ssh, ...
+# Completion - aws, ssh, ...
 #
-#source <(kubectl completion zsh)
+fpath+=~/.oh-my-zsh/custom/functions
 source ~/.local/bin/aws_zsh_completer.sh
 
 # ssh host completion
