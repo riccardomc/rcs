@@ -122,7 +122,7 @@ linux && alias vpndown='nmcli c down riccardo_teal'
 # kubectl
 alias k='kubectl'
 alias kns='k get namespaces'
-path=+~/.krew/bin
+path+=~/.krew/bin
 
 # Openfiles quick in vim with FASD
 alias v='f -e nvim.appimage'
