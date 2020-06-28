@@ -10,15 +10,18 @@ sudo apt install -y \
     compton \
     curl \
     diodon \
+    dnsutils \
     docker-ce \
     feh \
     firmware-misc-nonfree \
     flake8 \
+    gcal \
     git \
     gnupg \
     gparted \
-    i3lock-fancy \
+    htop \
     i3 \
+    i3lock-fancy \
     i7z \
     jq \
     kdiff3 \
@@ -70,3 +73,9 @@ GIT_DELTA_VERSION=0.1.1
 GIT_DELTA_DEB=~/Downloads/git-delta_${GIT_DELTA_VERSION}_amd64.deb
 curl -s -C - -Lo $GIT_DELTA_DEB https://github.com/dandavison/delta/releases/download/$GIT_DELTA_VERSION/$GIT_DELTA_DEB
 sudo apt install $GIT_DELTA_DEB
+
+# bat - cat with wings
+BAT_VERSION=0.15.4
+BAT_DEB=~/Downloads/bat_${GIT_DELTA_VERSION}_amd64.deb
+curl -s -C - -Lo $BAT_DEB https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb
+sudo apt install $BAT_DEB
