@@ -9,6 +9,7 @@ KUBECTL_VERSION=v1.18.3
 KUSTOMIZE_VERSION=v3.6.1
 TERRAFORM_VERSION=0.12.25
 KREW_VERSION=v0.3.4
+ARGOCD_VERSION=v1.6.1
 
 # Install awscli
 if ! [ -x "$(command -v aws)" ] ; then
@@ -53,7 +54,17 @@ if ! [ -x "$(command -v terraform)" ] ; then
     unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip -d $DESTINATION_DIRECTORY
     chmod +x $DESTINATION_DIRECTORY/terraform
     rm -f terraform_${TERRAFORM_VERSION}_linux_amd64.zip
-fi    
+fi
+
+# Install argocd
+if ! [ -x "$(command -v argocd)" ] ; then
+    echo "Installing argocd $ARGOCD_VERSION"
+    curl -sSL \
+        -o "$DESTINATION_DIRECTORY/argocd" \
+        "https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64"
+    chmod +x $DESTINATION_DIRECTORY/argocd
+fi
+
 
 # Install krew
 # https://krew.sigs.k8s.io/docs/user-guide/setup/install/
