@@ -2,7 +2,7 @@
 
 DESTINATION_DIRECTORY=~/.bin
 
-ISTIO_VERSION=1.6.0
+ISTIO_VERSION=1.6.1
 AWS_CLI_VERSION=1.18.65
 AWS_IAM_AUTHENTICATOR_VERSION=0.5.0
 KUBECTL_VERSION=v1.18.3
@@ -64,7 +64,6 @@ if ! [ -x "$(command -v argocd)" ] ; then
         "https://github.com/argoproj/argo-cd/releases/download/$ARGOCD_VERSION/argocd-linux-amd64"
     chmod +x $DESTINATION_DIRECTORY/argocd
 fi
-
 
 # Install krew
 # https://krew.sigs.k8s.io/docs/user-guide/setup/install/
