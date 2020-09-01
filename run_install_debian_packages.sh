@@ -3,6 +3,7 @@
 
 sudo apt install -y \
     apt-transport-https \
+    arandr \
     blueman \
     build-essential \
     ca-certificates \
@@ -32,6 +33,7 @@ sudo apt install -y \
     libnotify-bin \
     linux-cpupower \
     maim \
+    maven \
     network-manager-openvpn \
     nmap \
     nmon \
@@ -59,6 +61,7 @@ sudo apt install -y \
     xournal \
     xsel \
     xserver-xorg-input-synaptics \
+    yamllint \
     zim \
     zsh-autosuggestions \
     zsh-syntax-highlighting
@@ -79,3 +82,8 @@ BAT_VERSION=0.15.4
 BAT_DEB=~/Downloads/bat_${GIT_DELTA_VERSION}_amd64.deb
 curl -s -C - -Lo $BAT_DEB https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb
 sudo apt install $BAT_DEB
+
+# visual studio code
+VCODE_DEB=~/Downloads/vcode.deb
+curl -s -C - -Lo $VCODE_DEB https://go.microsoft.com/fwlink/?LinkID=760868
+sudo apt install $VCODE_DEB
