@@ -45,6 +45,8 @@ Plug 'psf/black'
 " terraform completion
 Plug 'hashivim/vim-terraform'
 Plug 'juliosueiras/vim-terraform-completion'
+" YAML
+Plug 'pedrohdz/vim-yaml-folds'
 
 " Rarely used (commented to avoid initialization)
 "Plug 'rodjek/vim-puppet'
@@ -262,6 +264,8 @@ let g:syntastic_warning_symbol = '😠'
 let g:syntastic_style_error_symbol = '💩'
 let g:syntastic_style_warning_symbol = '💩'
 
+let g:syntastic_yaml_checkers = ['yamllint']
+
 " highlight according to desert-256-warm scheme
 highlight SyntasticErrorSign ctermbg=235
 highlight SyntasticWarningSign ctermbg=235
@@ -340,6 +344,9 @@ call deoplete#custom#option('omni_patterns', {
 \ 'terraform': '[^ *\t"{=$]\w*',
 \})
 call deoplete#initialize()
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+let g:terraform_fmt_on_save=1
 
 """""""""""""""""""
 "  Ack
