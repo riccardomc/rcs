@@ -67,7 +67,7 @@ fi
 
 # Install krew
 # https://krew.sigs.k8s.io/docs/user-guide/setup/install/
-if ! kubectl krew; then
+if ! kubectl krew > /dev/null 2>&1 ; then
     (
       set -x; cd "$(mktemp -d)" &&
           curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/${KREW_VERSION}/download/krew.{tar.gz,yaml}" &&
