@@ -84,6 +84,13 @@ curl -s -C - -Lo $BAT_DEB https://github.com/sharkdp/bat/releases/download/v${BA
 sudo apt install $BAT_DEB
 
 # visual studio code
-VCODE_DEB=~/Downloads/vcode.deb
-curl -s -C - -Lo $VCODE_DEB https://go.microsoft.com/fwlink/?LinkID=760868
-sudo apt install $VCODE_DEB
+if ! code --version > /dev/null 2>&1 ; then
+    VCODE_DEB=~/Downloads/vcode.deb
+    curl -s -C - -Lo $VCODE_DEB https://go.microsoft.com/fwlink/?LinkID=760868
+    sudo apt install $VCODE_DEB
+fi
+
+# brave browser
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt install brave-browser
