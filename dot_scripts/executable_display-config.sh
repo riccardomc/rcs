@@ -9,7 +9,7 @@ log() {
 displays_off() {
     DISPLAYS=$(xrandr | grep ' connected ' | grep -v eDP1 | awk '{print $1}')
 
-    for i in $DISPLAYS ; do 
+    for i in $DISPLAYS ; do
         xrandr --output "$i" --off || echo off "$i" failed
     done
 }
@@ -19,9 +19,9 @@ displays_off
 sleep 1
 
 CONFIGURATION=$1
-case $CONFIGURATION in 
+case $CONFIGURATION in
     auto)
-        ~/.scripts/display-config.py 2>&1 | log
+        ~/.scripts/display-config.py 2>&1 | log "$@"
         ;;
     *)
         xrandr --auto
@@ -31,6 +31,6 @@ esac
 sleep 0.5
 
 feh --bg-fill ~/Pictures/wallpaper.png || true
-~/.scripts/reflow-workspaces.py 2>&1 | log
+~/.scripts/reflow-workspaces.py 2>&1 | log "$@"
 i3-msg restart
 compton -b

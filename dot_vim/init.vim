@@ -24,7 +24,7 @@ Plug 'vim-syntastic/syntastic'
 
 " Eyecandy/Info
 Plug 'airblade/vim-gitgutter'
-Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Programming Language specific support
@@ -53,7 +53,7 @@ Plug 'pedrohdz/vim-yaml-folds'
 "Plug 'nathanielc/vim-tickscript'
 "Plug 'godlygeek/tabular'
 "Plug 'vimwiki/vimwiki'
-"Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 "Plug 'burnettk/vim-angular'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'hashivim/vim-terraform'
@@ -105,7 +105,7 @@ endif
 colorscheme   desert-warm-256 "nice dark colors
 set ruler
 set showcmd                 "show command in statusline
-set noshowmode				"do not show mode, we use airline
+"set noshowmode				"do not show mode, we use airline
 set nolist
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lazyredraw              "do not redraw running macros
@@ -249,9 +249,9 @@ set pastetoggle=<F2>
 let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['flake8', 'pyflakes3']
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -363,7 +363,7 @@ autocmd! BufNewFile,BufRead *.ppr setlocal ft=puppetreport
 "  Airline
 """""""""""""""""""
 set laststatus=2
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 
 """""""""""""""""""
 "  Python

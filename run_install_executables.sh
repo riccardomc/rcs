@@ -10,6 +10,7 @@ KUSTOMIZE_VERSION=v3.6.1
 TERRAFORM_VERSION=0.12.25
 KREW_VERSION=v0.3.4
 ARGOCD_VERSION=v1.6.1
+PACK_VERSION=v0.14.2
 
 # Install awscli
 if ! [ -x "$(command -v aws)" ] ; then
@@ -77,3 +78,12 @@ if ! kubectl krew > /dev/null 2>&1 ; then
       "$KREW" update
     )
 fi
+
+# Install pack
+# https://buildpacks.io/docs/tools/pack/cli/install/
+if ! [ -x "$(command -v pack)" ] ; then
+    echo "Installing pack $PACK_VERSION"
+    curl -sSL "https://github.com/buildpacks/pack/releases/download/${PACK_VERSION}/pack-${PACK_VERSION}-linux.tgz" | sudo tar -C $DESTINATION_DIRECTORY --no-same-owner -xzv pack
+fi
+
+

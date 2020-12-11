@@ -9,6 +9,7 @@ sudo apt install -y \
     ca-certificates \
     caffeine \
     compton \
+    compton-conf \
     curl \
     diodon \
     dnsutils \
