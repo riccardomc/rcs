@@ -24,7 +24,7 @@ Plug 'vim-syntastic/syntastic'
 
 " Eyecandy/Info
 Plug 'airblade/vim-gitgutter'
-"Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline'
 Plug 'nathanaelkane/vim-indent-guides'
 
 " Programming Language specific support
@@ -105,7 +105,7 @@ endif
 colorscheme   desert-warm-256 "nice dark colors
 set ruler
 set showcmd                 "show command in statusline
-"set noshowmode				"do not show mode, we use airline
+set noshowmode				"do not show mode, we use airline
 set nolist
 set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\
 set lazyredraw              "do not redraw running macros
@@ -363,7 +363,7 @@ autocmd! BufNewFile,BufRead *.ppr setlocal ft=puppetreport
 "  Airline
 """""""""""""""""""
 set laststatus=2
-"let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 """""""""""""""""""
 "  Python
