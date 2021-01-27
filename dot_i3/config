@@ -74,10 +74,10 @@ exec --no-startup-id dunst &
 #
 # Startup scripts
 #
-exec feh --bg-scale ~/Pictures/wallpaper.png
-exec ~/.scripts/touchscreen-toggle.sh
-exec ~/.scripts/keyboard.sh
-exec ~/.scripts/touchpad.sh
+exec --no-startup-id feh --bg-scale ~/Pictures/wallpaper.png
+exec --no-startup-id ~/.scripts/touchscreen-toggle.sh
+exec --no-startup-id ~/.scripts/keyboard.sh
+exec --no-startup-id ~/.scripts/touchpad.sh
 
 #
 # Startup apps
@@ -85,6 +85,7 @@ exec ~/.scripts/touchpad.sh
 exec --no-startup-id ~/.scripts/startup-applications.sh start
 exec --no-startup-id nm-applet &
 exec --no-startup-id pasystray &
+exec --no-startup-id cbatticon &
 
 #
 # Application windows settings

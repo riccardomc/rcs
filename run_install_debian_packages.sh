@@ -8,6 +8,7 @@ sudo apt install -y \
     build-essential \
     ca-certificates \
     caffeine \
+    cbatticon \
     compton \
     compton-conf \
     curl \
