@@ -12,7 +12,7 @@ case "$1" in
 start)
     insync start &
     diodon &
-    redshift-gtk &
+    redshift-gtk -l '52.3:4.9' &
     blueman-applet &
     caffeine-indicator &
     ;;
