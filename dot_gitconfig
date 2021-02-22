@@ -1,17 +1,13 @@
 [user]
     name = Riccardo M. Cefala
-    email = riccardo.cefala@container-solutions.com
+    email = riccardo@cefala.net
     signkey = 35693B03541B7527C790EE735C134572339E936F
 [github]
     user = riccardomc
 [core]
     editor = vim
     excludesfile = ~/.gitignore
-    # https://github.com/dandavison/delta/releases
-    pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Monokai Extended'
 
-[interactive]
-    diffFilter = delta --color-only
 [color]
         ui = true
 [alias]
