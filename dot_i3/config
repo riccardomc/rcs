@@ -93,6 +93,7 @@ exec --no-startup-id cbatticon &
 # Application windows settings
 #
 for_window [class="Pomello"] floating enable
+for_window [instance="zoom"] floating enable, border normal
 
 #
 # Windows navigation
@@ -136,6 +137,12 @@ bindsym $mod+space focus mode_toggle
 # focus the parent/child container
 bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
+
+# never move mouse (warping) to a new window when changing output
+mouse_warping none
+
+# leave fullscreen when a popup appears
+popup_during_fullscreen leave_fullscreen
 
 #
 # Scratchpad

@@ -3,3 +3,6 @@
 
 # ignore .terraform
 --ignore-directory=.terraform
+
+# ignore python virtualenv
+--ignore-directory=.venv

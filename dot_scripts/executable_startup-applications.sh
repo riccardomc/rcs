@@ -12,7 +12,7 @@ case "$1" in
 start)
     insync start &
     diodon &
-    redshift-gtk -l '52.3:4.9' &
+    /usr/libexec/geoclue-2.0/demos/agent &
     blueman-applet &
     caffeine-indicator &
     ;;
