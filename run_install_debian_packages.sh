@@ -12,7 +12,7 @@ sudo apt install -y \
     compton \
     compton-conf \
     curl \
-    diodon \
+    copyq \
     dnsutils \
     ddcutil \
     docker-ce \

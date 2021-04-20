@@ -11,7 +11,7 @@ case "$1" in
 
 start)
     insync start &
-    diodon &
+    copyq &
     /usr/libexec/geoclue-2.0/demos/agent &
     blueman-applet &
     caffeine-indicator &
@@ -19,7 +19,7 @@ start)
 
 stop)
     insync quit
-    pkill diodon
+    pkill copyq
     pkill redshift
     pkill blueman-applet
     pkill -f caffeine-indicator

@@ -24,7 +24,8 @@ bindsym Shift+Control+Print exec --no-startup-id "maim -s | xclip -selection cli
 #
 # Clipboard
 #
-bindsym Control+mod1+v exec --no-startup-id "/usr/bin/diodon"
+# FIXME switched to copyq because selection doesn't work reliably in chrome and others
+# bindsym Control+mod1+v exec --no-startup-id "/usr/bin/diodon"
 
 #
 # Media Keys
@@ -93,7 +94,11 @@ exec --no-startup-id cbatticon &
 # Application windows settings
 #
 for_window [class="Pomello"] floating enable
+for_window [instance="zim"] floating enable, border normal
+for_window [instance="pavucontrol"] floating enable, border normal
+for_window [instance="gnome-calculator"] floating enable, border normal
 for_window [instance="zoom"] floating enable, border normal
+for_window [instance="copyq"] floating enable
 
 #
 # Windows navigation
