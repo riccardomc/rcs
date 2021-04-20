@@ -234,7 +234,6 @@ client.urgent           #2f343a #900000 #ffffff #900000
 
 # i3bar
 bar {
-  mode hide
   position top
   status_command i3status
   tray_output DP1
