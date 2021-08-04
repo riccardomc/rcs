@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# just exit if we're not on Debian
+uname -a | grep Debian || exit 0
 
 sudo apt install -y \
     apt-transport-https \

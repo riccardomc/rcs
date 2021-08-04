@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# just exit if we're not on Linux
+uname -a | grep Linux || exit 0
+
 CUSTOM_NVIM_PATH=/usr/local/bin/nvim.appimage
 
 if ! [ -f "$CUSTOM_NVIM_PATH" ] ; then

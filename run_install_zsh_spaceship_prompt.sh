@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# just exit if we're not on Linux
+uname -a | grep Linux || exit 0
+
 ZSH_CUSTOM=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}
 SPACESHIP_PROMPT_CHECKOUT=$ZSH_CUSTOM/themes/spaceship-prompt
 SPACESHIP_PROMPT_REPO=https://github.com/denysdovhan/spaceship-prompt.git
