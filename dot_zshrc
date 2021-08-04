@@ -89,11 +89,15 @@ rmtrailspaces() {
 
 source $ZSH/oh-my-zsh.sh
 
+linux && export VIM=$(which nvim.appimage)
+osx && export VIM=$(which nvim)
+
 export GIT_AUTHOR_NAME="Riccardo M. Cefala"
-export GIT_AUTHOR_EMAIL="riccardo.cefala@container-solutions.com"
+export GIT_AUTHOR_EMAIL="riccardo.cefala@nike.com"
 export GIT_COMMITTER_NAME="Riccardo M. Cefala"
-export GIT_COMMITTER_EMAIL="riccardo.cefala@container-solutions.com"
-export EDITOR=$(which nvim.appimage)
+export GIT_COMMITTER_EMAIL="riccardo.cefala@nike.com"
+export EDITOR=$VIM
+osx && export VIMRUNTIME=/usr/local/Cellar/neovim/0.5.0/share/nvim/runtime
 
 # revert ls quoting behaviour introduced in coreutils 8.25
 export QUOTING_STYLE=literal
@@ -110,7 +114,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # Python (virtualenvwrapper)
 #
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
+linux && source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
+osx && export PATH=$PATH:Library/Python/3.8/bin
 
 #
 # Google Cloud SDK
@@ -127,7 +132,7 @@ export PATH=$HOME/opt/gradle-4.5.1/bin:$PATH
 # Aliases
 #
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
-alias vim=$(which nvim.appimage)
+alias vim=$VIM
 linux && alias pbcopy='xsel --clipboard --input'
 linux && alias pbpaste='xsel --clipboard'
 linux && alias vpnup='nmcli c up riccardo_teal --ask'
@@ -151,7 +156,10 @@ alias cm=chezmoi
 # Completion - aws, ssh, ...
 #
 fpath+=~/.oh-my-zsh/custom/functions
-source ~/.local/bin/aws_zsh_completer.sh
+linux && source ~/.local/bin/aws_zsh_completer.sh
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+osx && complete -C $(which aws_completer) aws
 
 # ssh host completion
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
