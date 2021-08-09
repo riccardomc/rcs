@@ -19,6 +19,7 @@ fi
 for executable in \
     kubectl \
     kustomize \
+    helm \
     istioctl \
     terraform \
     argocd \
