@@ -199,6 +199,11 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
 #
+# Nike
+#
+path+="$HOME/Development/gimme-aws-creds/bin"
+
+#
 # NPM
 #
 # https://stackoverflow.com/a/13021677
