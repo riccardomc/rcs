@@ -14,6 +14,7 @@ fi
 
 if ! [ -x "$(command -v arkade)" ] ; then
     curl -sLS https://get.arkade.dev | sh
+    cp $HOME/arkade $DESTINATION_DIRECTORY
 fi
 
 for executable in \
