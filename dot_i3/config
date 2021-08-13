@@ -96,9 +96,14 @@ exec --no-startup-id cbatticon &
 for_window [class="Pomello"] floating enable
 for_window [instance="zim"] floating enable, border normal
 for_window [instance="pavucontrol"] floating enable, border normal
+for_window [instance="blueman-manager"] floating enable, border normal
+for_window [instance="solaar"] floating enable, border normal
 for_window [instance="gnome-calculator"] floating enable, border normal
 for_window [instance="zoom"] floating enable, border normal
 for_window [instance="copyq"] floating enable
+for_window [instance="Wfica"] floating enable, border normal
+for_window [instance="signal"] floating enable, border normal
+for_window [instance="microsoft teams - preview"] floating enable, border normal
 
 #
 # Windows navigation
