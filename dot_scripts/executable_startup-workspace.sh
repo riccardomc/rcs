@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT=$(basename $0)
-BROWSER=$(which brave-browser)
+BROWSER=$(which google-chrome)
 
 i3popup() {
     notify-send -t 5000 "$SCRIPT: $1"
