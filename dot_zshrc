@@ -89,14 +89,14 @@ rmtrailspaces() {
 
 source $ZSH/oh-my-zsh.sh
 
-linux && export VIM=$(which nvim.appimage)
-osx && export VIM=$(which nvim)
+linux && export VIM_EXECUTABLE=$(which nvim.appimage)
+osx && export VIM_EXECUTABLE=$(which nvim)
 
 export GIT_AUTHOR_NAME="Riccardo M. Cefala"
 export GIT_AUTHOR_EMAIL="riccardo.cefala@nike.com"
 export GIT_COMMITTER_NAME="Riccardo M. Cefala"
 export GIT_COMMITTER_EMAIL="riccardo.cefala@nike.com"
-export EDITOR=$VIM
+export EDITOR=$VIM_EXECUTABLE
 osx && export VIMRUNTIME=/usr/local/Cellar/neovim/0.5.0/share/nvim/runtime
 
 # revert ls quoting behaviour introduced in coreutils 8.25
@@ -132,7 +132,7 @@ export PATH=$HOME/opt/gradle-4.5.1/bin:$PATH
 # Aliases
 #
 alias mypublicip='wget http://ipinfo.io/ip -qO -'
-alias vim=$VIM
+alias vim=$VIM_EXECUTABLE
 linux && alias pbcopy='xsel --clipboard --input'
 linux && alias pbpaste='xsel --clipboard'
 linux && alias vpnup='nmcli c up riccardo_teal --ask'
