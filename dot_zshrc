@@ -19,6 +19,32 @@ SPACESHIP_VI_MODE_SHOW=false
 
 # AWS
 SPACESHIP_AWS_PREFIX=
+SPACESHIP_AWS_SYMBOL=
+
+# custom AWS region section
+SPACESHIP_AWS_REGION_SHOW=true
+SPACESHIP_AWS_REGION_PREFIX=
+SPACESHIP_AWS_REGION_SUFFIX=" "
+SPACESHIP_AWS_REGION_SYMBOL=
+SPACESHIP_AWS_REGION_COLOR=208
+
+spaceship_aws_region() {
+
+    # do not show if false
+    [[ $SPACESHIP_AWS_REGION_SHOW == false ]] && return
+
+    local region=${AWS_DEFAULT_REGION}
+
+    # exit if not set
+    [[ -z $region ]] && return
+
+    # show prompt section
+    spaceship::section \
+        "$SPACESHIP_AWS_REGION_COLOR" \
+        "$SPACESHIP_AWS_REGION_PREFIX" \
+        "${SPACESHIP_AWS_REGION_SYMBOL}${region}" \
+        "$SPACESHIP_AWS_REGION_SUFFIX"
+}
 
 # Docker
 SPACESHIP_DOCKER_CONTEXT_SHOW=false
@@ -32,6 +58,28 @@ SPACESHIP_GIT_PREFIX=
 
 # Golang
 SPACESHIP_GOLANG_SHOW=false
+
+# Kubernetes
+SPACESHIP_KUBECONTEXT_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+
+SPACESHIP_PROMPT_ORDER=(
+  user              # Username section
+  dir               # Current directory section
+  git               # Git section (git_branch + git_status)
+  aws               # Amazon Web Services section
+  aws_region        # CUSTOM: show AWS region
+  kubectl_context   # Kubectl context section
+  venv              # virtualenv section
+  terraform         # Terraform workspace section
+  exec_time         # Execution time
+  line_sep          # Line break
+  battery           # Battery level and status
+  vi_mode           # Vi-mode indicator
+  jobs              # Background jobs indicator
+  exit_code         # Exit code section
+  char              # Prompt character
+)
 
 #
 # Completion plugin config
