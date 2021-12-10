@@ -163,7 +163,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 #
 export WORKON_HOME=$HOME/.virtualenvs
 linux && source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
-osx && export PATH=$PATH:Library/Python/3.8/bin
+osx && export PATH=$PATH:$HOME/Library/Python/3.9/bin
 
 #
 # Google Cloud SDK
@@ -269,7 +269,8 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 # Tell Node about these packages
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
-#zprof
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
+#zprof
