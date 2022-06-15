@@ -6,10 +6,18 @@ AWS_CLI_VERSION=1.18.65
 
 # Install awscli
 if ! [ -x "$(command -v aws)" ] ; then
-    curl -Lo "awscli-bundle.zip" "https://s3.amazonaws.com/aws-cli/awscli-bundle-${AWS_CLI_VERSION}.zip"
-    unzip awscli-bundle.zip
-    ./awscli-bundle/install -i $DESTINATION_DIRECTORY
-    rm -f awscli-bundle.zip
+    if uname | grep -q Darwin ; then
+        # we're on MacOS
+        curl "https://awscli.amazonaws.com/AWSCLIV2.pkg" -o "/tmp/AWSCLIV2.pkg"
+        sudo installer -pkg /tmp/AWSCLIV2.pkg -target /
+        rm /tmp/AWSCLIV2.pkg
+    else
+        # we're on Linux
+        curl -Lo "awscli-bundle.zip" "https://s3.amazonaws.com/aws-cli/awscli-bundle-${AWS_CLI_VERSION}.zip"
+        unzip awscli-bundle.zip
+        ./awscli-bundle/install -i $DESTINATION_DIRECTORY
+        rm -f awscli-bundle.zip
+    fi
 fi    
 
 if ! [ -x "$(command -v arkade)" ] ; then
@@ -28,6 +36,6 @@ for executable in \
     pack \
     ; do
     if ! [ -x "$(command -v $executable)" ] ; then
-            arkade get $executable
+            arkade get --os darwin --arch arm64 $executable
     fi
 done
