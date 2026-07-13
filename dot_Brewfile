@@ -31,3 +31,4 @@ brew "tmux"        # referenced by the oh-my-zsh tmux plugin
 
 # GUI apps (casks)
 cask "hammerspoon" # macOS automation / window management
+cask "kitty"       # GPU-accelerated terminal (config in ~/.config/kitty)
