@@ -15,6 +15,7 @@ $python\
 $terraform\
 $cmd_duration\
 $jobs\
+$line_break\
 $character"""
 
 [directory]
