@@ -1,0 +1,16 @@
+# chezmoi does NOT delete files from $HOME just because they left the source.
+# List their target paths here so `chezmoi apply` removes the orphans.
+
+# old vim-plug / vimscript config -> LazyVim at ~/.config/nvim (phase 6)
+.vimrc
+.vim
+
+# ack -> ripgrep (phase 4)
+.ackrc
+
+# compton -> picom (phase 1)
+.config/compton.conf
+
+# spaceship -> starship (phase 4)
+.oh-my-zsh/custom/themes/spaceship.zsh-theme
+.oh-my-zsh/custom/themes/spaceship-prompt
