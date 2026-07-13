@@ -28,3 +28,6 @@ brew "lazygit"     # git TUI (LazyVim integration)
 
 # Shell / terminal
 brew "tmux"        # referenced by the oh-my-zsh tmux plugin
+
+# GUI apps (casks)
+cask "hammerspoon" # macOS automation / window management
