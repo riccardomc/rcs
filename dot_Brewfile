@@ -25,3 +25,4 @@ brew "eza"
 brew "bat"
 brew "fzf"
 brew "git-delta"   # git diff pager
+brew "lazygit"     # git TUI (LazyVim integration)
