@@ -56,6 +56,7 @@ sudo apt install -y \
     software-properties-common \
     solaar-gnome3 \
     tig \
+    tmux \
     unrar \
     virtualenvwrapper \
     xautolock \
@@ -66,9 +67,9 @@ sudo apt install -y \
     xsel \
     xserver-xorg-input-synaptics \
     yamllint \
-    zim \
-    zsh-autosuggestions \
-    zsh-syntax-highlighting
+    zim
+# zsh-autosuggestions / zsh-syntax-highlighting come from .chezmoiexternal.toml
+# (cloned into ~/.oh-my-zsh/custom/plugins so oh-my-zsh can find them)
 
 # third parties
 

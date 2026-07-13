@@ -1,0 +1,12 @@
+# oh-my-zsh custom plugins referenced in ~/.zshrc `plugins=(...)`.
+# Homebrew/apt install these to non-omz locations, so omz can't find them.
+# Clone them into $ZSH_CUSTOM/plugins where oh-my-zsh actually looks.
+[".oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+    refreshPeriod = "168h"
+
+[".oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    refreshPeriod = "168h"
