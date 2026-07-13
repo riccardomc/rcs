@@ -11,7 +11,6 @@ brew "helm"
 brew "istioctl"
 brew "argocd"
 brew "krew"          # kubectl plugin manager (different layer — kept)
-brew "pack"          # cloud-native buildpacks
 brew "opentofu"      # open-source terraform successor
 
 # Modern CLI tooling (Phase 4)
