@@ -11,8 +11,7 @@ sudo apt install -y \
     ca-certificates \
     caffeine \
     cbatticon \
-    compton \
-    compton-conf \
+    picom \
     curl \
     copyq \
     dnsutils \
@@ -88,11 +87,14 @@ BAT_DEB=~/Downloads/bat_${GIT_DELTA_VERSION}_amd64.deb
 curl -s -C - -Lo $BAT_DEB https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_amd64.deb
 sudo apt install $BAT_DEB
 
-# brave browser
-curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
-echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt install brave-browser
+# brave browser (apt-key is removed in modern Debian/Ubuntu; use a signed-by keyring)
+sudo install -d -m 0755 /etc/apt/keyrings
+curl -fsSL https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg \
+    | sudo tee /etc/apt/keyrings/brave-browser-archive-keyring.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main" \
+    | sudo tee /etc/apt/sources.list.d/brave-browser-release.list > /dev/null
+sudo apt update && sudo apt install -y brave-browser
 
-# nodejs
-curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
-sudo apt install nodejs
+# nodejs (current LTS via NodeSource; Node 12 is long EOL)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo bash -
+sudo apt install -y nodejs

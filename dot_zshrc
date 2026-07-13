@@ -93,7 +93,7 @@ COMPLETION_WAITING_DOTS="true"
 # enable autostart only if not running on i3
 [ ! -z "$(pgrep '^i3$')" ] && ZSH_TMUX_AUTOSTART=false || ZSH_TMUX_AUTOSTART=true
 
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH:$HOME/.arkade/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
 plugins=(aws git ssh-agent tmux kubectl docker history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
 
 SHOW_AWS_PROMPT=false
@@ -140,10 +140,7 @@ source $ZSH/oh-my-zsh.sh
 linux && export VIM_EXECUTABLE=$(which nvim.appimage)
 osx && export VIM_EXECUTABLE=$(which nvim)
 
-export GIT_AUTHOR_NAME="Riccardo M. Cefala"
-export GIT_AUTHOR_EMAIL="riccardo.cefala@nike.com"
-export GIT_COMMITTER_NAME="Riccardo M. Cefala"
-export GIT_COMMITTER_EMAIL="riccardo.cefala@nike.com"
+# git identity lives in ~/.gitconfig (templated by chezmoi) — single source of truth
 export EDITOR=$VIM_EXECUTABLE
 osx && export VIMRUNTIME=/usr/local/Cellar/neovim/0.5.0/share/nvim/runtime
 
@@ -204,7 +201,6 @@ alias cm=chezmoi
 # Completion - aws, ssh, ...
 #
 fpath+=~/.oh-my-zsh/custom/functions
-linux && source ~/.local/bin/aws_zsh_completer.sh
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 osx && complete -C $(which aws_completer) aws

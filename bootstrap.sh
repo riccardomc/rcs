@@ -3,7 +3,7 @@
 # install chezmoi
 
 if ! [ -x "$(command -v chezmoi)" ] ; then
-    curl -sfL https://git.io/chezmoi | bash -s -- -d -b ~/.bin
+    sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.bin
 fi
 
 PATH=~/.bin:$PATH

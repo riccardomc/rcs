@@ -1,0 +1,13 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+# Installs Homebrew (if needed) and applies ~/.Brewfile.
+# Re-runs automatically whenever the Brewfile changes, via this hash:
+# Brewfile hash: {{ include "dot_Brewfile" | sha256sum }}
+set -eu
+
+if ! command -v brew >/dev/null 2>&1 ; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+brew bundle --file="$HOME/.Brewfile"
+{{ end -}}
