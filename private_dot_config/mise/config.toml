@@ -1,0 +1,6 @@
+# Global tool versions managed by mise (replaces the old per-tool version
+# hacks: gradle path, GOROOT, nvim.appimage installer, node setup).
+[tools]
+node = "lts"
+go = "latest"
+neovim = "latest"

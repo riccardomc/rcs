@@ -7,6 +7,13 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    navigate = true
+    line-numbers = true
 
 [color]
         ui = true
@@ -20,6 +27,7 @@
 	default = simple
 [merge]
 	tool = kdiff3
+	conflictstyle = zdiff3
 [mergetool "kdiff3NoAuto"]
 	cmd = kdiff3 --L1 \"$MERGED (Base)\" --L2 \"$MERGED (Local)\" --L3 \"$MERGED (Remote)\" -o \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
 [log]

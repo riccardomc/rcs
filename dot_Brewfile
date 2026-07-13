@@ -14,14 +14,14 @@ brew "krew"          # kubectl plugin manager (different layer — kept)
 brew "pack"          # cloud-native buildpacks
 brew "opentofu"      # open-source terraform successor
 
-# Modern CLI tooling adopted in Phase 4 (uncomment as we wire the configs):
-# brew "mise"        # polyglot version manager (replaces pyenv/gradle/node hacks)
-# brew "starship"    # prompt (replaces spaceship + oh-my-zsh theme)
-# brew "zoxide"      # smarter cd (replaces fasd)
-# brew "uv"          # python env/package manager (replaces pyenv+virtualenvwrapper)
-# brew "ripgrep"     # rg (replaces ack)
-# brew "fd"
-# brew "eza"
-# brew "bat"
-# brew "fzf"
-# brew "git-delta"   # git diff pager
+# Modern CLI tooling (Phase 4)
+brew "mise"        # polyglot version manager (replaces pyenv/gradle/node hacks)
+brew "starship"    # prompt (replaces spaceship + oh-my-zsh theme)
+brew "zoxide"      # smarter cd (replaces fasd)
+brew "uv"          # python env/package manager (replaces pyenv+virtualenvwrapper)
+brew "ripgrep"     # rg (replaces ack)
+brew "fd"
+brew "eza"
+brew "bat"
+brew "fzf"
+brew "git-delta"   # git diff pager

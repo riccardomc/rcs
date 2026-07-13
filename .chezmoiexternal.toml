@@ -1,6 +1,0 @@
-# External dependencies managed natively by chezmoi.
-# Replaces the git submodule + run_install_zsh_spaceship_prompt.sh.
-[".oh-my-zsh/custom/themes/spaceship-prompt"]
-    type = "git-repo"
-    url = "https://github.com/spaceship-prompt/spaceship-prompt.git"
-    refreshPeriod = "168h"

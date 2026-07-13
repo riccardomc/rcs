@@ -1,0 +1,6 @@
+# ripgrep config (replaces ~/.ackrc). Loaded via $RIPGREP_CONFIG_PATH.
+# Note: rg already respects .gitignore; these cover paths often left untracked.
+--glob=!vendor/
+--glob=!.terraform/
+--glob=!.venv/
+--smart-case

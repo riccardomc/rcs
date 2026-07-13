@@ -5,81 +5,9 @@
 #
 export ZSH=$HOME/.oh-my-zsh
 
-ZSH_THEME="spaceship"
-
-#
-# Spaceship prompt
-#
-SPACESHIP_DIR_PREFIX="🦊 "
-SPACESHIP_JOBS_SYMBOL="🔧"
-SPACESHIP_PROMPT_ADD_NEWLINE=false
-SPACESHIP_PROMPT_DEFAULT_PREFIX=
-SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
-SPACESHIP_VI_MODE_SHOW=false
-
-# AWS
-SPACESHIP_AWS_PREFIX=
-SPACESHIP_AWS_SYMBOL=
-
-# custom AWS region section
-SPACESHIP_AWS_REGION_SHOW=true
-SPACESHIP_AWS_REGION_PREFIX=
-SPACESHIP_AWS_REGION_SUFFIX=" "
-SPACESHIP_AWS_REGION_SYMBOL=
-SPACESHIP_AWS_REGION_COLOR=208
-
-spaceship_aws_region() {
-
-    # do not show if false
-    [[ $SPACESHIP_AWS_REGION_SHOW == false ]] && return
-
-    local region=${AWS_DEFAULT_REGION}
-
-    # exit if not set
-    [[ -z $region ]] && return
-
-    # show prompt section
-    spaceship::section \
-        "$SPACESHIP_AWS_REGION_COLOR" \
-        "$SPACESHIP_AWS_REGION_PREFIX" \
-        "${SPACESHIP_AWS_REGION_SYMBOL}${region}" \
-        "$SPACESHIP_AWS_REGION_SUFFIX"
-}
-
-# Docker
-SPACESHIP_DOCKER_CONTEXT_SHOW=false
-
-# GCP
-SPACESHIP_GCLOUD_PREFIX=
-SPACESHIP_GCLOUD_SHOW=false
-
-# GIT
-SPACESHIP_GIT_PREFIX=
-
-# Golang
-SPACESHIP_GOLANG_SHOW=false
-
-# Kubernetes
-SPACESHIP_KUBECONTEXT_SHOW=true
-SPACESHIP_KUBECTL_VERSION_SHOW=false
-
-SPACESHIP_PROMPT_ORDER=(
-  user              # Username section
-  dir               # Current directory section
-  git               # Git section (git_branch + git_status)
-  aws               # Amazon Web Services section
-  aws_region        # CUSTOM: show AWS region
-  kubectl_context   # Kubectl context section
-  venv              # virtualenv section
-  terraform         # Terraform workspace section
-  exec_time         # Execution time
-  line_sep          # Line break
-  battery           # Battery level and status
-  vi_mode           # Vi-mode indicator
-  jobs              # Background jobs indicator
-  exit_code         # Exit code section
-  char              # Prompt character
-)
+# Prompt is handled by starship (see ~/.config/starship.toml, initialized at
+# the end of this file). Disable the oh-my-zsh theme so it doesn't fight it.
+ZSH_THEME=""
 
 #
 # Completion plugin config
@@ -94,7 +22,7 @@ COMPLETION_WAITING_DOTS="true"
 [ ! -z "$(pgrep '^i3$')" ] && ZSH_TMUX_AUTOSTART=false || ZSH_TMUX_AUTOSTART=true
 
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/local/games:/usr/games:$HOME/.cargo/bin:$HOME/.bin:$HOME/.scripts:$HOME/.local/bin:$PATH"
-plugins=(aws git ssh-agent tmux kubectl docker history-substring-search fasd zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(aws git ssh-agent tmux kubectl docker history-substring-search zsh-autosuggestions zsh-syntax-highlighting)
 
 SHOW_AWS_PROMPT=false
 
@@ -137,41 +65,34 @@ rmtrailspaces() {
 
 source $ZSH/oh-my-zsh.sh
 
-linux && export VIM_EXECUTABLE=$(which nvim.appimage)
-osx && export VIM_EXECUTABLE=$(which nvim)
+# neovim is provided by mise (see ~/.config/mise/config.toml)
+export VIM_EXECUTABLE=$(which nvim)
 
 # git identity lives in ~/.gitconfig (templated by chezmoi) — single source of truth
 export EDITOR=$VIM_EXECUTABLE
-osx && export VIMRUNTIME=/usr/local/Cellar/neovim/0.5.0/share/nvim/runtime
+
+# ripgrep config (replaces ack / ~/.ackrc)
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 # revert ls quoting behaviour introduced in coreutils 8.25
 export QUOTING_STYLE=literal
 
 #
-# Golang
+# Golang (toolchain managed by mise; keep custom GOPATH)
 #
-export GOROOT=$HOME/go
 export GOPATH=$HOME/Development/golang
-osx && export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin
 
 #
-# Python (virtualenvwrapper)
+# Python (uv — replaces pyenv + virtualenvwrapper)
 #
-export WORKON_HOME=$HOME/.virtualenvs
-linux && source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
-osx && export PATH=$PATH:$HOME/Library/Python/3.9/bin
+command -v uv >/dev/null && eval "$(uv generate-shell-completion zsh)"
 
 #
 # Google Cloud SDK
 #
 #source ~/opt/google-cloud-sdk/path.zsh.inc
 #source ~/opt/google-cloud-sdk/completion.zsh.inc
-
-#
-# Gradle
-#
-export PATH=$HOME/opt/gradle-4.5.1/bin:$PATH
 
 #
 # Aliases
@@ -188,8 +109,8 @@ alias k='kubectl'
 alias kns='k get namespaces'
 path+=~/.krew/bin
 
-# Openfiles quick in vim with FASD
-alias v='f -e nvim.appimage'
+# Quick-open a file in the editor via fzf (replaces the old fasd `v`)
+v() { local f; f=$(fzf) && [ -n "$f" ] && "$VIM_EXECUTABLE" "$f"; }
 
 # grep through history
 alias hg="history | grep"
@@ -266,7 +187,13 @@ MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
+
+#
+# Tool initializations (order matters: starship sets PROMPT and goes last)
+#
+command -v mise     >/dev/null && eval "$(mise activate zsh)"
+command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"
+command -v fzf      >/dev/null && source <(fzf --zsh) 2>/dev/null
+command -v starship >/dev/null && eval "$(starship init zsh)"
 
 #zprof

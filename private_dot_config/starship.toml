@@ -1,0 +1,50 @@
+# Replaces the old spaceship prompt. Keeps the essentials:
+# fox dir prefix, no leading newline, AWS profile+region in orange,
+# kube context, wrench for jobs.
+
+add_newline = false
+
+format = """
+$username\
+$directory\
+$git_branch\
+$git_status\
+$aws\
+$kubernetes\
+$python\
+$terraform\
+$cmd_duration\
+$jobs\
+$character"""
+
+[directory]
+format = "🦊 [$path]($style)[$read_only]($read_only_style) "
+truncation_length = 0
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
+format = "[$branch]($style) "
+
+[git_status]
+format = '([$all_status$ahead_behind]($style)) '
+
+[aws]
+# region shown next to the profile, in orange (was SPACESHIP_AWS_REGION_COLOR=208)
+format = '[$profile(\($region\))]($style) '
+style = "#ff8700"
+symbol = ""
+disabled = false
+
+[kubernetes]
+disabled = false
+format = '[$context]($style) '
+style = "cyan"
+
+[jobs]
+symbol = "🔧"
+format = "[$symbol$number]($style) "
+
+[character]
+success_symbol = "[%](bold green)"
+error_symbol = "[%](bold red)"

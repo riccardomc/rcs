@@ -1,8 +1,0 @@
-# ignore vendor in golang projects
---ignore-directory=vendor
-
-# ignore .terraform
---ignore-directory=.terraform
-
-# ignore python virtualenv
---ignore-directory=.venv
