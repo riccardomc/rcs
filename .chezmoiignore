@@ -2,3 +2,7 @@ bootstrap.sh
 mac
 README.md
 udev
+
+# untracked machine-local overrides (work credentials, commit signing, etc.)
+.zshrc.local
+.gitconfig.local

@@ -196,4 +196,9 @@ command -v zoxide   >/dev/null && eval "$(zoxide init zsh)"
 command -v fzf      >/dev/null && source <(fzf --zsh) 2>/dev/null
 command -v starship >/dev/null && eval "$(starship init zsh)"
 
+#
+# Machine-local overrides (work credentials, host-specific tweaks) — not tracked
+#
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
 #zprof
