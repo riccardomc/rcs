@@ -26,3 +26,5 @@ syntax: glob
  vim/bundle*                                                                                                                   
  vim/doc*                                                                                                                      
  vim/plugin*
+
+**/.claude/settings.local.json
