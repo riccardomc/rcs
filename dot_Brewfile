@@ -39,5 +39,8 @@ cask "hammerspoon"     # macOS automation / window management
 cask "kitty"           # GPU-accelerated terminal (config in ~/.config/kitty)
 cask "docker-desktop"  # licensed; bundles docker/compose/buildx CLIs
 cask "obsidian"    # markdown notes / knowledge base
-cask "google-drive" # sync Google Drive locally (Finder integration)
 cask "numi"        # calculator / unit converter
+
+# NOTE: casks whose .pkg installer needs an interactive sudo password live in
+# ~/.Brewfile-interactive (e.g. google-drive) so this file stays unattended-safe.
+# Install them manually: brew bundle --file="$HOME/.Brewfile-interactive"

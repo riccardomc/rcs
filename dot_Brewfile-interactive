@@ -1,0 +1,9 @@
+# Homebrew casks that require an interactive sudo password (.pkg installers).
+# These are deliberately kept OUT of the main ~/.Brewfile so the unattended
+# `brew bundle` in run_onchange_darwin-install-packages.sh.tmpl never stalls
+# waiting for a password.
+#
+# Install manually (will prompt for your password):
+#   brew bundle --file="$HOME/.Brewfile-interactive"
+
+cask "google-drive"  # sync Google Drive locally (Finder integration)
