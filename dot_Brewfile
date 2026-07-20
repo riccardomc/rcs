@@ -1,6 +1,9 @@
 # Homebrew Bundle — managed by chezmoi, applied via `brew bundle`.
 # Replaces the old arkade + run_install_executables.sh imperative installers.
 
+# Third-party taps
+tap "openclaw/tap"   # gogcli — Google Workspace CLI
+
 # AWS
 brew "awscli"        # v2 (v1 is EOL)
 
@@ -26,6 +29,7 @@ brew "fzf"
 brew "git-delta"   # git diff pager
 brew "lazygit"     # git TUI (LazyVim integration)
 brew "glow"        # Render markdown on the CLI, with pizzazz!
+brew "openclaw/tap/gogcli"  # gog: CLI for Google Workspace (Gmail/Drive/Docs/Sheets/...)
 
 # Shell / terminal
 brew "tmux"        # referenced by the oh-my-zsh tmux plugin
@@ -36,3 +40,4 @@ cask "kitty"           # GPU-accelerated terminal (config in ~/.config/kitty)
 cask "docker-desktop"  # licensed; bundles docker/compose/buildx CLIs
 cask "obsidian"    # markdown notes / knowledge base
 cask "google-drive" # sync Google Drive locally (Finder integration)
+cask "numi"        # calculator / unit converter
